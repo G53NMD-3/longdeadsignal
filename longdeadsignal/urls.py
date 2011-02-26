@@ -16,8 +16,8 @@ urlpatterns = patterns('',
     url(r'^admin/', include(admin.site.urls)),
     
     # The bespoke longdeadsignal apps
-    url(r'^news/', include('longdeadsignal.apps.news.urls')),
+    url(r'^news/', include('longdeadsignal.apps.news.urls', namespace='news')),
     
     # Catch any unmatched URLs and send them to the core app
-    url(r'', include('longdeadsignal.apps.core.urls')),
+    url(r'', include('longdeadsignal.apps.core.urls', namespace='core')),
 )
