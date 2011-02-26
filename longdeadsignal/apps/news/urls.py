@@ -7,13 +7,6 @@ urlpatterns = patterns('',
     # url(r'^$', 'longdeadsignal.views.home', name='home'),
     # url(r'^longdeadsignal/', include('longdeadsignal.foo.urls')),
     
-    url(r'^(?P<slug>[^/]+)/', DetailView.as_view(
-        model=Post,
-        context_object_name='post',
-    ), name='post_detail'),
-    
-    url(r'^$', ListView.as_view(
-        model=Post,
-        context_object_name='posts',
-    ), name='post_list'),
+    url(r'^(?P<slug>[^/]+)/$', DetailView.as_view(model=Post), name='post_detail'),
+    url(r'^$', ListView.as_view(model=Post), name='post_list'),
 )

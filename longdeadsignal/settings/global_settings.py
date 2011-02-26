@@ -105,6 +105,7 @@ INSTALLED_APPS = (
     # Bespoke applications
     'longdeadsignal.apps.core',
     'longdeadsignal.apps.news',
+    'longdeadsignal.apps.badmin',
 )
 
 # A sample logging configuration. The only tangible logging

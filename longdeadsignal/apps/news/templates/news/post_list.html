@@ -3,7 +3,7 @@
 {% block content %}
     <h2>Post List</h2>
     <ul>
-        {% for post in object_list %}
+        {% for post in post_list %}
             <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
         {% endfor %}
     </ul>

@@ -1,0 +1,11 @@
+{% extends "badmin/news/news_base.html" %}
+
+{% block content %}
+    <h2>News</h2>
+    
+    <ul>
+        {% for post in post_list %}
+            <li><a href="{% url badmin:news:post_update post.slug %}">{{ post.title }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}

@@ -1,0 +1,14 @@
+{% extends "base.html" %}
+
+{% block header %}
+    <h1>Long Dead Signal Admin</h1>
+    <ul>
+        <li><a href="{% url core:index %}">Visit website</a></li>
+        <li><a href="{% url badmin:index %}">Admin</a></li>
+        <li><a href="{% url badmin:news:post_list %}">News</a></li>
+    </ul>
+{% endblock %}
+
+{% block footer %}
+    <p><small><a href="{% url admin:index %}">Full developer admin interface</a></small></p>
+{% endblock %}

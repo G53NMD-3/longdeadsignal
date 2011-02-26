@@ -10,13 +10,14 @@ urlpatterns = patterns('',
     # url(r'^longdeadsignal/', include('longdeadsignal.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^django-admin/doc/', include('django.contrib.admindocs.urls')),
 
     # Uncomment the next line to enable the admin:
-    url(r'^admin/', include(admin.site.urls)),
+    url(r'^django-admin/', include(admin.site.urls)),
     
     # The bespoke longdeadsignal apps
     url(r'^news/', include('longdeadsignal.apps.news.urls', namespace='news')),
+    url(r'^admin/', include('longdeadsignal.apps.badmin.urls', namespace='badmin')),
     
     # Catch any unmatched URLs and send them to the core app
     url(r'', include('longdeadsignal.apps.core.urls', namespace='core')),
