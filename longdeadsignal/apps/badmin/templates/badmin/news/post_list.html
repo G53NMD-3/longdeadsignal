@@ -8,4 +8,8 @@
             <li><a href="{% url badmin:news:post_update post.slug %}">{{ post.title }}</a></li>
         {% endfor %}
     </ul>
+    
+    {% with name="badmin:news:post_list" %}
+        {% include "core/pagination_browser.html" %}
+    {% endwith %}
 {% endblock %}

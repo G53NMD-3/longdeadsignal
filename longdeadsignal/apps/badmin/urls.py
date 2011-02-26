@@ -8,6 +8,13 @@ news_patterns = patterns('',
     url(r'^$', ListView.as_view(
         model=Post,
         template_name='badmin/news/post_list.html',
+        paginate_by=10,
+    ), name='post_list'),
+    
+    url(r'^page/(?P<page>[0-9]+)/$', ListView.as_view(
+        model=Post,
+        template_name='badmin/news/post_list.html',
+        paginate_by=10,
     ), name='post_list'),
     
     url(r'^(?P<slug>[^/]+)/$', PostBadminUpdateView.as_view(), name='post_update')
