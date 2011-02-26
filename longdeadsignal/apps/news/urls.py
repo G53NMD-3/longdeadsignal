@@ -2,6 +2,7 @@ from django.conf.urls.defaults import patterns, include, url
 from django.views.generic import DetailView, ListView
 from django.views.generic.dates import YearArchiveView, MonthArchiveView
 from longdeadsignal.apps.news.models import Post
+import settings as app_settings
 
 urlpatterns = patterns('',
     # Examples:
@@ -19,7 +20,7 @@ urlpatterns = patterns('',
         date_field='pub_date',
     ), name='post_archive_month'),
     
-    url(r'^page/(?P<page>[0-9]+)/$', ListView.as_view(model=Post, paginate_by=5), name='post_list'),
+    url(r'^page/(?P<page>[0-9]+)/$', ListView.as_view(model=Post, paginate_by=app_settings.PAGINATE_BY), name='post_list'),
     url(r'^(?P<slug>[^/]+)/$', DetailView.as_view(model=Post), name='post_detail'),
-    url(r'^$', ListView.as_view(model=Post, paginate_by=5), name='post_list'),
+    url(r'^$', ListView.as_view(model=Post, paginate_by=app_settings.PAGINATE_BY), name='post_list'),
 )

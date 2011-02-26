@@ -3,18 +3,19 @@ from django.views.generic import TemplateView, ListView, UpdateView
 from longdeadsignal.apps.news.models import Post
 from longdeadsignal.apps.news.forms import PostForm
 from longdeadsignal.apps.badmin.views import PostBadminUpdateView
+import settings as app_settings
 
 news_patterns = patterns('', 
     url(r'^$', ListView.as_view(
         model=Post,
         template_name='badmin/news/post_list.html',
-        paginate_by=10,
+        paginate_by=app_settings.PAGINATE_BY,
     ), name='post_list'),
     
     url(r'^page/(?P<page>[0-9]+)/$', ListView.as_view(
         model=Post,
         template_name='badmin/news/post_list.html',
-        paginate_by=10,
+        paginate_by=app_settings.PAGINATE_BY,
     ), name='post_list'),
     
     url(r'^(?P<slug>[^/]+)/$', PostBadminUpdateView.as_view(), name='post_update')
