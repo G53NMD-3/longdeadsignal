@@ -2,9 +2,17 @@
 
 {% block content %}
     <h2>Post List</h2>
-    <ul>
-        {% for post in post_list %}
-            <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
+    {% for post in post_list %}
+        <section class="post">
+            <header>
+                <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
+                <div><small>{{ post.pub_date|timesince }} ago - {{ post.pub_date|date:"l jS F Y" }}</small></div>
+            </header>
+            {{ post.body_html|truncatewords_html:40|safe }}
+        </section>
+    {% endfor %}
+    
+    {% with name="news:post_list" %}
+        {% include "core/pagination_browser.html" %}
+    {% endwith %}
 {% endblock %}

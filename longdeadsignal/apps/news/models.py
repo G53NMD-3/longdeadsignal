@@ -18,6 +18,10 @@ class Post(models.Model):
     author = models.ForeignKey('auth.user')
     pub_date = models.DateTimeField(auto_now_add=True)
     
+    class Meta:
+        ordering = ['-pub_date']
+        get_latest_by = 'pub_date'
+    
     def __unicode__(self):
         return u'%s' % self.title
     

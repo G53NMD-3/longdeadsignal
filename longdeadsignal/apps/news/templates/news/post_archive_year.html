@@ -1,0 +1,12 @@
+{% extends "news/news_base.html" %}
+
+{% block content %}
+    <h2>News Archives for {{ year }}</h2>
+    
+    {% for post in post_list %}
+        {% ifchanged post.pub_date.month %}
+            <a href="{% url news:post_archive_month year post.pub_date|date:"M" %}"><h3 id="month-{{ post.pub_date|date:"M"|lower }}">{{ post.pub_date|date:"F" }}</h3></a>
+        {% endifchanged %}
+        <p>{{ post.pub_date|date:"l jS" }} <a href="{{ post.get_absolute_url }}">{{ post }}</a></p>
+    {% endfor %}
+{% endblock %}
