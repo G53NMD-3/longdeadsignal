@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>{% block title %}Long Dead Signal{% endblock %}</title>
+</head>
+
+<body>
+    {% block body %}
+        <header>
+            {% block header %}
+                <h1>Long Dead Signal</h1>
+            {% endblock %}
+        </header>
+        <div>
+            {% block content %}
+                
+            {% endblock %}
+        </div>
+        <footer>
+            {% block footer %}
+                
+            {% endblock %}
+        </footer>
+    {% endblock %}
+</body>
+</html>
