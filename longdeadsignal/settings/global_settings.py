@@ -106,6 +106,9 @@ INSTALLED_APPS = (
     'longdeadsignal.apps.core',
     'longdeadsignal.apps.news',
     'longdeadsignal.apps.badmin',
+    
+    # Other required packages
+    'wmd',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -130,3 +133,5 @@ LOGGING = {
         },
     }
 }
+
+WMD_SHOW_PREVIEW = True

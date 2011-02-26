@@ -1,7 +1,7 @@
-import markdown
-
 from django.db import models
 from django.template.defaultfilters import slugify
+from wmd import models as wmd_models
+import markdown
 
 class Post(models.Model):
     """
@@ -12,10 +12,7 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, editable=False)
     
-    teaser_markdown = models.TextField(blank=True)
-    teaser_html = models.TextField(blank=True, editable=False)
-    
-    body_markdown = models.TextField(blank=True)
+    body_markdown = wmd_models.MarkDownField(blank=True)
     body_html = models.TextField(blank=True, editable=False)
     
     author = models.ForeignKey('auth.user')
@@ -26,7 +23,6 @@ class Post(models.Model):
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
-        self.teaser_html = markdown.markdown(self.teaser_markdown)
         self.body_html = markdown.markdown(self.body_markdown)
         super(Post, self).save(*args, **kwargs)
     

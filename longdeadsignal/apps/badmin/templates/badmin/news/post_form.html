@@ -9,3 +9,8 @@
         <p><input type="submit" value="Save"> or <a href="{% url badmin:news:post_list %}">cancel</a></p>
     </form>
 {% endblock %}
+
+{% block links %}
+    {{ block.super }}
+    {{ form.media }}
+{% endblock %}

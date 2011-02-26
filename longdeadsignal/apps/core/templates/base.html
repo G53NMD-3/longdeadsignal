@@ -4,6 +4,12 @@
 <head>
     <meta charset="utf-8">
     <title>{% block title %}Long Dead Signal{% endblock %}</title>
+    
+    {% block scripts %}
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.5/jquery.min.js"></script>
+    {% endblock %}
+    
+    {% block links %}{% endblock %}
 </head>
 
 <body>
@@ -29,4 +35,5 @@
         </footer>
     {% endblock %}
 </body>
+
 </html>

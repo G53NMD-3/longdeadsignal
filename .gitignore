@@ -10,3 +10,6 @@ longdeadsignal/settings/local_settings.py
 
 # Pip
 pip-log.txt
+
+# Django static files
+longdeadsignal/static

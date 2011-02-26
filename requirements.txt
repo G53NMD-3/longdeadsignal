@@ -7,3 +7,4 @@ docutils
 # Markdown
 elementtree
 markdown
+-e git://github.com/marcuswhybrow/django-wmd-editor.git#egg=django_wmd_editor
