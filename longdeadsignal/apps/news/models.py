@@ -1,3 +1,5 @@
+import markdown
+
 from django.db import models
 from django.template.defaultfilters import slugify
 
@@ -10,11 +12,11 @@ class Post(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(unique=True, editable=False)
     
-    tease_markdown = models.TextField(blank=True)
-    tease_html = models.TextField(blank=True)
+    teaser_markdown = models.TextField(blank=True)
+    teaser_html = models.TextField(blank=True, editable=False)
     
     body_markdown = models.TextField(blank=True)
-    body_html = models.TextField(blank=True)
+    body_html = models.TextField(blank=True, editable=False)
     
     author = models.ForeignKey('auth.user')
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -24,6 +26,8 @@ class Post(models.Model):
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
+        self.teaser_html = markdown.markdown(self.teaser_markdown)
+        self.body_html = markdown.markdown(self.body_markdown)
         super(Post, self).save(*args, **kwargs)
     
     @models.permalink

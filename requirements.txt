@@ -3,3 +3,7 @@
 
 # Requirement for Django docs
 docutils
+
+# Markdown
+elementtree
+markdown
