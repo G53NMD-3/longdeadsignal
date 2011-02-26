@@ -1,0 +1,12 @@
+# Ignore compiled Python files
+*.pyc
+
+# Ignore hidden Mac files
+.DS_Store
+
+# Ignore Django specific stuff
+*.db
+longdeadsignal/settings/local_settings.py
+
+# Pip
+pip-log.txt
