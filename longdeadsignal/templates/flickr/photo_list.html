@@ -1,0 +1,10 @@
+{% extends "flickr/flickr_base.html" %}
+
+{% block content %}
+    <h2>Photos</h2>
+    
+    {% for photo in photo_list %}
+        <img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}" title="{{ photo.title }}" />
+    {% endfor %}
+    
+{% endblock %}
