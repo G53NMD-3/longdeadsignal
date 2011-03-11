@@ -97,10 +97,6 @@ INSTALLED_APPS = (
     'django.contrib.sites',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    # Uncomment the next line to enable the admin:
-    'django.contrib.admin',
-    # Uncomment the next line to enable admin documentation:
-    'django.contrib.admindocs',
     
     # Bespoke applications
     'longdeadsignal.apps.core',
@@ -109,6 +105,11 @@ INSTALLED_APPS = (
     
     # Other required packages
     'wmd',
+    
+    # Uncomment the next lines to enable the admin and/or the admin
+    # documentation:
+    'django.contrib.admin',
+    'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging
@@ -135,3 +136,6 @@ LOGGING = {
 }
 
 WMD_SHOW_PREVIEW = True
+LOGIN_REDIRECT_URL = '/admin/profile/'
+LOGIN_URL = '/admin/login/'
+LOGOUT_URL = '/admin/logout/'

@@ -3,6 +3,8 @@
 {% block content %}
     <h2>News</h2>
     
+    <p><a href="{% url badmin:news:post_create %}">New Post</a></p>
+    
     <ul>
         {% for post in post_list %}
             <li><a href="{% url badmin:news:post_update post.slug %}">{{ post.title }}</a></li>
