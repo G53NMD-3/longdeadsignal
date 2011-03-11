@@ -1,6 +1,8 @@
 import os
 import sys
 
+from django.conf.global_settings import TEMPLATE_CONTEXT_PROCESSORS
+
 # Django settings for longdeadsignal project.
 
 PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
@@ -80,6 +82,9 @@ MIDDLEWARE_CLASSES = (
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
+    
+    # Django middleware which isn't normally enabled
+    'django.contrib.flatpages.middleware.FlatpageFallbackMiddleware',
 )
 
 ROOT_URLCONF = 'longdeadsignal.urls'
@@ -88,6 +93,11 @@ TEMPLATE_DIRS = (
     # Put strings here, like "/home/html/django_templates" or "C:/www/django/templates".
     # Always use forward slashes, even on Windows.
     # Don't forget to use absolute paths, not relative paths.
+    os.path.join(PROJECT_ROOT, 'templates'),
+)
+
+TEMPLATE_CONTEXT_PROCESSORS += (
+    'longdeadsignal.apps.core.context_processors.site_name',
 )
 
 INSTALLED_APPS = (
@@ -98,6 +108,14 @@ INSTALLED_APPS = (
     'django.contrib.messages',
     'django.contrib.staticfiles',
     
+    # Uncomment the next lines to enable the admin and/or the admin
+    # documentation:
+    'django.contrib.admin',
+    'django.contrib.admindocs',
+    
+    # Django apps which arn't normally enabled
+    'django.contrib.flatpages',
+    
     # Bespoke applications
     'longdeadsignal.apps.core',
     'longdeadsignal.apps.news',
@@ -105,11 +123,6 @@ INSTALLED_APPS = (
     
     # Other required packages
     'wmd',
-    
-    # Uncomment the next lines to enable the admin and/or the admin
-    # documentation:
-    'django.contrib.admin',
-    'django.contrib.admindocs',
 )
 
 # A sample logging configuration. The only tangible logging
