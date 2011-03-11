@@ -121,6 +121,12 @@ INSTALLED_APPS = (
     'longdeadsignal.apps.news',
     'longdeadsignal.apps.badmin',
     
+    # Synchonisation apps fron django-syncr
+    'tagging',
+    'syncr.flickr',
+    'syncr.youtube',
+    'syncr.twitter',
+    
     # Other required packages
     'wmd',
 )
@@ -152,3 +158,8 @@ WMD_SHOW_PREVIEW = True
 LOGIN_REDIRECT_URL = '/admin/profile/'
 LOGIN_URL = '/admin/login/'
 LOGOUT_URL = '/admin/logout/'
+
+# These control which services will be synced
+SYNC_YOUTUBE = False
+SYNC_TWITTER = False
+SYNC_FLICKR = True

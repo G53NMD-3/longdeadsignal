@@ -1,6 +1,12 @@
+import os
+from global_settings import *
+
 """
-To use this template, copy local_settings.py.template to local_settings.py and enter values for the defined items
+To use this template, copy local_settings.py.template to local_settings.py and
+enter values for the defined items
 """
+
+PROJECT_ROOT = os.path.abspath(os.path.join(os.path.dirname(__file__), '..'))
 
 # Make this unique, and don't share it with anybody.
 SECRET_KEY = ''
@@ -23,3 +29,22 @@ ADMINS = (
 )
 
 MANAGERS = ADMINS
+
+# This allows Django debug toolbar to work if you have installed it. This
+# helps with development a lot.
+if DEBUG:
+    MIDDLEWARE_CLASSES += ('debug_toolbar.middleware.DebugToolbarMiddleware',)
+    INSTALLED_APPS += ('debug_toolbar',)
+    DEBUG_TOOLBAR_CONFIG = {
+        'INTERCEPT_REDIRECTS': False,
+    }
+    INTERNAL_IPS = ('127.0.0.1',)
+
+# The Flickr API keys used to talk to the API
+FLICKR_API_KEY = ''
+FLICKR_SECRET = ''
+
+# The usernames of the band which are used on the various services
+YOUTUBE_USERNAME = ''
+TWITTER_USERNAME = ''
+FLICKR_USERNAME = ''
