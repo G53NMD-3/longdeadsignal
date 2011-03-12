@@ -10,7 +10,7 @@
         <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
         {{ previous_fields|safe }}
 
-        <p><input type="submit" value="Continue &rarr;"></p>
+        <p><input type="submit" value="Continue &rarr;"> Step {{ step }} of {{ step_count }}</p>
     </form>
 {% endblock %}
 

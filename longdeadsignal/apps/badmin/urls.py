@@ -8,6 +8,7 @@ import settings as app_settings
 from django.contrib.auth.decorators import login_required
 from longdeadsignal.apps.badmin.forms import CreateEventWizard, \
     CreateEventForm1, CreateEventForm2, CreateEventForm3
+from longdeadsignal.apps.events.models import Event
 
 news_patterns = patterns('', 
     url(r'^$', login_required(ListView.as_view(
@@ -33,6 +34,12 @@ events_patterns = patterns('',
         CreateEventForm2,
         CreateEventForm3,
     ])), name='event_create'),
+    
+    url(r'^$', login_required(ListView.as_view(
+        model=Event,
+        template_name='badmin/events/event_list.html',
+        paginate_by=app_settings.PAGINATE_BY,
+    )), name='event_list'),
 )
 
 urlpatterns = patterns('',
