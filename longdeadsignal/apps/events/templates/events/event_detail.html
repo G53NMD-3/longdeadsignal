@@ -1,0 +1,36 @@
+{% extends "events/events_base.html" %}
+
+{% block content %}
+    <h2>{{ event.title }}</h2>
+    
+    <dl>
+        <dt>{{ event.location_title }}</dt>
+        {% if event.location_address_1 %}<dd>{{ event.location_address_1 }}</dd>{% endif %}
+        {% if event.location_address_2 %}<dd>{{ event.location_address_2 }}</dd>{% endif %}
+        {% if event.location_address_3 %}<dd>{{ event.location_address_3 }}</dd>{% endif %}
+        {% if event.location_city %}<dd>{{ event.location_city }}</dd>{% endif %}
+        {% if event.location_post_code %}<dd>{{ event.location_post_code }}</dd>{% endif %}
+        {% if event.location_country %}<dd>{{ event.location_country }}</dd>{% endif %}
+    </dl>
+    
+    <dl>
+        <dt>Details</dt>
+        <dd>{{ event.date }}</dd>
+        <dd>{% if event.is_in_past %}The event is over.{% else %}This event has not yet started.{% endif %}</dd>
+        <dd></dd>
+    </dl>
+    
+    {% if event.location_google_maps %}
+        Google Map Here
+    {% else %}
+        <div style="width:500px; height:300px; background-color:#eee">
+            We don't have a Google Maps location yet, check back soon.
+        </div>
+    {% endif %}
+    
+    <h3>Why you should come!</h3>
+    {% if event.pre_event_message_html %}
+        <p>{{ event.pre_event_message_html|safe }}</p>
+    {% endif %}
+    
+{% endblock %}

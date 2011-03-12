@@ -51,6 +51,10 @@ class Event(models.Model):
     def __unicode__(self):
         return '%s %s' % (self.title, self.date)
     
+    @models.permalink
+    def get_absolute_url(self):
+        return ('events:event_detail', (), {'slug': self.slug})
+    
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         self.pre_event_message_html = markdown.markdown(self.pre_event_message_markdown)

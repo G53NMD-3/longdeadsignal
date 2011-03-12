@@ -16,6 +16,7 @@ urlpatterns = patterns('',
     url(r'^django-admin/', include(admin.site.urls)),
     
     # The bespoke longdeadsignal apps
+    url(r'^events/', include('longdeadsignal.apps.events.urls', namespace='events')),
     url(r'^news/', include('longdeadsignal.apps.news.urls', namespace='news')),
     url(r'^admin/', include('longdeadsignal.apps.badmin.urls', namespace='badmin')),
     
