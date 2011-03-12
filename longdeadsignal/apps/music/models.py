@@ -32,6 +32,9 @@ class Song(models.Model):
     class Meta:
         unique_together = ('album', 'track_number')
     
+    def __unicode__(self):
+        return u'%s - %02d %s' % (self.album.title, self.track_number, self.title)
+    
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
         super(Song, self).save(*args, **kwargs)
@@ -58,6 +61,9 @@ class Album(models.Model):
     
     # Whether this album appears on the website or not
     is_public = models.BooleanField(default=False)
+    
+    def __unicode__(self):
+        return u'%s' % self.title
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
