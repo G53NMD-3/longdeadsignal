@@ -1,3 +1,6 @@
+{% load flatpages %}
+{% get_flatpages as flatpages %}
+
 <!DOCTYPE html>
 
 <html>
@@ -24,6 +27,7 @@
                     <li><a href="{% url core:video_list %}">Videos</a></li>
                     <li><a href="{% url events:event_list %}">Events</a></li>
                 </ul>
+                <hr />
             {% endblock %}
         </header>
         <div>
@@ -33,7 +37,12 @@
         </div>
         <footer>
             {% block footer %}
-                
+                <hr />
+                <ul>
+                    {% for page in flatpages %}
+                        <li><a href="{{ page.url }}">{{ page.title }}</a></li>
+                    {% endfor %}
+                </ul>
             {% endblock %}
         </footer>
     {% endblock %}
