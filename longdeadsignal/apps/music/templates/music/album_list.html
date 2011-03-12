@@ -1,0 +1,22 @@
+{% extends "music/music_base.html" %}
+
+{% block content %}
+    <h2>Music</h2>
+    
+    <ul>
+        {% for album in album_list %}
+            <li>
+                {{ album.title }}
+                <ul>
+                    {% for song in album.song_set.all %}
+                        <li>
+                            {{ song.track_number }} - {{ song.title}}
+                            <br /><br />
+                            <audio src="{{ MEDIA_URL }}{{ song.song_mp3 }}" autobuffer autoloop loop controls></audio>
+                        </li>
+                    {% endfor %}
+                </ul>
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
