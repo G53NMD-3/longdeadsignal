@@ -48,3 +48,8 @@ FLICKR_SECRET = ''
 YOUTUBE_USERNAME = ''
 TWITTER_USERNAME = ''
 FLICKR_USERNAME = ''
+
+# These control which services will be synced
+SYNC_YOUTUBE = True
+SYNC_TWITTER = True
+SYNC_FLICKR = True

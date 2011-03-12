@@ -1,0 +1,9 @@
+{% extends "youtube/youtube_base.html" %}
+
+{% block content %}
+    <h2>Videos</h2>
+    
+    {% for video in video_list %}
+        <a href="{% url core:video_detail slug=video.video_id %}"><img src="{{ video.thumbnail_url }}" alt="{{ video.title }}" title="{{ video.title}}" /></a>
+    {% endfor %}
+{% endblock %}
