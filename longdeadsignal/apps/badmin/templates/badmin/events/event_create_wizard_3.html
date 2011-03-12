@@ -1,0 +1,105 @@
+{% extends "badmin/events/events_base.html" %}
+
+{% block content %}
+    <h2>Create a New Event</h2>
+    
+    <style type="text/css" media="screen">
+        form input {
+            width: 300px;
+        }
+    </style>
+    
+    <form action="" method="post" accept-charset="utf-8">
+        {% csrf_token %}
+        <label for="id_search_address">Search Address</label>
+        <input type="text" name="search_address" id="id_search_address">
+        {{ form.as_p }}
+        
+        <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+        <button id="refresh" type="button">Set Marker from Address</button>
+        <button id="center" type="button">Centre on Location</button>
+        {{ previous_fields|safe }}
+
+        <p><input type="submit" value="Continue &rarr;"></p>
+    </form>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript"
+        src="http://maps.google.com/maps/api/js?sensor=false">
+    </script>
+    <script type="text/javascript" charset="utf-8">
+        $(document).ready(function() {
+
+            var $title = $('#id_0-location_title'),
+                $address1 = $('#id_0-location_address_1'),
+                $address2 = $('#id_0-location_address_2'),
+                $address3 = $('#id_0-location_address_3'),
+                $city = $('#id_0-location_city'),
+                $postCode = $('#id_0-location_post_code'),
+                $country = $('#id_0-location_country');
+            
+            var $searchAddress = $('#id_search_address');
+            var $location = $('#id_2-location_google_maps');
+
+            var address = $title.val() + " " + $address1.val() + " " + 
+                $address2.val() + " " + $address3.val() + " " + $city.val() 
+                + " " + $postCode.val() + " " + $country.val();
+
+            $location.parent().append('<div id="map_canvas" style="width:100%; height:500px;" ></div>');
+
+            var position = new google.maps.LatLng(17.549883, 49.130859);
+
+            var map = new google.maps.Map(document.getElementById("map_canvas"), {
+                zoom: 15,
+                // center: position,
+                mapTypeId: google.maps.MapTypeId.HYBRID
+            });
+            
+            var marker = new google.maps.Marker({
+                map: map,
+                position: position,
+                draggable: true
+            });
+            
+            var $refresh = $('#refresh'),
+                $center = $('#center');
+
+            $searchAddress.val(address);
+            $refresh.click(function() {
+                getLocationPosition($searchAddress.val(), function(newPosition) {
+                    position = newPosition;
+                    $center.click();
+                });
+            }).click();
+            
+            $center.click(function() {
+                map.setCenter(position);
+                marker.setPosition(position);
+            });
+            
+            google.maps.event.addListener(marker, 'position_changed', function() {
+                position = marker.getPosition();
+                $location.val(position.lat() + "," + position.lng());
+            });
+        });
+        
+        
+        function getLocationPosition(address, onUpdate) {
+            var geocoder = new google.maps.Geocoder();
+            geocoder.geocode({
+                'address': address
+            }, function(results, status) { 
+                if (status == google.maps.GeocoderStatus.OK) {
+                    if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
+                        onUpdate(results[0].geometry.location);
+                    }
+                } else {
+                    // Google did not find that location
+                    console.log('STATUS ' + status);
+                    console.log('RESULTS ' + Results);
+                }
+            });
+        }
+    </script>
+{% endblock %}

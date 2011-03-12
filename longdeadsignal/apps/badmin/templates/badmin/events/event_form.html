@@ -1,0 +1,16 @@
+{% extends "badmin/events/events_base.html" %}
+
+{% block content %}
+    <h2>Editing {{ event.title }}</h2>
+    
+    <form action="" method="post" accept-charset="utf-8">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <p><input type="submit" value="Save"> or <a href="{% url badmin:news:post_list %}">cancel</a></p>
+    </form>
+{% endblock %}
+
+{% block links %}
+    {{ block.super }}
+    {{ form.media }}
+{% endblock %}

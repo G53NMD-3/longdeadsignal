@@ -6,6 +6,8 @@ from longdeadsignal.apps.badmin.views import PostBadminUpdateView, \
     PostBadminCreateView
 import settings as app_settings
 from django.contrib.auth.decorators import login_required
+from longdeadsignal.apps.badmin.forms import CreateEventWizard, \
+    CreateEventForm1, CreateEventForm2, CreateEventForm3
 
 news_patterns = patterns('', 
     url(r'^$', login_required(ListView.as_view(
@@ -25,12 +27,17 @@ news_patterns = patterns('',
     url(r'^(?P<slug>[^/]+)/$', login_required(PostBadminUpdateView.as_view()), name='post_update')
 )
 
+events_patterns = patterns('',
+    url(r'new-event/$', login_required(CreateEventWizard([
+        CreateEventForm1,
+        CreateEventForm2,
+        CreateEventForm3,
+    ])), name='event_create'),
+)
+
 urlpatterns = patterns('',
-    # Examples:
-    # url(r'^$', 'longdeadsignal.views.home', name='home'),
-    # url(r'^longdeadsignal/', include('longdeadsignal.foo.urls')),
-    
     url(r'^news/', include(news_patterns, namespace='news'), name='news'),
+    url(r'^events/', include(events_patterns, namespace='events'), name='events'),
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
     

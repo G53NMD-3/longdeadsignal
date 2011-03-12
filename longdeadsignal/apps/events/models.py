@@ -64,6 +64,13 @@ class Event(models.Model):
     @property
     def is_in_past(self):
         return self.date < datetime.datetime.now()
+    
+    @property
+    def lan_lng(self):
+        if self._lan_lng is None:
+            lan, lng = self.location_google_maps.split(',')[:2]
+            self._lan_lng = {'lan': lan, 'lng': lng}
+        return self._lan_lng
 
 class EventMediaItem(models.Model):
     # Generic Foreign Key

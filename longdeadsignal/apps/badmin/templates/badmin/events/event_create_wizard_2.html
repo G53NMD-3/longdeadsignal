@@ -1,0 +1,20 @@
+{% extends "badmin/events/events_base.html" %}
+
+{% block content %}
+    <h2>Create a New Event</h2>
+    
+    <form action="" method="post" accept-charset="utf-8">
+        {% csrf_token %}
+        {{ form.as_p }}
+        
+        <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+        {{ previous_fields|safe }}
+
+        <p><input type="submit" value="Continue &rarr;"></p>
+    </form>
+{% endblock %}
+
+{% block links %}
+    {{ block.super }}
+    {{ form.media }}
+{% endblock %}
