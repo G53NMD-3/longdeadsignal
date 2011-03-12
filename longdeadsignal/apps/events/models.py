@@ -2,7 +2,9 @@ from django.db import models
 from wmd import models as wmd_models
 from django.contrib.contenttypes import generic
 from django.contrib.contenttypes.models import ContentType
+from django.template.defaultfilters import slugify
 import datetime
+import markdown
 
 LOCATION_COUNTRY_DEFAULT = 'United Kingdom'
 
@@ -37,7 +39,7 @@ class Event(models.Model):
     post_event_message_html = models.TextField(blank=True, editable=False)
     
     # A list of videos and images related to the event
-    media = models.ManyToManyField('events.EventMediaItem')
+    media = models.ManyToManyField('events.EventMediaItem', blank=True)
     
     # System stuff
     pub_date = models.DateTimeField(auto_now_add=True)
@@ -45,6 +47,9 @@ class Event(models.Model):
     class Meta:
         ordering = ('-date',)
         get_latest_by = 'pub_date'
+    
+    def __unicode__(self):
+        return '%s %s' % (self.title, self.date)
     
     def save(self, *args, **kwargs):
         self.slug = slugify(self.title)
