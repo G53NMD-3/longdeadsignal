@@ -3,8 +3,14 @@
 {% block content %}
     <h2>Index Page</h2>
     
-    <h3>What's New</h3>
+    <h3>Upcoming Events</h3>
+    <ul>
+        {% for event in upcomming_events %}
+            {% if not event.is_in_past %}<li{% if event.is_in_past %} class="in-past"{% endif %}>{{ event.date }} <a href="{{ event.get_absolute_url }}">{{ event.title }}</a></li>{% endif %}
+        {% endfor %}
+    </ul>
     
+    <h3>What's New</h3>
     <ul>
         {% for thing in latest_things %}
             <li>
