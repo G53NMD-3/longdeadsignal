@@ -2,16 +2,22 @@ from django.db import models
 from django.conf import settings
 from django.template.defaultfilters import slugify
 import datetime
+import os
 
 class Song(models.Model):
     # The title of the song, its name
     title = models.CharField(max_length=100)
     slug = models.SlugField(db_index=True, editable=False)
     
-    def _get_upload_path(self, instance, filename):
+    def _get_upload_path(instance, filename):
         if instance.slug is None:
             instance.slug = slugify(instance.title)
-        return os.path.join(settings.ALBUM_UPLOAD_PATH, instance.album.slug, instance.slug)
+        return os.path.join(
+            settings.ALBUM_UPLOAD_PATH,
+            instance.album.slug,
+            instance.slug,
+            '%s%s' % (instance.slug, os.path.splitext(filename)[1])
+        )
     
     # Song files to be played in the browser via HTML5 
     song_mp3 = models.FileField(upload_to=_get_upload_path, blank=True)
@@ -45,10 +51,14 @@ class Album(models.Model):
     title = models.CharField(max_length=100)
     slug = models.SlugField(db_index=True, editable=False)
     
-    def _get_upload_path(self, instance, filename):
+    def _get_upload_path(instance, filename):
         if instance.slug is None:
             instance.slug = slugify(instance.title)
-        return os.path.join(settings.ALBUM_UPLOAD_PATH, instance.slug, settings.ALBUM_ARTWORK_PATH)
+        return os.path.join(
+            settings.ALBUM_UPLOAD_PATH,
+            instance.slug,
+            settings.ALBUM_ARTWORK_PATH,
+        )
     
     # The artwork for the front cover of the album
     artwork = models.FileField(upload_to=_get_upload_path, blank=True)

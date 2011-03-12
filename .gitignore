@@ -13,3 +13,6 @@ pip-log.txt
 
 # Django static files
 longdeadsignal/static
+
+# Media directory
+media/
