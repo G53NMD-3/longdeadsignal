@@ -121,6 +121,7 @@ INSTALLED_APPS = (
     'longdeadsignal.apps.news',
     'longdeadsignal.apps.badmin',
     'longdeadsignal.apps.events',
+    'longdeadsignal.apps.music',
     
     # Synchonisation apps fron django-syncr
     'tagging',
@@ -159,3 +160,10 @@ WMD_SHOW_PREVIEW = True
 LOGIN_REDIRECT_URL = '/admin/profile/'
 LOGIN_URL = '/admin/login/'
 LOGOUT_URL = '/admin/logout/'
+
+# Relative to MEDIA_ROOT
+# (must not start with a slash, but should end with one)
+ALBUM_UPLOAD_PATH = 'albums/'
+# Relative to an arbitrary album
+# (must not start with a slash, but should end with one)
+ALBUM_ARTWORK_PATH = 'artwork/'
