@@ -56,6 +56,10 @@ class Event(models.Model):
         self.pre_event_message_html = markdown.markdown(self.pre_event_message_markdown)
         self.post_event_message_html = markdown.markdown(self.post_event_message_markdown)
         super(Event, self).save(*args, **kwargs)
+    
+    @property
+    def is_in_past(self):
+        return self.date < datetime.datetime.now()
 
 class EventMediaItem(models.Model):
     # Generic Foreign Key
