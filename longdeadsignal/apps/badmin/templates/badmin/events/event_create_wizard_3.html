@@ -13,10 +13,12 @@
         {% csrf_token %}
         <label for="id_search_address">Search Address</label>
         <input type="text" name="search_address" id="id_search_address">
+        <button id="refresh" type="button">Search</button>
+        <ul id="results"></ul>
         {{ form.as_p }}
         
         <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
-        <button id="refresh" type="button">Set Marker from Address</button>
+        
         <button id="center" type="button">Centre on Location</button>
         {{ previous_fields|safe }}
 
@@ -63,13 +65,32 @@
             });
             
             var $refresh = $('#refresh'),
-                $center = $('#center');
+                $center = $('#center'),
+                $results = $('#results');
+                
+            var selectInitialLocation = true;
 
             $searchAddress.val(address);
             $refresh.click(function() {
-                getLocationPosition($searchAddress.val(), function(newPosition) {
-                    position = newPosition;
-                    $center.click();
+                $results.empty();
+                getLocationPosition($searchAddress.val(), function(results) {
+                    for (var id in results) {
+                        var result = results[id];
+                        $results.append('<li><a id="location-' + id + '" href="">' + result.formatted_address + '</a></li>');
+                        var $listItem = $('#location-' + id);
+                        $listItem
+                            .data('location', result.geometry.location)
+                            .click(function() {
+                                var $this = $(this);
+                                map.setCenter($this.data('location'));
+                                marker.setPosition($this.data('location'));
+                                return false;
+                            });
+                        if (selectInitialLocation) {
+                            $listItem.click();
+                            selectInitialLocation = false;
+                        }
+                    }
                 });
             }).click();
             
@@ -92,7 +113,7 @@
             }, function(results, status) { 
                 if (status == google.maps.GeocoderStatus.OK) {
                     if (status != google.maps.GeocoderStatus.ZERO_RESULTS) {
-                        onUpdate(results[0].geometry.location);
+                        onUpdate(results);
                     }
                 } else {
                     // Google did not find that location
