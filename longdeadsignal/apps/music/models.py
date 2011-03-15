@@ -57,7 +57,7 @@ class Album(models.Model):
         return os.path.join(
             settings.ALBUM_UPLOAD_PATH,
             instance.slug,
-            '%s.%s' % (settings.ALBUM_ARTWORK_FILE_NAME, os.path.splitext(filename)[1]),
+            '%s%s' % (settings.ALBUM_ARTWORK_FILE_NAME, os.path.splitext(filename)[1]),
         )
     
     # The artwork for the front cover of the album
