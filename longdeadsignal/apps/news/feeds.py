@@ -1,6 +1,5 @@
 from django.contrib.syndication.views import Feed
 from longdeadsignal.apps.news.models import Post
-from django.core.urlresolvers import reverse
 
 from longdeadsignal.apps.news import settings as app_settings
 

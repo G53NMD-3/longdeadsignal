@@ -1,5 +1,10 @@
 {% extends "events/events_base.html" %}
 
+{% block meta %}
+    {{ block.super }}
+    <link rel="alternate" type="application/rss+xml" title="Upcomming Events" href="{% url events:feed %}" />
+{% endblock %}
+
 {% block content %}
     <h2>Event List</h2>
     {% for event in event_list %}
