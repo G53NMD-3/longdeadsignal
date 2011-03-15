@@ -11,4 +11,7 @@ def youtube_feed():
 @register.simple_tag
 def flickr_feed():
     photo = Photo.objects.latest()
-    return 'http://api.flickr.com/services/feeds/photos_public.gne?id=%s&lang=en-us' % photo.owner_nsid
+    if photo is not None:
+        return 'http://api.flickr.com/services/feeds/photos_public.gne?id=%s&lang=en-us' % photo.owner_nsid
+    else:
+        return ''
