@@ -166,4 +166,4 @@ LOGOUT_URL = '/admin/logout/'
 ALBUM_UPLOAD_PATH = 'albums/'
 # Relative to an arbitrary album
 # (must not start with a slash, but should end with one)
-ALBUM_ARTWORK_PATH = 'artwork/'
+ALBUM_ARTWORK_FILE_NAME = 'artwork'
