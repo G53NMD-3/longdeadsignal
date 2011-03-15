@@ -1,5 +1,10 @@
 {% extends "news/news_base.html" %}
 
+{% block meta %}
+    {{ block.super }}
+    <link rel="alternate" type="application/rss+xml" title="New Posts" href="{% url news:feed %}" />
+{% endblock %}
+
 {% block content %}
     <h2>Post List</h2>
     {% for post in post_list %}
