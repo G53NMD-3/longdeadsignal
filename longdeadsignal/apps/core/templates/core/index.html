@@ -1,5 +1,10 @@
 {% extends "core/core_base.html" %}
 
+{% block meta %}
+    {{ block.super }}
+    <link rel="alternate" type="application/rss+xml" title="What's New" href="{% url core:feed %}" />
+{% endblock %}
+
 {% block content %}
     <h2>Index Page</h2>
     

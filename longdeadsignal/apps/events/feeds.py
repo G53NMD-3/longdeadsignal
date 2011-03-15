@@ -8,7 +8,7 @@ class EventFeed(Feed):
     link = '/events/'
     
     def items(self):
-        return Event.objects.filter(date__gte=datetime.datetime.now()).order_by('date')[:app_settings.EVENT_FEED_ITEM_COUNT]
+        return Event.objects.order_by('-pub_date')[:app_settings.EVENT_FEED_ITEM_COUNT]
     
     def item_title(self, item):
         return item.title
