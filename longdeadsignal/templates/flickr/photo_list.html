@@ -1,4 +1,10 @@
 {% extends "flickr/flickr_base.html" %}
+{% load feeds %}
+
+{% block meta %}
+    {{ block.super }}
+    <link rel="alternate" type="application/rss+xml" title="What's New" href="{% flickr_feed %}" />
+{% endblock %}
 
 {% block content %}
     <h2>Photos</h2>
