@@ -1,3 +1,0 @@
-[submodule "longdeadsignal/apps/paypal"]
-	path = longdeadsignal/apps/paypal
-	url = git://github.com/johnboxall/django-paypal.git
