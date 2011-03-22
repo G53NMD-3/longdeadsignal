@@ -14,3 +14,7 @@ oauth2
 python-twitter==0.5
 flickrapi
 https://github.com/marcuswhybrow/django-syncr/tarball/master
+
+# django-paypal
+-e git://github.com/dcramer/django-paypal.git#egg=django-paypal
+May also want M2Crypto in future (more security).
