@@ -129,6 +129,9 @@ INSTALLED_APPS = (
     'syncr.youtube',
     'syncr.twitter',
     
+    # django-paypal app
+    'paypal.standard.ipn',
+
     # Other required packages
     'wmd',
 )
