@@ -21,6 +21,7 @@ urlpatterns = patterns('',
     url(r'^events/', include('longdeadsignal.apps.events.urls', namespace='events')),
     url(r'^news/', include('longdeadsignal.apps.news.urls', namespace='news')),
     url(r'^admin/', include('longdeadsignal.apps.badmin.urls', namespace='badmin')),
+    url(r'^merch/', include('longdeadsignal.apps.merch.urls', namespace='merch')),
     
     # Catch any unmatched URLs and send them to the core app
     url(r'', include('longdeadsignal.apps.core.urls', namespace='core')),

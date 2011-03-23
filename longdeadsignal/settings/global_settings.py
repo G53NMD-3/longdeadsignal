@@ -122,6 +122,7 @@ INSTALLED_APPS = (
     'longdeadsignal.apps.badmin',
     'longdeadsignal.apps.events',
     'longdeadsignal.apps.music',
+    'longdeadsignal.apps.merch',
     
     # Synchonisation apps fron django-syncr
     'tagging',

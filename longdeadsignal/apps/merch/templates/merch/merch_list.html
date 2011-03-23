@@ -1,0 +1,13 @@
+{% extends "merch/merch_base.html" %}
+
+{% block content %}
+    <h2>Merch</h2>
+    
+    <ul>
+        {% for merch in merch_list %}
+            <li>
+                <a href="./{{ merch.slug }}">{{ merch.title }}</a> : &pound;{{ merch.price }}
+            </li>
+        {% endfor %}
+    </ul>
+{% endblock %}
