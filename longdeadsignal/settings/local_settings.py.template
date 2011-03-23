@@ -55,5 +55,5 @@ SYNC_TWITTER = True
 SYNC_FLICKR = True
 
 # This is needed to use the django-paypal app
-PAYPAL_RECEIVER_EMAIL = "yourpaypalemail@example.com"
-SITE_DOMAIN = "http://my-website.com/"
+PAYPAL_RECEIVER_EMAIL = 'yourpaypalemail@example.com'
+SITE_DOMAIN = 'http://my-website.com/'
