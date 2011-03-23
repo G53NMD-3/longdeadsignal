@@ -17,4 +17,4 @@ https://github.com/marcuswhybrow/django-syncr/tarball/master
 
 # django-paypal
 -e git://github.com/mthornhill/django-paypal.git#egg=django-paypal
-May also want M2Crypto in future (more security).
+# May also want M2Crypto in future (more security).
