@@ -6,7 +6,7 @@
     <ul>
         {% for merch in merch_list %}
             <li>
-                <a href="./{{ merch.slug }}">{{ merch.title }}</a> : &pound;{{ merch.price }}
+                <a href="{{ merch.get_absolute_url }}">{{ merch.title }}</a> : &pound;{{ merch.price }}
             </li>
         {% endfor %}
     </ul>

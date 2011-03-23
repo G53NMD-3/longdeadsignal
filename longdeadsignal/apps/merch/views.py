@@ -1,35 +1,28 @@
-# merchs/views.py
-import uuid
-from django.shortcuts import render_to_response
-from django.template import RequestContext
-from django.shortcuts import get_object_or_404
-from django.core.urlresolvers import reverse
-from django.conf import settings
-from paypal.standard.forms import PayPalPaymentsForm
+from django.views.generic import DetailView
 from longdeadsignal.apps.merch.models import Merch
+from paypal.standard.forms import PayPalPaymentsForm
+from django.conf import settings
+import uuid
 
-def merch_detail(request, slug):
-    merch = get_object_or_404(Merch, slug=slug)
-    paypal = {
-        'amount': merch.price,
-        'item_name': merch.title,
-        'item_number': merch.slug,
-        'currency_code': 'GBP',
-        
-        # PayPal wants a unique invoice ID
-        'invoice': str(uuid.uuid1()), 
-        
-        # It'll be a good idea to setup a SITE_DOMAIN inside settings
-        # so you don't need to hardcode these values.
-        'return_url': settings.SITE_DOMAIN + 'merch/thanks',
-        'cancel_return': settings.SITE_DOMAIN + 'merch/' + merch.slug,
-    }
-    form = PayPalPaymentsForm(initial=paypal)
-    if settings.DEBUG:
-        rendered_form = form.sandbox()
-    else:
-        rendered_form = form.render()
-    return render_to_response('merch/merch_detail.html', {
-        'merch' : merch,
-        'form' : rendered_form,
-    }, RequestContext(request))
+class MerchDetailView(DetailView):
+    model = Merch
+    context_object_name = 'merch'
+    
+    def get_context_data(self, **kwargs):
+        context = super(MerchDetailView, self).get_context_data(**kwargs)
+        merch = context['merch']
+        paypal = {
+            'amount': merch.price,
+            'item_name': merch.title,
+            'item_number': merch.slug,
+            'currency_code': 'GBP',
+            
+            # PayPal wants a unique invoice ID
+            'invoice': str(uuid.uuid4()),
+            
+            'return_url': '/merch/thanks',
+            'cancel_return': merch.get_absolute_url(),
+        }
+        form = PayPalPaymentsForm(initial=paypal)
+        context['form'] = form.sandbox() if settings.DEBUG else form.render()
+        return context
