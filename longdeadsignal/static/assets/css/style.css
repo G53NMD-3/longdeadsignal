@@ -169,10 +169,76 @@ a:hover { color: #036; }
  */
 
 
+/* ---------------------------------------------------------------------------
+   Global Nav
+   ---------------------------------------------------------------------------
+*/
+
+#global-nav {
+    width: 900px;
+    margin: 0 auto;
+    
+    background: #eee;
+    
+    padding: 20px 0 20px;
+}
+
+#global-nav #gn-title {
+    font-size: 38px;
+    margin: 0 0 0 20px;
+}
+
+#global-nav #gn-menu {
+    list-style: none;
+    margin: 10px 0 0 20px;
+}
+
+#global-nav #gn-menu li {
+    float: left;
+    background: #ddd;
+    margin-right: 10px;
+    border: 1px solid #ccc;
+    
+    font-size: 16px;
+}
+#global-nav #gn-menu li:last-child {
+    margin-right: 0;
+}
+
+#global-nav #gn-menu li a {
+    display: block;
+    padding: 5px 10px;
+    
+    text-decoration: none;
+}
 
 
+/* ---------------------------------------------------------------------------
+   Content
+   ---------------------------------------------------------------------------
+*/
+
+#content {
+    width: 900px;
+    margin: 0 auto;
+}
 
 
+/* ---------------------------------------------------------------------------
+   Footer
+   ---------------------------------------------------------------------------
+*/
+
+#global-footer {
+    background: #eee;
+    
+    padding: 20px 0 30px;
+}
+
+#global-footer #gf-inner {
+    width: 900px;
+    margin: 0 auto;
+}
 
 
 
