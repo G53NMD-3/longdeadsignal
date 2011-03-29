@@ -12,7 +12,7 @@ longdeadsignal/settings/local_settings.py
 pip-log.txt
 
 # Django static files
-longdeadsignal/static
+longdeadsignal/staticfiles
 
 # Media directory
 media/
