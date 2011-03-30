@@ -80,19 +80,24 @@
     {{ block.super }}
     <script type="text/javascript" charset="utf-8">
         $(function() {
-            var $poster = $('#poster'),
-                $logo = $('#p-logo'),
-                $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new');
+            var siteDomain = '{{ SITE_DOMAIN }}';
+            console.log(document.referrer);
+            console.log(document.referrer.indexOf('http://' + siteDomain) === 0);
+            if (siteDomain === '' || document.referrer.indexOf('http://' + siteDomain) !== 0) {
+                var $poster = $('#poster'),
+                    $logo = $('#p-logo'),
+                    $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new');
             
-            $poster.css('opacity', '0');
-            $logo.css('opacity', '0');
-            $restOfPage.css('opacity', '0');
+                $poster.css('opacity', '0');
+                $logo.css('opacity', '0');
+                $restOfPage.css('opacity', '0');
             
-            $poster.animate({'opacity': '1'}, 800, function() {
-                $logo.animate({'opacity': '1'}, 800, function() {
-                    $restOfPage.delay(400).animate({'opacity': '1'}, 1500);
+                $poster.animate({'opacity': '1'}, 800, function() {
+                    $logo.animate({'opacity': '1'}, 800, function() {
+                        $restOfPage.delay(400).animate({'opacity': '1'}, 1500);
+                    });
                 });
-            });
+            }
         });
     </script>
 {% endblock %}
