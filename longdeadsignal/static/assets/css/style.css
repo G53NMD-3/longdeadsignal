@@ -227,6 +227,8 @@ a:hover { color: #036; }
 #content {
     width: 900px;
     margin: 0 auto;
+    
+    position: relative;
 }
 
 
@@ -259,6 +261,112 @@ a:hover { color: #036; }
     border-radius: 6px;
 }
 
+#content #upcomming-events {
+    background: #eee;
+    width: 300px;
+    height: 200px;
+    
+    position: absolute;
+    right: 0;
+}
+
+#content #upcomming-events h3 {
+    margin: 20px 20px 0 20px;
+    
+    text-transform: uppercase;
+    
+    color: #bbb;
+    text-shadow: 0 1px 0 #fff;
+    font-size: 16px;
+}
+
+#content #upcomming-events ul {
+    margin: 10px 0 0;
+    list-style: none;
+}
+
+#content #upcomming-events ul li {
+    margin: 0 20px 10px 20px;
+}
+
+#content #upcomming-events ul li .ue-event-date {
+    background: #ddd;
+    float: left;
+    
+    width: 50px;
+    border: 1px solid #bbb;
+}
+
+#content #upcomming-events ul li .ue-event-date .month {
+    display: block;
+    background: #ccc;
+    
+    padding: 2px 4px;
+    
+    text-align: center;
+    text-transform: uppercase;
+    font-weight: bold;
+    color: #999;
+    text-shadow: 0 1px 0 #eee;
+    
+    border-bottom: 1px solid #bbb;
+}
+
+#content #upcomming-events ul li .ue-event-date .day {
+    display: block;
+    
+    font-size: 20px;
+    font-weight: bold;
+    text-align: center;
+    
+    padding: 5px 0 3px;
+}
+
+#content #upcomming-events ul li .ue-event-details {
+    float: left;
+    width: 200px;
+    overflow: hidden;
+}
+
+#content #upcomming-events ul li .ue-event-details .ue-event-title {
+    margin: 2px 0 0 10px;
+}
+
+#content #upcomming-events ul li .ue-event-details .ue-event-address {
+    margin: 3px 0 0 10px;
+    height: 16px;
+    width: 500px;
+    overflow: hidden;
+    position: relative;
+}
+
+#content #upcomming-events ul li .ue-event-details .ue-event-address.no-address {
+    color: #bbb;
+}
+
+#content #upcomming-events ul li .ue-event-details .ue-event-address-fadeout {
+    position: absolute;
+    width: 190px;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    background-image: -webkit-gradient(
+        linear,
+        right top,
+        left top,
+        color-stop(0, rgba(238,238,238,1.0)),
+        color-stop(0.2, rgba(238,238,238,0))
+    );
+    background-image: -moz-linear-gradient(
+        right center,
+        rgba(238,238,238,1.0) 0%,
+        rgba(238,238,238,0) 20%
+    );
+}
+
+#content #upcomming-events ul li .ue-event-details .ue-event-time {
+    margin: 2px 0 0 10px;
+}
 
 /* ---------------------------------------------------------------------------
    Footer

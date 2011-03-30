@@ -4,6 +4,7 @@ from syncr.flickr.models import Photo
 from longdeadsignal.apps.news.models import Post
 from longdeadsignal.apps.events.models import Event
 import operator
+import datetime
 
 class IndexTemplateView(TemplateView):
     template_name = 'core/index.html'
@@ -40,6 +41,6 @@ class IndexTemplateView(TemplateView):
         context['latest_things'] = latest_things
         
         # Put the upcomming events in the context
-        context['upcomming_events'] = Event.objects.order_by('date')[:5]
+        context['upcomming_events'] = Event.objects.filter(date__gte=datetime.datetime.now()).order_by('date')[:5]
         
         return super(IndexTemplateView, self).render_to_response(context, *args, **kwargs)

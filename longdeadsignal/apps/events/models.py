@@ -71,6 +71,18 @@ class Event(models.Model):
             lan, lng = self.location_google_maps.split(',')[:2]
             self._lan_lng = {'lan': lan, 'lng': lng}
         return self._lan_lng
+    
+    @property
+    def address(self):
+        return ', '.join(filter(lambda x: x != '', [
+            self.location_title,
+            self.location_address_1,
+            self.location_address_2,
+            self.location_address_3,
+            self.location_city,
+            self.location_post_code,
+            self.location_country,
+        ]))
 
 class EventMediaItem(models.Model):
     # Generic Foreign Key
