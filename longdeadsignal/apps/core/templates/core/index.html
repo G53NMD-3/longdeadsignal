@@ -83,8 +83,6 @@
     <script type="text/javascript" charset="utf-8">
         $(function() {
             var siteDomain = '{{ SITE_DOMAIN }}';
-            console.log(document.referrer);
-            console.log(document.referrer.indexOf('http://' + siteDomain) === 0);
             if (siteDomain === '' || document.referrer.indexOf('http://' + siteDomain) !== 0) {
                 var $poster = $('#poster'),
                     $logo = $('#p-logo'),
@@ -93,9 +91,20 @@
                 $poster.css('opacity', '0');
                 $logo.css('opacity', '0');
                 $restOfPage.css('opacity', '0');
+                
+                
+                var handler = function(e) { return false };
+                $(window).bind('click', handler);
+                $('body').addClass('no-clicking');
             
                 $poster.animate({'opacity': '1'}, 800, function() {
                     $logo.animate({'opacity': '1'}, 800, function() {
+                        var delayed = function() {
+                            $('body').removeClass('no-clicking');
+                            $(window).unbind('click');
+                        };
+                        
+                        setTimeout(delayed, 1400);
                         $restOfPage.delay(400).animate({'opacity': '1'}, 1500);
                     });
                 });

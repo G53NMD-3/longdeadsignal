@@ -168,6 +168,10 @@ a:hover { color: #036; }
  * Author: 
  */
 
+body.no-clicking a {
+    cursor: default;
+}
+
 
 /* ---------------------------------------------------------------------------
    Global Nav
@@ -185,7 +189,6 @@ a:hover { color: #036; }
 
 #global-nav #gn-title {
     float: left;
-    width: 238px;
     font-size: 28px;
     margin: 0 20px 0 20px;
 }
@@ -501,15 +504,43 @@ a:hover { color: #036; }
 #global-footer {
     background: #eee;
     
-    padding: 20px 0 30px;
+    height: 100px;
 }
 
 #global-footer #gf-inner {
     width: 900px;
+    height: 80px;
     margin: 0 auto;
+    padding: 20px 0 20px;
+    
+    position: relative;
 }
 
+#global-footer #gf-inner #credit {
+    text-align: center;
+    color: #aaa;
+    text-shadow: 0 1px 0 #fff;
+    
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 20px;
+}
 
+/* Sticky Footer ---------------------------------------------------------- */
+
+html, body {
+    height: 100%;
+}
+#wrapper {
+    min-height: 100%;
+    height: auto !important;
+    height: 100%;
+    margin: 0 auto -120px;
+}
+#global-footer, #push {
+    height: 120px;
+}
 
 
 

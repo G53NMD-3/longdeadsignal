@@ -46,24 +46,30 @@
 
 <body>
     {% block body %}
-        <header id="global-nav" class="clearfix">
-            {% block header %}
-                <h1 id="gn-title">Long Dead Signal</h1>
-                <ul id="gn-menu" class="clearfix">
-                    <li><a href="{% url core:index %}">Home</a></li>
-                    <li><a href="{% url news:post_list %}">News</a></li>
-                    <li><a href="{% url core:photo_list %}">Photos</a></li>
-                    <li><a href="{% url core:video_list %}">Videos</a></li>
-                    <li><a href="{% url events:event_list %}">Events</a></li>
-                    <li><a href="{% url music:album_list %}">Music</a></li>
-                </ul>
-            {% endblock %}
-        </header><!-- #global-nav -->
-        <div id="content">
-            {% block content %}
+        <div id="wrapper">
+            <header id="global-nav" class="clearfix">
+                {% block header %}
+                    <h1 id="gn-title">Long Dead Signal</h1>
+                    <ul id="gn-menu" class="clearfix">
+                        <li><a href="{% url core:index %}">Home</a></li>
+                        <li><a href="{% url news:post_list %}">News</a></li>
+                        <li><a href="{% url core:photo_list %}">Photos</a></li>
+                        <li><a href="{% url core:video_list %}">Videos</a></li>
+                        <li><a href="{% url events:event_list %}">Events</a></li>
+                        <li><a href="{% url music:album_list %}">Music</a></li>
+                    </ul>
+                {% endblock %}
+            </header><!-- #global-nav -->
+            <div id="content">
+                {% block content %}
             
-            {% endblock %}
-        </div><!-- #content -->
+                {% endblock %}
+            </div><!-- #content -->
+            
+            <!-- This #push element is part of a sticky footer technique -->
+            <div id="push"></div>
+        </div><!-- #wrapper -->
+        
         <footer id="global-footer">
             <div id="gf-inner">
                 {% block footer %}
@@ -73,6 +79,7 @@
                         {% endfor %}
                     </ul><!-- #flat-pages -->
                 {% endblock %}
+                <p id="credit">&copy; New Media Design, Group 3. 2011</p>
             </div><!-- #gf-inner -->
         </footer><!-- #global-footer -->
     {% endblock %}
