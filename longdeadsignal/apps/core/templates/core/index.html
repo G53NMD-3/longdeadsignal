@@ -33,6 +33,7 @@
                 {% endif %}
             {% endfor %}
         </ul><!-- #ue-events -->
+        <p id="ue-more"><a href="{% url events:event_list %}">All Events</a></p>
     </section><!-- #upcomming-events -->
     
     <section id="whats-new">
@@ -73,6 +74,7 @@
                 </li>
             {% endfor %}
         </ul>
+        <p id="wn-more"><a href="{% url news:post_list %}">More News</a></p>
     </section><!-- #whats-new -->
 {% endblock %}
 

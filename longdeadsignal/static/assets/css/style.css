@@ -274,6 +274,8 @@ a:hover { color: #036; }
     
     position: absolute;
     right: 0;
+    
+    padding: 0 0 10px 0;
 }
 
 #content #upcomming-events h3 {
@@ -386,6 +388,10 @@ a:hover { color: #036; }
     margin: 2px 0 0 10px;
 }
 
+#content #upcomming-events #ue-more {
+    margin: 0 20px 20px 80px;
+}
+
 /* What's New ------------------------------------------------------------- */
 
 #content #whats-new {
@@ -439,6 +445,10 @@ a:hover { color: #036; }
 
 #content #whats-new ul li.post .wn-image {
     
+}
+
+#content #whats-new #wn-more {
+    margin: 10px 20px 0 130px;
 }
 
 /* Image curl effect ------------------------------------------------------ */
