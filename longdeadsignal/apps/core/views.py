@@ -38,7 +38,7 @@ class IndexTemplateView(TemplateView):
         latest_things = sorted(latest_things, key=operator.itemgetter('pub_date'), reverse=True)
         
         # Put the list of new things into the context
-        context['latest_things'] = latest_things
+        context['latest_things'] = latest_things[:5]
         
         # Put the upcomming events in the context
         context['upcomming_events'] = Event.objects.filter(date__gte=datetime.datetime.now()).order_by('date')[:5]

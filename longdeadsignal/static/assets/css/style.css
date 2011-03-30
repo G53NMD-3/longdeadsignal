@@ -237,12 +237,15 @@ a:hover { color: #036; }
    ---------------------------------------------------------------------------
 */
 
+/* Poster ----------------------------------------------------------------- */
+
 #content #poster {
     background: #ddd;
     height: 400px;
     position: relative;
     
     border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
 }
 
 #content #poster #p-logo {
@@ -260,6 +263,9 @@ a:hover { color: #036; }
     -moz-border-radius: 6px;
     border-radius: 6px;
 }
+
+
+/* Upcoming Events -------------------------------------------------------- */
 
 #content #upcomming-events {
     background: #eee;
@@ -295,6 +301,18 @@ a:hover { color: #036; }
     
     width: 50px;
     border: 1px solid #bbb;
+    
+    -webkit-transition: all 0.1s ease-in-out;
+    -moz-transition: all 0.1s ease-in-out;
+    -o-transition: all 0.1s ease-in-out;
+    transition: all 0.1s ease-in-out;
+}
+
+#content #upcomming-events ul li:hover .ue-event-date {
+    -webkit-transform: scale(1.5) rotate(2deg);
+    -moz-transform: scale(1.5) rotate(2deg);
+    -o-transform: scale(1.5) rotate(2deg);
+    transform: scale(1.5) rotate(2deg);
 }
 
 #content #upcomming-events ul li .ue-event-date .month {
@@ -366,6 +384,103 @@ a:hover { color: #036; }
 
 #content #upcomming-events ul li .ue-event-details .ue-event-time {
     margin: 2px 0 0 10px;
+}
+
+/* What's New ------------------------------------------------------------- */
+
+#content #whats-new {
+    background: #eaeaea;
+    margin: 0 300px 0 0;
+    
+    padding: 0 0 20px 0;
+}
+
+#content #whats-new h3 {
+    padding: 20px 20px 0 20px;
+    
+    text-transform: uppercase;
+    
+    color: #bbb;
+    text-shadow: 0 1px 0 #fff;
+    font-size: 16px;
+}
+
+#content #whats-new ul {
+    list-style: none;
+    margin: 10px 20px 0 20px;
+}
+
+#content #whats-new ul li {
+    margin-bottom: 10px;
+}
+
+#content #whats-new ul li .wn-image {
+    float: left;
+    position: relative;
+    display: block;
+    
+    text-decoration: none;
+    
+    overflow: hidden;
+}
+
+#content #whats-new ul li .wn-image img {
+    display: block;
+}
+
+#content #whats-new ul li .wn-title {
+    margin: 3px 0 0 110px;
+}
+
+#content #whats-new ul li .wn-desc {
+    margin: 3px 0 0 110px;
+}
+
+
+#content #whats-new ul li.post .wn-image {
+    
+}
+
+/* Image curl effect ------------------------------------------------------ */
+
+#content #whats-new ul li .wn-image {
+    box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+    -webkit-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 60px rgba(0, 0, 0, 0.1) inset;
+    -moz-box-shadow: 0 1px 4px rgba(0, 0, 0, 0.27), 0 0 40px rgba(0, 0, 0, 0.06) inset;
+}
+
+#content #whats-new ul li .wn-image:after { 
+    z-index: -1; 
+    position: absolute; 
+    background: transparent; 
+    width: 70%; 
+    height: 55%; 
+    content: ''; 
+    right: 10px; 
+    bottom: 10px; 
+    transform: skew(15deg) rotate(6deg);
+    -webkit-transform: skew(15deg) rotate(6deg);
+    -moz-transform: skew(15deg) rotate(6deg);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+    -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+} 
+
+#content #whats-new ul li .wn-image:before { 
+    z-index: -2; 
+    position: absolute; 
+    background: transparent; 
+    width: 70%; 
+    height: 55%; 
+    content: ''; 
+    left: 10px; 
+    bottom: 10px; 
+    transform: skew(-15deg) rotate(-6deg); 
+    -webkit-transform: skew(-15deg) rotate(-6deg); 
+    -moz-transform: skew(-15deg) rotate(-6deg); 
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+    -webkit-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); 
+    -moz-box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
 }
 
 /* ---------------------------------------------------------------------------
