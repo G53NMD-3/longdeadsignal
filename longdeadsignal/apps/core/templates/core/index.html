@@ -5,6 +5,27 @@
     <link rel="alternate" type="application/rss+xml" title="What's New" href="{% url core:feed %}" />
 {% endblock %}
 
+{% block header_extra %}
+    <style type="text/css">
+        #poster,
+        #p-logo,
+        #global-nav,
+        #global-footer,
+        #upcomming-events,
+        #whats-new { opacity: 0 }
+    </style>
+    <noscript>
+        <style type="text/css">
+            #poster,
+            #p-logo,
+            #global-nav,
+            #global-footer,
+            #upcomming-events,
+            #whats-new { opacity: 1 }
+        </style>
+    </noscript>
+{% endblock %}
+
 {% block content %}
     
     <section id="poster">

@@ -42,6 +42,10 @@
     
     <!-- All JavaScript at the bottom, except for Modernizr which enables HTML5 elements & feature detects -->
     <script src="{{ STATIC_URL}}assets/js/libs/modernizr-1.7.min.js"></script>
+    
+    <!-- Page Specific Other Stuff -->
+    {% block header_extra %}{% endblock %}
+    <!-- END Page Specific Other Stuff -->
 </head>
 
 <body>
