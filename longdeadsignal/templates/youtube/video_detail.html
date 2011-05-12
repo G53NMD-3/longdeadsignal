@@ -1,17 +1,24 @@
 {% extends "youtube/youtube_base.html" %}
 
 {% block content %}
-    <h2>{{ video.title }}</h2>
-    
-    <iframe title="YouTube video player" 
-        width="853" 
-        height="510" 
-        src="http://www.youtube.com/embed/{{ video.video_id }}" 
-        frameborder="0" 
-        allowfullscreen></iframe>
-    
-    <dl>
-        <dd>Views: {{ video.view_count }}</dd>
-        <dd>Length: {{ video.length }} seconds</dd>
-    </dl>
+    <div class="inner">
+        <h2><a href="{% url core:video_list %}">Videos</a> / {{ video.title }}</h2>
+        
+        <div class="video-player">
+            <iframe title="YouTube video player" 
+                width="860" 
+                height="510" 
+                src="http://www.youtube.com/embed/{{ video.video_id }}" 
+                frameborder="0" 
+                allowfullscreen></iframe>
+        </div>
+        
+        <div class="clearfix">
+            <p class="video-description">
+                {{ video.description }}
+            </p>
+        
+            <a class="watch-youtube" href="{{ video.url }}">Watch on YouTube</a>
+        </div>
+    </div>
 {% endblock %}

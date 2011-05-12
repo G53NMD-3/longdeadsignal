@@ -6,16 +6,59 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Event List</h2>
-    {% for event in event_list %}
-        <section class="event">
-            <header>
-                <h3><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
-            </header>
-        </section>
-    {% endfor %}
+    <div class="inner">
+        <h2>Event List</h2>
+        
+        <p class="description">
+            These are Long Dead Signal's upcoming events:
+        </p>
+        
+        {% for event in event_list %}
+            <section class="event clearfix" pk="{{ event.pk }}">
+                <div class="event-date{% if event.is_in_past %} past{% endif %}">
+                    <span class="day-month">{{ event.date|date:"dS M" }}</span>
+                    <span class="year">{{ event.date|date:"Y" }}</span>
+                </div>
+                
+                <div class="event-map-wrapper">
+                    <h3><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
+                    <div id="event-map-{{ event.pk }}" class="event-map{% if not event.location_google_maps %} empty{% endif %}">
+                    </div>
+                </div>
+            </section>
+        {% endfor %}
     
-    {% with name="events:event_list" %}
-        {% include "core/pagination_browser.html" %}
-    {% endwith %}
+        {% with name="events:event_list" %}
+            {% include "core/pagination_browser.html" %}
+        {% endwith %}
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript"
+        src="http://maps.google.com/maps/api/js?sensor=false">
+    </script>
+    <script type="text/javascript">
+        $(function() {
+            // Google Map
+            {% for event in event_list %}
+                {% if event.location_google_maps %}
+                    var position = new google.maps.LatLng({{ event.location_google_maps }});
+                    var marker = new google.maps.Marker({
+                        position: position,
+                        title: "This is where we are playing"
+                    });
+                    var map = new google.maps.Map(document.getElementById('event-map-{{ event.pk }}'), {
+                        zoom: 15,
+                        center: position,
+                        mapTypeId: google.maps.MapTypeId.HYBRID,
+                        scrollwheel: false,
+                        disableDefaultUI: true,
+                        draggable: false
+                    });
+                    marker.setMap(map);
+                {% endif %}
+            {% endfor %}
+        });
+    </script>
 {% endblock %}

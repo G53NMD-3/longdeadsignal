@@ -103,17 +103,12 @@
     {{ block.super }}
     <script type="text/javascript" charset="utf-8">
         $(function() {
-            var siteDomain = '{{ SITE_DOMAIN }}';
+            var siteDomain = '{{ SITE_DOMAIN }}',
+                $poster = $('#poster'),
+                $logo = $('#p-logo'),
+                $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new');
+                
             if (siteDomain === '' || document.referrer.indexOf('http://' + siteDomain) !== 0) {
-                var $poster = $('#poster'),
-                    $logo = $('#p-logo'),
-                    $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new');
-            
-                $poster.css('opacity', '0');
-                $logo.css('opacity', '0');
-                $restOfPage.css('opacity', '0');
-                
-                
                 var handler = function(e) { return false };
                 $(window).bind('click', handler);
                 $('body').addClass('no-clicking');
@@ -129,6 +124,10 @@
                         $restOfPage.delay(400).animate({'opacity': '1'}, 1500);
                     });
                 });
+            } else {
+                $poster.css('opacity', '1');
+                $logo.css('opacity', '1');
+                $restOfPage.css('opacity', '1');
             }
         });
     </script>

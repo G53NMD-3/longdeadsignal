@@ -527,6 +527,226 @@ body.no-clicking a {
     bottom: 20px;
 }
 
+/* Generic ---------------------------------------------------------------- */
+
+#content .inner {
+    padding: 20px 20px 20px;
+}
+
+h2 {
+    font-size: 24px;
+}
+
+h2 a {
+    text-decoration: none;
+}
+
+h2 a:hover {
+    text-decoration: underline;
+    
+}
+
+
+p.description {
+    margin: 10px 0 20px;
+    font-size: 20px;
+    font-family: georgia;
+    font-style: italic;
+}
+
+p.description a {
+    text-decoration: none;
+    padding: 3px 5px 2px;
+    background-color: #eaeaea;
+    -webkit-border-radius: 3px;
+}
+
+p.description a:hover {
+    color: white;
+    background-color: black;
+}
+
+
+section.post {
+    margin-top: 20px;
+}
+
+.post h3 {
+    font-size: 18px;
+}
+
+.post .post-time {
+    margin-top: 5px;
+}
+
+.post .post-body {
+    margin-top: 5px;
+}
+
+
+.video-player {
+    margin: 20px 0;
+}
+
+a.watch-youtube {
+    background-color: #333;
+    color: #ddd;
+    padding: 20px 20px 15px;
+    display: block;
+    text-decoration: none;
+    font-size: 20px;
+    float: right;
+    
+    -webkit-border-radius: 6px;
+    text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
+}
+
+p.video-description {
+    margin: 10px 0 20px;
+    font-size: 20px;
+    float: left;
+    width: 630px;
+}
+
+a.watch-youtube:hover {
+    background-color: black;
+    color: #fff;
+}
+
+
+.video h3 {
+    font-size: 18px;
+    
+}
+
+.video .video-time {
+    margin: 5px 0 5px;
+}
+
+
+.event {
+    margin: 0 0 20px 0;
+}
+
+.event-map-wrapper {
+    width: 500px;
+    height: 100px;
+    background-color: #ddd;
+    float: left;
+    margin: 0 0 0 20px;
+    position: relative;
+}
+
+.event-map-wrapper h3 {
+    position: absolute;
+    opacity: 1;
+    z-index: 200;
+}
+
+.event-map-wrapper h3 a {
+    color: #fff;
+    text-shadow: 1px 1px 1px #000;
+    text-decoration: none;
+    background-color: rgba(0,0,0,0.7);
+    display: block;
+    width: 460px;
+    padding: 10px 20px 8px 20px;
+    font-weight: normal;
+}
+
+.event-map {
+    width: 500px;
+    height: 100px;
+    z-index: 100;
+}
+
+.event-date {
+    display: block;
+/*    background-color: #333;*/
+    float: left;
+    padding: 20px 20px 15px;
+    -webkit-border-radius: 6px;
+    
+    width: 80px;
+}
+
+.event-detail .event-date {
+    padding-top: 0;
+}
+
+.event-date.past {
+/*    background-color: #999;*/
+}
+
+.event-date .day-month {
+    float: left;
+    color: #333;
+    font-size: 20px;
+}
+
+.event-date.past .day-month {
+    color: #eee;
+}
+
+.event-date .year {
+    float: left;
+    clear: left;
+    font-size: 35px;
+    color: #666;
+}
+
+.event-date.past .year {
+    color: #ccc;
+}
+
+
+.map {
+    width: 100%;
+    height: 300px;
+    text-indent: -999999px;
+    overflow: hidden;
+}
+
+.map.empty {
+    text-indent: 0;
+    overflow: visible;
+    font-size: 20px;
+    border: 1px solid #333;
+    height: 40px;
+    padding: 20px 20px 0px 20px;
+    text-align: center;
+    
+    width: 818px;
+}
+
+
+.event-status {
+    float: right;
+    background-color: #353;
+    color: #fff;
+    padding: 20px 20px 15px 20px;
+    
+    font-size: 20px;
+    -webkit-border-radius: 6px;
+}
+
+.event-status.past {
+    background-color: #533;
+}
+
+.event-details dl {
+    float: left;
+}
+
+.event-description {
+    margin-top: 20px;
+}
+
+.event-description h3 {
+    font-size: 20px;
+    margin-bottom: 10px;
+}
+
 /* Sticky Footer ---------------------------------------------------------- */
 
 html, body {

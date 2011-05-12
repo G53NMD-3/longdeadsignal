@@ -7,9 +7,21 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Videos</h2>
+    <div class="inner">
+        <h2>Videos</h2>
+        
+        <p class="description">
+            These videos come straight from <a href="">YouTube</a> so subscribe to <a href="">our channel</a> for more.
+        </p>
     
-    {% for video in video_list %}
-        <a href="{% url core:video_detail slug=video.video_id %}"><img src="{{ video.thumbnail_url }}" alt="{{ video.title }}" title="{{ video.title}}" /></a>
-    {% endfor %}
+        {% for video in video_list %}
+            <div class="video">
+                <p class="video-time">{{ video.published }}</p>
+                <h3>{{ video.title }}</h3>
+                <a href="{% url core:video_detail slug=video.video_id %}">
+                    <img src="{{ video.thumbnail_url }}" alt="{{ video.title }}" title="{{ video.title}}" width="200px" />
+                </a>
+            </div>
+        {% endfor %}
+    </div>
 {% endblock %}

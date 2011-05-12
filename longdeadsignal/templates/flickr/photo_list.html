@@ -7,10 +7,15 @@
 {% endblock %}
 
 {% block content %}
-    <h2>Photos</h2>
+    <div class="inner">
+        <h2>Photos</h2>
+        
+        <p class="description">
+            These photos are from <a href="">Flickr</a> so subscribe to <a href="">our feed</a> for updates.
+        </p>
     
-    {% for photo in photo_list %}
-        <img src="{{ photo.get_thumbnail_url }}" alt="{{ photo.title }}" title="{{ photo.title }}" />
-    {% endfor %}
-    
+        {% for photo in photo_list %}
+            <img src="{{ photo.get_small_url }}" alt="{{ photo.title }}" title="{{ photo.title }}" />
+        {% endfor %}
+    </div>
 {% endblock %}
