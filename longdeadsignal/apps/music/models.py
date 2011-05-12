@@ -37,6 +37,7 @@ class Song(models.Model):
     
     class Meta:
         unique_together = ('album', 'track_number')
+        get_latest_by = 'pub_date'
     
     def __unicode__(self):
         return u'%s - %02d %s' % (self.album.title, self.track_number, self.title)

@@ -747,6 +747,15 @@ a.watch-youtube:hover {
     margin-bottom: 10px;
 }
 
+
+/* JPlayer ---------------------------------------------------------------- */
+
+
+
+.player .song.playing {
+    color: white;
+}
+
 /* Sticky Footer ---------------------------------------------------------- */
 
 html, body {
