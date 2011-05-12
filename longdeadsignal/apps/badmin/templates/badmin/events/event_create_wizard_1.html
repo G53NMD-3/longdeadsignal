@@ -1,15 +1,59 @@
 {% extends "badmin/events/events_base.html" %}
 
 {% block content %}
-    <h2>Create a New Event</h2>
-    
-    <form action="" method="post" accept-charset="utf-8">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <div class="inner">
+        <h2><a href="{% url badmin:events:event_list %}">Events</a> / Create a New Event / {{ step }} of {{ step_count }}</h2>
         
-        <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
-        {{ previous_fields|safe }}
+        <p class="description">
+            Enter the address and date of the event.
+        </p>
+    
+        <form action="" method="post" accept-charset="utf-8">
+            {% csrf_token %}
+            {# {{ form.as_p }} #}
+            
+            <h3>Event Title</h3>
+            <div class="clearfix">
+                {% with form.title as field %}{% include "core/field_errors.html" %}{% endwith %}
+                <input class="{% if form.title.errors %}errors{% endif %}" type="text" name="{{ step0 }}-{{ form.title.name }}" value="{% if form.title.value %}{{ form.title.value }}{% endif %}" placeholder="{{ form.title.label }}">
+            </div>
+            
+            
+            <h3>Address</h3>
+            <div class="clearfix">
+                <input type="text" name="{{ step0 }}-{{ form.location_title.name }}" value="{% if form.location_title.value %}{{ form.location_title.value }}{% endif %}" placeholder="Title of Place">
+                <input type="text" name="{{ step0 }}-{{ form.location_address_1.name }}" value="{% if form.location_address_1.value %}{{ form.location_address_1.value }}{% endif %}" placeholder="Address Line 1">
+                <input type="text" name="{{ step0 }}-{{ form.location_address_2.name }}" value="{% if form.location_address_2.value %}{{ form.location_address_2.value }}{% endif %}" placeholder="Address Line 2">
+                <input type="text" name="{{ step0 }}-{{ form.location_address_3.name }}" value="{% if form.location_address_3.value %}{{ form.location_address_3.value }}{% endif %}" placeholder="Address Line 3">
+            
+                <input type="text" name="{{ step0 }}-{{ form.location_city.name }}" value="{% if form.location_city.value %}{{ form.location_city.value }}{% endif %}" placeholder="City">
+                <input type="text" name="{{ step0 }}-{{ form.location_post_code.name }}" value="{% if form.location_post_code.value %}{{ form.location_post_code.value }}{% endif %}" placeholder="Post Code">
+                <input type="text" name="{{ step0 }}-{{ form.location_country.name }}" value="{% if form.location_country.value %}{{ form.location_country.value }}{% endif %}" placeholder="Country">
+            </div>
+            
+            <h3>Date and Time</h3>
+            <div class="clearfix">
+                {% with form.date as field %}{% include "core/field_errors.html" %}{% endwith %}
+                <input class="{% if form.date.errors %}errors{% endif %}" id="date" type="text" name="{{ step0 }}-{{ form.date.name }}" value="{% if form.date.value %}{{ form.date.value }}{% endif %}" placeholder="Date">
+            </div>
+        
+            <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+            {{ previous_fields|safe }}
 
-        <p><input type="submit" value="Continue &rarr;"> Step {{ step }} of {{ step_count }}</p>
-    </form>
+            <p><input type="submit" value="Continue &rarr;"> Step {{ step }} of {{ step_count }}</p>
+        </form>
+    </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="https://github.com/trentrichardson/jQuery-Timepicker-Addon/raw/v0.9.4/jquery-ui-timepicker-addon.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $('#date').datetimepicker({
+                timeFormat: 'hh:mm:ss',
+                dateFormat: 'yy-mm-dd'
+            });
+        });
+    </script>
 {% endblock %}

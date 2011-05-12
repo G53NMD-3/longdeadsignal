@@ -1,17 +1,17 @@
 {% extends "badmin/events/events_base.html" %}
 
 {% block content %}
-    <h2>Events</h2>
+    <div class="inner">
+        <h2>Events</h2>
     
-    <p><a href="{% url badmin:events:event_create %}">New Event</a></p>
+        <a class="new-item" href="{% url badmin:events:event_create %}">New Event</a>
     
-    <ul>
         {% for event in event_list %}
-            <li>{{ event.title }}</li>
+            <h3><a href="">{{ event.title }}</a></h3>
         {% endfor %}
-    </ul>
     
-    {% with name="badmin:events:event_list" %}
-        {% include "core/pagination_browser.html" %}
-    {% endwith %}
+        {% with name="badmin:events:event_list" %}
+            {% include "core/pagination_browser.html" %}
+        {% endwith %}
+    </div>
 {% endblock %}

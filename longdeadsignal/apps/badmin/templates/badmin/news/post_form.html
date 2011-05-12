@@ -1,13 +1,19 @@
 {% extends "badmin/news/news_base.html" %}
 
 {% block content %}
-    <h2>Editing {{ post.title }}</h2>
+    <div class="inner">
+        <h2><a href="{% url badmin:news:post_list %}">News</a> / {{ post.title }} / Edit</h2>
+        
+        <p class="description">
+            Edit page for the a particular news update.
+        </p>
     
-    <form action="" method="post" accept-charset="utf-8">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <p><input type="submit" value="Save"> or <a href="{% url badmin:news:post_list %}">cancel</a></p>
-    </form>
+        <form action="" method="post" accept-charset="utf-8">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <p><input type="submit" value="Save"> or <a href="{% url badmin:news:post_list %}">cancel</a></p>
+        </form>
+    </div>
 {% endblock %}
 
 {% block links %}

@@ -1,17 +1,21 @@
 {% extends "badmin/news/news_base.html" %}
 
 {% block content %}
-    <h2>News</h2>
+    <div class="inner">
+        <h2>News</h2>
+        
+        <p class="description">
+            These are the news updates visible on the site.
+        </p>
     
-    <p><a href="{% url badmin:news:post_create %}">New Post</a></p>
+        <a class="new-item" href="{% url badmin:news:post_create %}">New Post</a>
     
-    <ul>
-        {% for post in post_list %}
-            <li><a href="{% url badmin:news:post_update post.slug %}">{{ post.title }}</a></li>
-        {% endfor %}
-    </ul>
+            {% for post in post_list %}
+                <h3><a href="{% url badmin:news:post_update post.slug %}">{{ post.title }}</a></h3>
+            {% endfor %}
     
-    {% with name="badmin:news:post_list" %}
-        {% include "core/pagination_browser.html" %}
-    {% endwith %}
+        {% with name="badmin:news:post_list" %}
+            {% include "core/pagination_browser.html" %}
+        {% endwith %}
+    </div>
 {% endblock %}

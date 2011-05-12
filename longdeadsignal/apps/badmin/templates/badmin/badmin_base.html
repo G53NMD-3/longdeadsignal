@@ -1,10 +1,11 @@
 {% extends "base.html" %}
 
+{% block body_class %}admin{% endblock %}
+
 {% block header %}
-    <h1>Long Dead Signal Admin</h1>
-    <ul>
-        <li><a href="{% url core:index %}">Visit website</a></li>
-        <li><a href="{% url badmin:index %}">Admin</a></li>
+    <h1 id="gn-title"><a href="{% url badmin:index %}">Long Dead Signal Admin</a></h1>
+    <ul id="gn-menu" class="clearfix">
+        <li><a href="{% url core:index %}">Site</a></li>
         <li><a href="{% url badmin:news:post_list %}">News</a></li>
         <li><a href="{% url badmin:events:event_list %}">Events</a></li>
     </ul>
