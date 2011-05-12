@@ -803,6 +803,42 @@ html, body {
 }
 
 
+/* Pagination ------------------------------------------------------------- */
+
+.pagination {
+    margin-top: 20px;
+    font-size: 18px;
+}
+
+.pagination .page {
+    border: 1px solid #666;
+    color: #333;
+    text-decoration: none;
+    padding: 0 3px 0;
+}
+
+.pagination .page:hover,
+.pagination .newer:hover,
+.pagination .older:hover,
+.pagination .first:hover,
+.pagination .last:hover,
+.pagination strong {
+    border: 1px solid #333;
+    padding: 0 3px 0;
+    background-color: #333;
+    color: #fff;
+}
+
+.pagination .newer,
+.pagination .older,
+.pagination .first,
+.pagination .last {
+    color: #333;
+    padding: 0 3px 0;
+    text-decoration: none;
+    border: 1px solid #666;
+}
+
 
 
 

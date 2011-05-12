@@ -2,26 +2,26 @@
 
 {% if is_paginated %}
     <p class="pagination">
-        Page {{ page_obj.number }} of {{ paginator.num_pages }} - 
-        {% if has_previous %}
+        <span class="status">Page {{ page_obj.number }} of {{ paginator.num_pages }} - </span>
+        {% if page_obj.has_previous %}
             {% if page_obj.number > 3 %}
-                <a href="{% url name page=1 %}" title="&laquo; First">&laquo; First</a>
+                <a class="first" href="{% url name 1 %}" title="&laquo; First">&laquo; First</a>
             {% endif %}
-            <a class="newer" href="{% url name page=previous %}" title="View newer posts">&lt;</a>
+            <a class="newer" href="{% url name page_obj.previous_page_number %}" title="View newer posts">&lt;</a>
         {% endif %}
         {% for number in paginator.page_range %}
             {% if number == page_obj.number %}
                 <strong>{{ number }}</strong>
             {% else %}
                 {% if number <= page_obj.number|add:'2' and number >= page_obj.number|add:'-2' %}
-                    <a href="{% url name number %}" title="Page {{ number }}">{{ number }}</a>
+                    <a class="page" href="{% url name number %}" title="Page {{ number }}">{{ number }}</a>
                 {% endif %}
             {% endif %}
         {% endfor %}
-        {% if has_next %}
-            <a class="older" href="{% url name page=next %}" title="View older posts">&gt;</a>
+        {% if page_obj.has_next %}
+            <a class="older" href="{% url name page_obj.next_page_number %}" title="View older posts">&gt;</a>
             {% if page_obj.number < paginator.num_pages|add:'-2' %}
-                <a href="{% url name page=paginator.num_pages %}" title="Last &raquo;">Last &raquo;</a>
+                <a class="last" href="{% url name paginator.num_pages %}" title="Last &raquo;">Last &raquo;</a>
             {% endif %}
         {% endif %}
     </p>
