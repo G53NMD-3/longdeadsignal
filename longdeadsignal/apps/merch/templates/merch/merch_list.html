@@ -1,13 +1,15 @@
 {% extends "merch/merch_base.html" %}
 
 {% block content %}
-    <h2>Merch</h2>
+    <div class="inner">
+        <h2>Merch</h2>
     
-    <ul>
-        {% for merch in merch_list %}
-            <li>
-                <a href="{{ merch.get_absolute_url }}">{{ merch.title }}</a> : &pound;{{ merch.price }}
-            </li>
-        {% endfor %}
-    </ul>
+        <ul>
+            {% for merch in merch_list %}
+                <li>
+                    <a href="{{ merch.get_absolute_url }}">{{ merch.title }}</a> : &pound;{{ merch.price }}
+                </li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

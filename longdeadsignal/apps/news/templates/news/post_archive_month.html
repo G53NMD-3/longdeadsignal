@@ -1,11 +1,13 @@
 {% extends "news/news_base.html" %}
 
 {% block content %}
-    <h2>{{ month|date:"F" }}</h2>
+    <div class="inner">
+        <h2>{{ month|date:"F" }}</h2>
     
-    <ul>
-        {% for post in post_list %}
-            <li>{{ post.pub_date|date:"l jS M"}} <a href="{{ post.get_absolute_url }}">{{ post }}</a></li>
-        {% endfor %}
-    </ul>
+        <ul>
+            {% for post in post_list %}
+                <li>{{ post.pub_date|date:"l jS M"}} <a href="{{ post.get_absolute_url }}">{{ post }}</a></li>
+            {% endfor %}
+        </ul>
+    </div>
 {% endblock %}

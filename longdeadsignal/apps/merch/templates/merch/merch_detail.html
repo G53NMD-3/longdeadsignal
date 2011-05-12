@@ -1,7 +1,9 @@
 {% extends "merch/merch_base.html" %}
 
 {% block content %}
-<h2>{{ merch.title }}</h2>
-<p>Price: &pound;{{ merch.price }}</p>
-{{ form }}
+    <div class="inner">
+        <h2>{{ merch.title }}</h2>
+        <p>Price: &pound;{{ merch.price }}</p>
+        {{ form }}
+    </div>
 {% endblock %}

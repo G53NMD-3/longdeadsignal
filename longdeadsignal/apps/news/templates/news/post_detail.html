@@ -1,9 +1,11 @@
 {% extends "news/news_base.html" %}
 
 {% block content %}
-    <h2>{{ post.title }}</h2>
+    <div class="inner">
+        <h2>{{ post.title }}</h2>
     
-    {{ post.body_html|safe }}
+        {{ post.body_html|safe }}
     
-    <small>Posted {{ post.pub_date|timesince }} ago by {{ post.author }}</small>
+        <small>Posted {{ post.pub_date|timesince }} ago by {{ post.author }}</small>
+    </div>
 {% endblock %}
