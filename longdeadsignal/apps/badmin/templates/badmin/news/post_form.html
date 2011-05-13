@@ -1,16 +1,32 @@
 {% extends "badmin/news/news_base.html" %}
 
+{% block body_class %}{{ block.super }} post{% endblock %}
+
 {% block content %}
     <div class="inner">
-        <h2><a href="{% url badmin:news:post_list %}">News</a> / {{ post.title }} / Edit</h2>
+        <h2><a href="{% url badmin:news:post_list %}">News</a> / {% if post %}{{ post.title }} / Edit{% else %}New Post{% endif %}</h2>
         
         <p class="description">
             Edit page for the a particular news update.
         </p>
+        
+        <ul class="actions">
+            {% if post.get_absolute_url %}<li><a href="{{ post.get_absolute_url }}">View on Site &#x2192;</a></li>{% endif %}
+            <li><a href="">Delete</a></li>
+        </ul>
     
         <form action="" method="post" accept-charset="utf-8">
             {% csrf_token %}
-            {{ form.as_p }}
+            
+            <div class="clearfix">
+                {% with form.title as field %}{% include "core/field_errors.html" %}{% endwith %}
+                <input class="full-width{% if form.title.errors %} errors{% endif %}" type="text" name="{{ form.title.name }}" value="{% if form.title.value %}{{ form.title.value }}{% endif %}" placeholder="{{ form.title.label }}">
+            </div>
+            
+            <h3>Post Message:</h3>
+            
+            {% with body_markdown.title as field %}{% include "core/field_errors.html" %}{% endwith %}
+            {{ form.body_markdown }}
             <p><input type="submit" value="Save"> or <a href="{% url badmin:news:post_list %}">cancel</a></p>
         </form>
     </div>

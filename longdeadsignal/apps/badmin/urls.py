@@ -1,14 +1,14 @@
 from django.conf.urls.defaults import patterns, include, url
 from django.views.generic import TemplateView, ListView, UpdateView, \
-    CreateView
+    CreateView, DeleteView
 from longdeadsignal.apps.news.models import Post
 from longdeadsignal.apps.badmin.views import PostBadminUpdateView, \
     PostBadminCreateView
-import settings as app_settings
 from django.contrib.auth.decorators import login_required
 from longdeadsignal.apps.badmin.forms import CreateEventWizard, \
     CreateEventForm1, CreateEventForm2, CreateEventForm3
 from longdeadsignal.apps.events.models import Event
+import settings as app_settings
 
 news_patterns = patterns('', 
     url(r'^$', login_required(ListView.as_view(

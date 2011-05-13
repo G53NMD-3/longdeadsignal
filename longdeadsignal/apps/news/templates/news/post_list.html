@@ -14,13 +14,16 @@
         </p>
         
         {% for post in post_list %}
-            <section class="post">
-                <header>
+            <section class="post clearfix">
+                <div class="date-box post-date">
+                    <span class="day-month">{{ post.pub_date|date:"dS M" }}</span>
+                    <span class="year">{{ post.pub_date|date:"Y" }}</span>
+                </div>
+                <div class="post-right">
                     <h3><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h3>
-                    <div class="post-time"><small>{{ post.pub_date|timesince }} ago - {{ post.pub_date|date:"l jS F Y" }}</small></div>
-                </header>
-                <div class="post-body">
-                    {{ post.body_html|truncatewords_html:40|safe }}
+                    <div class="post-body">
+                        {{ post.body_html|truncatewords_html:40|safe }}
+                    </div>
                 </div>
             </section>
         {% endfor %}

@@ -15,7 +15,7 @@
         
         {% for event in event_list %}
             <section class="event clearfix" pk="{{ event.pk }}">
-                <div class="event-date{% if event.is_in_past %} past{% endif %}">
+                <div class="date-box event-date{% if event.is_in_past %} past{% endif %}">
                     <span class="day-month">{{ event.date|date:"dS M" }}</span>
                     <span class="year">{{ event.date|date:"Y" }}</span>
                 </div>

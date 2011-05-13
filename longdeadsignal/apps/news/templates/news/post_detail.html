@@ -3,9 +3,14 @@
 {% block content %}
     <div class="post inner">
         <h2><a href="{% url news:post_list %}">News</a> / {{ post.title }}</h2>
-    
-        {{ post.body_html|safe }}
-    
-        <small>Posted {{ post.pub_date|timesince }} ago by {{ post.author }}</small>
+        
+        <div class="date-box post-detail-date">
+            <span class="day-month">{{ post.pub_date|date:"dS M" }}</span>
+            <span class="year">{{ post.pub_date|date:"Y" }}</span>
+        </div>
+
+        <div class="post-body">
+            {{ post.body_html|safe }}
+        </div>
     </div>
 {% endblock %}

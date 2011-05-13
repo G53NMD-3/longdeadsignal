@@ -214,6 +214,10 @@ body.no-clicking a {
     text-shadow: 1px 1px 0 #000;
 }
 
+#global-nav #gn-title .highlight {
+    color: red;
+}
+
 #global-nav #gn-title a {
     color: inherit;
     text-decoration: none;
@@ -254,13 +258,17 @@ body.no-clicking a {
 }
 
 #global-nav #gn-menu li a:hover,
+
 body.news #global-nav #gn-menu li.news a,
 body.photos #global-nav #gn-menu li.photos a,
 body.videos #global-nav #gn-menu li.videos a,
 body.events #global-nav #gn-menu li.events a,
 body.music #global-nav #gn-menu li.music a,
 body.biography #global-nav #gn-menu li.biography a,
-body.shop #global-nav #gn-menu li.shop a {
+body.shop #global-nav #gn-menu li.shop a,
+
+body.admin-news #global-nav #gn-menu li.admin-news a,
+body.admin-events #global-nav #gn-menu li.admin-events a {
     background-color: rgba(0,0,0,0.3);
     border: 1px solid rgba(0,0,0,0.1);
 }
@@ -341,7 +349,7 @@ body.index #content .inner {
     top: 20px;
     display: block;
     background-color: rgba(0,0,0,0.6);
-    padding: 10px;
+    padding: 5px 10px;
     color: #ddd;
     text-shadow: 1px 1px 0 rgba(0,0,0,0.6);
     
@@ -658,20 +666,67 @@ p.description a:hover {
 
 section.post {
     margin-top: 20px;
+    border-bottom: 1px solid #eee;
 }
 
-.post h3 {
+section.post:last-child {
+    border-bottom: none;
+}
+
+section.post h3 a {
     font-size: 18px;
+    text-decoration: none;
+    color: #000;
 }
 
-.post .post-time {
+section.post h3 a:hover {
+    text-decoration: underline;
+}
+
+section.post .post-time {
     margin-top: 5px;
 }
 
-.post .post-body {
+section.post .post-body {
     margin-top: 5px;
 }
 
+section.post .post-body p {
+    font-size: 14px;
+}
+
+section.post .post-right {
+    margin-left: 140px;
+    margin-right: 20px;
+}
+
+
+.date-box.post-date {
+    padding-top: 0;
+}
+
+.date-box.post-detail-date {
+    float: none;
+    width: auto;
+    text-align: left;
+    padding: 0 0 10px 0;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #eee;
+}
+
+.date-box.post-detail-date .day-month {
+    float: none;
+    display: inline;
+    clear: none;
+    font-size: 16px;
+}
+
+.date-box.post-detail-date .year {
+    float: none;
+    display: inline;
+    clear: none;
+    font-size: 16px;
+}
 
 .video-player {
     margin: 20px 0;
@@ -749,42 +804,47 @@ a.watch-youtube:hover {
     z-index: 100;
 }
 
-.event-date {
+.date-box {
     display: block;
 /*    background-color: #333;*/
     float: left;
     padding: 20px 20px 15px;
     -webkit-border-radius: 6px;
     
-    width: 80px;
+    width: 100px;
+    
+    text-align: center;
 }
 
 .event-detail .event-date {
     padding-top: 0;
 }
 
-.event-date.past {
+.date-box.event-date.past {
 /*    background-color: #999;*/
 }
 
-.event-date .day-month {
+.date-box .day-month {
     float: left;
     color: #333;
     font-size: 20px;
+    width: 100px;
 }
 
-.event-date.past .day-month {
+.date-box.event-date.past .day-month {
     color: #eee;
 }
 
-.event-date .year {
+.date-box .year {
     float: left;
     clear: left;
     font-size: 35px;
     color: #666;
+    
+    width: 100px;
 }
 
-.event-date.past .year {
+.date-box.event-date.past .year {
     color: #ccc;
 }
 
@@ -962,6 +1022,10 @@ input[type="text"] {
     list-style: none;
     margin: 10px 0 0 0;
     color: red;
+}
+
+.full-width {
+    width: 840px !important;
 }
 
 
