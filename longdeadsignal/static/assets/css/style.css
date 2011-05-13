@@ -1075,6 +1075,173 @@ button#refresh {
 }
 
 
+/* Biography -------------------------------------------------------------- */
+
+#biography {
+    margin-top: 10px;
+    height: 510px;
+    border: 1px solid #663;
+    
+    padding: 20px;
+    position: relative;
+    
+    background: url('/static/assets/img/background/corkboard.jpg');
+}
+
+#biography .person {
+    position: absolute;
+    top: 0;
+    left: 0;
+/*    border: 1px solid #000;*/
+    padding: 20px;
+    width: 110px;
+    height: 205px;
+    font-size: 20px;
+    
+    cursor: pointer;
+    
+    background-color: #fff;
+    box-shadow: 0 0 3px #000;
+    z-index: 400;
+}
+
+#biography .person .name {
+    position: absolute;
+    bottom: 0;
+    width: 100px;
+    text-align: center;
+    padding: 10px 0 10px 0;
+    
+    border: 1px solid transparent;
+    
+    color: #666;
+}
+
+#biography .person .img {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    left: 5px;
+    bottom: 50px;
+    
+    opacity: 0.5;
+}
+
+#biography .person:hover .name {
+    color: #000;
+}
+
+#biography #bio-band {
+    padding: 20px;
+    font-family: georgia;
+    font-style: italic;
+    font-weight: bold;
+    font-size: 20px;
+    
+    position: absolute;
+    top: 460px;
+    left: 300px;
+    right: 300px;
+    
+    text-align: center;
+    color: #666;
+    background-color: #fff;
+    
+    cursor: pointer;
+    
+    -webkit-box-shadow: 0 0 2px #000;
+    
+    z-index: 500;
+}
+
+#biography .person#bio-ben {
+    top: 190px;
+    left: 60px;
+    -webkit-transform:rotate(2deg);
+}
+#biography .person#bio-ben .img {
+    background: url('/static/assets/img/bio/ben.jpg');
+}
+
+#biography .person#bio-gary {
+    top: 195px;
+    left: 255px;
+    -webkit-transform:rotate(1deg);
+}
+#biography .person#bio-gary .img {
+    background: url('/static/assets/img/bio/gary.jpg');
+}
+
+#biography .person#bio-jaime {
+    top: 185px;
+    left: 450px;
+    -webkit-transform:rotate(-4deg);
+}
+#biography .person#bio-jaime .img {
+    background: url('/static/assets/img/bio/jaime.jpg');
+}
+
+#biography .person#bio-jamie {
+    top: 200px;
+    left: 645px;
+    -webkit-transform:rotate(3deg);
+}
+#biography .person#bio-jamie .img {
+    background: url('/static/assets/img/bio/jamie.jpg');
+}
+
+#biography #bio-text {
+    background-color: #ffa;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0.6, #ffa),
+        color-stop(1, #dd7)
+    );
+    height: 200px;
+    text-align: center;
+    
+    position: relative;
+}
+
+#biography #bio-text>* {
+    display: none;
+}
+
+#biography.bio-band #bio-band,
+#biography.bio-ben #bio-ben .name,
+#biography.bio-gary #bio-gary .name,
+#biography.bio-jaime #bio-jaime .name,
+#biography.bio-jamie #bio-jamie .name {
+    color: #000;
+}
+
+#biography.bio-band #bio-band .img,
+#biography.bio-ben #bio-ben .img,
+#biography.bio-gary #bio-gary .img,
+#biography.bio-jaime #bio-jaime .img,
+#biography.bio-jamie #bio-jamie .img {
+    opacity: 1;
+}
+
+#biography.bio-band #bio-text .bio-band,
+#biography.bio-ben #bio-text .bio-ben,
+#biography.bio-gary #bio-text .bio-gary,
+#biography.bio-jaime #bio-text .bio-jaime,
+#biography.bio-jamie #bio-text .bio-jamie {
+    display: block;
+    padding: 30px 40px 20px 40px;
+    font-size: 19px;
+    font-style: italic;
+    font-family: georgia;
+    color: #000;
+}
+
+/*#biography .person#bio*/
+
+
 
 
 

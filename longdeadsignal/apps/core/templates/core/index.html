@@ -9,7 +9,8 @@
 
 {% block header_extra %}
     <style type="text/css">
-        body,
+        #poster,
+        div.inner,
         #p-logo,
         #global-nav,
         #global-footer,
@@ -19,7 +20,8 @@
     </style>
     <noscript>
         <style type="text/css">
-            body,
+            #poster,
+            div.inner,
             #p-logo,
             #global-nav,
             #global-footer,
@@ -118,18 +120,17 @@
     <script type="text/javascript" charset="utf-8">
         $(function() {
             var siteDomain = '{{ SITE_DOMAIN }}',
-                $body = $('body'),
                 $poster = $('#poster'),
                 $logo = $('#p-logo'),
-                $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new, #latest-tweet');
+                $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new, #latest-tweet, div.inner');
                 
             if (siteDomain === '' || document.referrer.indexOf('http://' + siteDomain) !== 0) {
                 var handler = function(e) { return false };
                 $(window).bind('click', handler);
                 $('body').addClass('no-clicking');
             
-                $body.animate({'opacity': '1'}, 800, function() {
-                    $logo.animate({'opacity': '1'}, 800, function() {
+                $poster.delay(800).animate({'opacity': '1'}, 800, function() {
+                    $logo.delay(200).animate({'opacity': '1'}, 800, function() {
                         var delayed = function() {
                             $('body').removeClass('no-clicking');
                             $(window).unbind('click');
@@ -140,10 +141,20 @@
                     });
                 });
             } else {
-                $body.css('opacity', '1');
+                $poster.css('opacity', '1');
                 $logo.css('opacity', '1');
                 $restOfPage.css('opacity', '1');
             }
+            
+            $(window).bind('keyup', function(e) {
+                if (e.keyCode == 27) { // escape
+                    $poster.css('opacity', '1');
+                    $logo.css('opacity', '1');
+                    $restOfPage.css('opacity', '1');
+                    $('body').removeClass('no-clicking');
+                    $(window).unbind('click');
+                }
+            });
         });
     </script>
 {% endblock %}

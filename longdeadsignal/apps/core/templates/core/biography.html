@@ -6,19 +6,82 @@
     <div class="inner">
         <h2>Band Biography</h2>
     
-        <div id="">
+        <div id="biography" class="bio-band">
+            <div id="bio-text">
+                <div class="bio-band">
+                    "Long Dead Signal are considered one of the local bands 
+                    expected to step up another notch in 2011, and rightly so.
+                    Likening themselves to Buckley, Radiohead and Muse (and 
+                    these comparisons, it has to be said, are spot on), their
+                    self-titled EP roars through six tracks from intricate 
+                    guitars and distorted vocals at breakneck tempo, through
+                    to calmer melodies backed by inspired effects and riffs."
+                </div>
+                <div class="bio-ben">
+                    Ben does a lot of singing from the looks of it. In this 
+                    photo he seems to be looking into the camera as if to say
+                    "hello".
+                    
+                    When he was 5 years old he fell into toxic liquid
+                    which gave him his super singing powers.
+                    
+                    He is never seen without his trademark scarf!
+                </div>
+                <div class="bio-gary">
+                    Gary handles percussion, and is the first member in the
+                    line up to wear glasses.
+                    
+                    Head tilted to the side, Gary always looks a life from a
+                    different angle.
+                </div>
+                <div class="bio-jaime">
+                    Jaime handles the bass. When he's not laying down licks
+                    for Long Dead Signal, he (like Gary) enjoys wearing glasses.
+                    
+                    The only member to sport a tie and hat combo - which he has
+                    perfected over many years - Jaime leads the way with stylish
+                    poses, improving on Gary's already fantastic trademark
+                    side glance.
+                </div>
+                <div class="bio-jamie">
+                    Jamie uses his scarf wearing capabilities to team up with
+                    Ben on vocals, whilst churning out riffs on the guitar.
+                    
+                    Jamie's scarf however is so potently aggressive during
+                    performances, that a special belt has been fasted to his
+                    jacket to keep it out of the way, and under control.
+                </div>
+            </div>
+            <div id="bio-band">
+                Long Dead Signal
+            </div>
             <div id="bio-ben" class="person">
+                <span class="img"></span>
                 <span class="name">Ben</span>
             </div>
             <div id="bio-gary" class="person">
+                <span class="img"></span>
                 <span class="name">Gary</span>
             </div>
             <div id="bio-jaime" class="person">
+                <span class="img"></span>
                 <span class="name">Jaime</span>
             </div>
             <div id="bio-jamie" class="person">
+                <span class="img"></span>
                 <span class="name">Jamie</span>
             </div>
         </div>
     </div>
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $('#biography .person, #biography #bio-band').mouseover(function() {
+                $('#biography').removeAttr('class').addClass($(this).attr('id'));
+            });
+        });
+    </script>
 {% endblock %}
