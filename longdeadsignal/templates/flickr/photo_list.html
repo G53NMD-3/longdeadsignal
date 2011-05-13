@@ -14,8 +14,31 @@
             These photos are from <a href="">Flickr</a> so subscribe to <a href="">our feed</a> for updates.
         </p>
     
-        {% for photo in photo_list %}
-            <img src="{{ photo.get_small_url }}" alt="{{ photo.title }}" title="{{ photo.title }}" />
-        {% endfor %}
+        <div class="images">
+            {% for photo in photo_list %}
+                <a href="{{ photo.get_large_url }}"><img src="{{ photo.get_small_url }}" alt="{{ photo.title }}" title="{{ photo.title }}" /></a>
+            {% endfor %}
+        </div>
     </div>
+{% endblock %}
+
+{% block links %}
+    {{ block.super }}
+    <link rel="stylesheet" type="text/css" href="{{ STATIC_URL }}assets/css/jquery.lightbox-0.5.css" media="screen" />
+{% endblock %}
+
+{% block scripts %}
+    {{ block.super }}
+    <script src="{{ STATIC_URL }}assets/js/libs/jquery.lightbox-0.5.min.js" type="text/javascript" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            $('.images a').lightBox({
+                imageLoading: '{{ STATIC_URL }}assets/img/lightbox/lightbox-ico-loading.gif',
+                imageBtnClose: '{{ STATIC_URL }}assets/img/lightbox/lightbox-btn-close.gif',
+                imageBtnPrev: '{{ STATIC_URL }}assets/img/lightbox/lightbox-btn-prev.gif',
+                imageBtnNext: '{{ STATIC_URL }}assets/img/lightbox/lightbox-btn-next.gif',
+                imageBlank: '{{ STATIC_URL }}assets/img/lightbox/lightbox-blank.gif'
+            });
+        });
+    </script>
 {% endblock %}
