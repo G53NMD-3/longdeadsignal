@@ -26,22 +26,22 @@
                             <div class="jp-type-playlist">
                                 <div id="jp_interface_1" class="jp-interface">
                                     <ul class="jp-controls">
-                                        <li><a href="#" class="jp-previous">prev</a></li>
-                                        <li><a href="#" class="jp-play">play</a></li>
-                                        <li><a href="#" class="jp-pause">pause</a></li>
-                                        <li><a href="#" class="jp-next">next</a></li>
-                                        <li><a href="#" class="jp-stop">stop</a></li>
-                                        <li><a href="#" class="jp-mute">mute</a></li>
-                                        <li><a href="#" class="jp-unmute">unmute</a></li>
+                                        <li><a href="#" class="jp-previous">&#x25C0;&#x25C0;</a></li>
+                                        <li><a href="#" class="jp-play">&#9654;</a></li>
+                                        <li><a href="#" class="jp-pause">&#x275A;&#x275A;</a></li>
+                                        <li><a href="#" class="jp-next">&#9654;&#9654;</a></li>
+                                        <li><a href="#" class="jp-stop">&#x25FC;</a></li>
+                                        {# <li><a href="#" class="jp-mute">mute</a></li> #}
+                                        {# <li><a href="#" class="jp-unmute">unmute</a></li> #}
                                     </ul>
                                     <div class="jp-progress">
                                         <div class="jp-seek-bar">
                                             <div class="jp-play-bar"></div>
                                         </div>
                                     </div>
-                                    <div class="jp-volume-bar">
-                                        <div class="jp-volume-bar-value"></div>
-                                    </div>
+                                    {# <div class="jp-volume-bar"> #}
+                                    {#     <div class="jp-volume-bar-value"></div> #}
+                                    {# </div> #}
                                     <div class="jp-current-time"></div>
                                     <div class="jp-duration"></div>
                                 </div>
@@ -149,7 +149,11 @@
             background-color: #fff;
             border: none;
             cursor: pointer;
-            border-bottom: 1px solid #ddd;
+            border-top: 1px solid #eee;
+        }
+        
+        div.jp-type-playlist div.jp-playlist li:last-child {
+            border-bottom: 1px solid #eee;
         }
         
         div.jp-type-playlist div.jp-playlist li .icon {
@@ -179,12 +183,24 @@
         }
         
         div.jp-audio div.jp-type-playlist div.jp-progress {
-            width: 240px;
+            width: 320px;
+            left: 180px;
+            top: 14px;
         }
         
         div.jp-audio div.jp-type-playlist div.jp-current-time,
         div.jp-audio div.jp-type-playlist div.jp-duration {
-            width: 240px;
+            width: 320px;
+            left: 180px;
+            top: 30px;
+        }
+        
+        div.jp-seek-bar {
+            background: #ddd;
+        }
+        
+        div.jp-play-bar {
+            background: #666;
         }
         
         div.jp-audio div.jp-type-playlist a.jp-mute,
@@ -202,6 +218,71 @@
         
         .player .song.playing {
             color: #000;
+        }
+        
+        div.jp-interface ul.jp-controls a {
+            text-indent: 0;
+            overflow: visible;
+            text-decoration: none;
+            color: #666;
+            
+            font-size: 20px;
+            background: #fff;
+            
+            text-align:center;
+        }
+        
+        div.jp-interface ul.jp-controls a:hover {
+            color: #000;
+        }
+        
+        div.jp-audio div.jp-type-playlist a.jp-play,
+        div.jp-audio div.jp-type-playlist a.jp-pause {
+            width: 40px;
+            height: 34px;
+            padding: 6px 0 0 0;
+            left: 50px;
+            text-indent: 2px;
+            top: 0;
+        }
+        
+        div.jp-audio div.jp-type-playlist a.jp-pause {
+            letter-spacing: 2px;
+        }
+        
+        div.jp-audio div.jp-type-playlist a.jp-previous {
+            letter-spacing: -6px;
+            font-size: 14px !important;
+            padding: 5px 0 0 0;
+            width: 29px;
+            height: 24px;
+            text-indent: -3px;
+            top: 6px;
+        }
+        
+        div.jp-audio div.jp-type-playlist a.jp-next {
+            letter-spacing: -4px;
+            font-size: 14px !important;
+            padding: 5px 0 0 0;
+            width: 29px;
+            height: 24px;
+            left: 91px;
+            text-indent: -2px;
+            top: 6px;
+        }
+        
+        div.jp-audio div.jp-type-playlist a.jp-stop {
+            padding: 6px 0 0 0;
+            width: 28px;
+            height: 24px;
+            font-size: 20px !important;
+            line-height: 16px;
+            text-indent: 1px;
+            top: 6px;
+        }
+        
+        div.jp-audio div.jp-type-playlist div.jp-interface {
+            height: 60px;
         }
     </style>
 {% endblock %}
