@@ -11,6 +11,7 @@
     <style type="text/css">
         #poster,
         div.inner,
+        #meta-bar,
         #p-logo,
         #global-nav,
         #global-footer,
@@ -22,6 +23,7 @@
         <style type="text/css">
             #poster,
             div.inner,
+            #meta-bar,
             #p-logo,
             #global-nav,
             #global-footer,
@@ -122,7 +124,7 @@
             var siteDomain = '{{ SITE_DOMAIN }}',
                 $poster = $('#poster'),
                 $logo = $('#p-logo'),
-                $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new, #latest-tweet, div.inner');
+                $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new, #latest-tweet, div.inner, #meta-bar');
                 
             if (siteDomain === '' || document.referrer.indexOf('http://' + siteDomain) !== 0) {
                 var handler = function(e) { return false };
