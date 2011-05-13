@@ -1,9 +1,15 @@
 {% extends "merch/merch_base.html" %}
+{% load currency %}
 
 {% block content %}
     <div class="inner">
         <h2><a href="{% url merch:merch_list %}">Shop</a> / {{ merch.title }}</h2>
-        <p>Price: &pound;{{ merch.price }}</p>
-        {{ form }}
+        <div class="merch-item-detail">
+            <div class="img">
+                <img src="{{ MEDIA_URL }}{{ merch.image }}" alt="" width="200px">
+            </div>
+            <p class="price">{{ merch.price|currency }}</p>
+            {{ form }}
+        </div>
     </div>
 {% endblock %}

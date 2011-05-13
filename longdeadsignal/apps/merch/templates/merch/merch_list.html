@@ -1,4 +1,5 @@
 {% extends "merch/merch_base.html" %}
+{% load currency %}
 
 {% block content %}
     <div class="inner">
@@ -7,13 +8,23 @@
         <p class="description">
             Welcome to the Shop. Support us by grabbing a T-Shirt using PayPal.
         </p>
-    
-        <ul>
-            {% for merch in merch_list %}
-                <li>
-                    <a href="{{ merch.get_absolute_url }}">{{ merch.title }}</a> : &pound;{{ merch.price }}
-                </li>
-            {% endfor %}
-        </ul>
+        
+        {% if merch_list %}
+            <div class="clearfix">
+                {% for merch in merch_list %}
+                    <div class="merch-item">
+                        <h3 href="{{ merch.get_absolute_url }}"><a href="{{ merch.get_absolute_url }}">{{ merch.title }}</a></h3>
+                        <a href="{{ merch.get_absolute_url }}">
+                            <img src="{{ MEDIA_URL }}{{ merch.image }}" alt="" width="200px">
+                        </a>
+                        <span class="price">{{ merch.price|currency }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>
+                We don't have any items in the shop right now.
+            </p>
+        {% endif %}
     </div>
 {% endblock %}

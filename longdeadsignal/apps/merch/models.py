@@ -6,6 +6,7 @@ class Merch(models.Model):
     slug = models.SlugField(db_index=True, editable=False, unique=True)
     price = models.PositiveIntegerField()
     pub_date = models.DateTimeField(auto_now_add=True)
+    image = models.FileField(upload_to="merch")
     
     def __unicode__(self):
         return u'%s' % self.title
