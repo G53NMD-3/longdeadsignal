@@ -48,7 +48,9 @@
                                 <div id="jp_playlist_1" class="jp-playlist">
                                     <ul>
                                         {% for song in album.song_set.all %}
-                                            <li class="song" pk="{{ song.pk }}" -data-path="{{ MEDIA_URL }}{{ song.song_mp3}}" -data-title="{{ song.title }}">{{ song.track_number }} - {{ song.title }}</li>
+                                            <li class="song" pk="{{ song.pk }}" -data-path="{{ MEDIA_URL }}{{ song.song_mp3}}" -data-title="{{ song.title }}">
+                                                {{ song.track_number }} &nbsp;&nbsp; {{ song.title }}
+                                            </li>
                                         {% endfor %}
                                     </ul>
                                 </div>
@@ -142,15 +144,61 @@
         }
         
         div.jp-type-playlist div.jp-playlist li {
-            padding: 10px 15px;
-            font-size: 16px;
+            padding: 5px 15px 5px;
+            font-size: 14px;
             background-color: #fff;
             border: none;
             cursor: pointer;
+            padding-left: 32px;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        div.jp-type-playlist div.jp-playlist li.playing {
+            padding-left: 15px;
+        }
+        
+        div.jp-playlist {
+            border: none;
+        }
+        
+        div.jp-audio div.jp-type-playlist div.jp-interface {
+            border: none;
+            background-color: #fff;
+        }
+        
+        div.jp-audio {
+            width: 520px;
+        }
+        
+        div.jp-audio div.jp-type-playlist div.jp-progress {
+            width: 240px;
+        }
+        
+        div.jp-audio div.jp-type-playlist div.jp-current-time,
+        div.jp-audio div.jp-type-playlist div.jp-duration {
+            width: 240px;
+        }
+        
+        div.jp-audio div.jp-type-playlist a.jp-mute,
+        div.jp-audio div.jp-type-playlist a.jp-unmute {
+            left: 420px;
+        }
+        
+        div.jp-audio div.jp-type-playlist div.jp-volume-bar {
+            left: 450px;
+        }
+        
+        .player .song {
+            
         }
         
         .player .song.playing {
-            color: black;
+            color: #000;
+        }
+
+        .player .song.playing:before {
+            content: '▶';
+            padding-left: 0;
         }
     </style>
 {% endblock %}

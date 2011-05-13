@@ -496,7 +496,7 @@ body.index #content .inner {
 
 #content #whats-new {
     background: #eaeaea;
-    margin: 0 300px 0 0;
+    margin: 0 320px 0 0;
     
     padding: 0 0 20px 0;
 }
@@ -918,15 +918,6 @@ a.watch-youtube:hover {
 .event-description h3 {
     font-size: 20px;
     margin-bottom: 10px;
-}
-
-
-/* JPlayer ---------------------------------------------------------------- */
-
-
-
-.player .song.playing {
-    color: white;
 }
 
 /* Sticky Footer ---------------------------------------------------------- */
