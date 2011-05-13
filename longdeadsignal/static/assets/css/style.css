@@ -168,9 +168,16 @@ a:hover { color: #036; }
  * Author: 
  */
 
+html {
+    background-color: #101410;
+}
 
 body {
-    background-color: #222;
+    padding-top: 20px;
+}
+
+#wrapper {
+    background: top center url('/static/assets/img/background/bg.jpg') no-repeat #101410;
 }
 
 body.no-clicking a {
@@ -187,15 +194,24 @@ body.no-clicking a {
     width: 900px;
     margin: 0 auto;
     
-    background: #eee;
+/*    background: #101410;*/
+    background-color: rgba(255,255,255,0.1);
+/*    border-bottom: 1px solid #000;*/
+    margin-bottom: 20px;
     
-    padding: 20px 0 20px;
+    padding: 10px 0 10px;
 }
 
 #global-nav #gn-title {
     float: left;
     font-size: 28px;
     margin: 0 20px 0 20px;
+    color: #fff;
+    
+    font-family: georgia;
+    font-style: italic;
+    
+    text-shadow: 1px 1px 0 #000;
 }
 
 #global-nav #gn-title a {
@@ -216,9 +232,8 @@ body.no-clicking a {
 
 #global-nav #gn-menu li {
     float: left;
-    background: #ddd;
+/*    background: #ddd;*/
     margin-right: 10px;
-    border: 1px solid #ccc;
     
     font-size: 16px;
 }
@@ -228,11 +243,26 @@ body.no-clicking a {
 
 #global-nav #gn-menu li a {
     display: block;
-    padding: 7px 10px 5px;
+    padding: 10px 10px 5px;
     width: 50px;
     
     text-align: center;
     text-decoration: none;
+    
+    color: #ddd;
+    border: 1px solid transparent;
+}
+
+#global-nav #gn-menu li a:hover,
+body.news #global-nav #gn-menu li.news a,
+body.photos #global-nav #gn-menu li.photos a,
+body.videos #global-nav #gn-menu li.videos a,
+body.events #global-nav #gn-menu li.events a,
+body.music #global-nav #gn-menu li.music a,
+body.biography #global-nav #gn-menu li.biography a,
+body.shop #global-nav #gn-menu li.shop a {
+    background-color: rgba(0,0,0,0.3);
+    border: 1px solid rgba(0,0,0,0.1);
 }
 
 
@@ -243,11 +273,20 @@ body.no-clicking a {
 
 #content {
     width: 900px;
-    margin: 0 auto;
+    margin: 0 auto 20px;
     
     position: relative;
+}
+
+#content .inner {
+    background-color: #fff;
+    -webkit-box-shadow: 0 0 10px #101410;
     
-    background-color: #eee;
+    min-height: 550px;
+}
+
+body.index #content .inner {
+    min-height: 0;
 }
 
 
@@ -263,27 +302,58 @@ body.no-clicking a {
     height: 600px;
     position: relative;
     
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    
     background: top left url('/static/assets/img/front-poster.jpg') no-repeat;
+    
+/*    border: 1px solid #101410;*/
+    -webkit-box-shadow: 0 0 10px #101410;
+    
+    margin-bottom: 20px;
 }
 
-#content #poster #p-logo {
+#poster #p-logo {
 /*    background: #ccc;*/
     
-    position: absolute;
-    top: 150px;
-    left: 300px;
-    right: 300px;
+    margin-top: 450px;
     
-    height: 100px;
+    font-size: 50px;
+    font-family: georgia;
+    text-align: center;
+    font-weight: bold;
+    font-style: italic;
     
-    border: 1px solid #bbb;
-    
+    text-shadow: 2px 2px 2px rgba(0,0,0,0.9);
+}
+
+#poster #p-logo a {
+    color: #fff;
+    text-decoration: none;
+}
+
+#poster #p-logo a:hover {
+    background-color: rgba(255,255,255,0.2);
+    padding: 10px 20px;
     -webkit-border-radius: 6px;
-    -moz-border-radius: 6px;
-    border-radius: 6px;
+}
+
+
+#poster #latest-tweet a {
+    position: relative;
+    top: 20px;
+    display: block;
+    background-color: rgba(0,0,0,0.6);
+    padding: 10px;
+    color: #ddd;
+    text-shadow: 1px 1px 0 rgba(0,0,0,0.6);
+    
+    font-family: georgia;
+    text-align: center;
+    
+    text-decoration: none;
+}
+
+#poster #latest-tweet a:hover {
+/*    text-decoration: underline;*/
+    background-color: #000;
 }
 
 
@@ -892,6 +962,52 @@ input[type="text"] {
     list-style: none;
     margin: 10px 0 0 0;
     color: red;
+}
+
+
+
+#wmd-input {
+    background-color: #fff !important;
+    padding: 20px !important;
+    width: 820px !important;
+    font-size: 16px;
+    
+    height: 300px !important;
+    resize: none;
+}
+
+#wmd-preview {
+    border: none !important;
+    min-height: 100px;
+    padding: 20px;
+}
+
+.wmd-panel {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+
+#address-map {
+    margin: 20px 0 20px;
+}
+
+button#refresh {
+    float: left;
+    clear: none;
+}
+
+/* Posts ------------------------------------------------------------------ */
+
+.post h1,
+.post h2,
+.post h3 {
+    margin-bottom: 10px;
+}
+.post p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    line-height: 1.3em;
 }
 
 

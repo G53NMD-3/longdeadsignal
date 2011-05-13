@@ -1,15 +1,27 @@
 from django.views.generic import TemplateView
 from syncr.youtube.models import Video
 from syncr.flickr.models import Photo
+from syncr.twitter.models import Tweet, TwitterUser
 from longdeadsignal.apps.news.models import Post
 from longdeadsignal.apps.events.models import Event
+from django.conf import settings
 import operator
 import datetime
+
+TWITTER_USERNAME = getattr(settings, 'TWITTER_USERNAME', None)
 
 class IndexTemplateView(TemplateView):
     template_name = 'core/index.html'
     
     def render_to_response(self, context, *args, **kwargs):
+        if TWITTER_USERNAME:
+            try:
+                user = TwitterUser.objects.get(screen_name=TWITTER_USERNAME)
+            except TwitterUser.DoesNotExist:
+                pass
+            else:
+                context['latest_tweet'] = Tweet.objects.filter(user=user).order_by('-pub_time')[0]
+        
         # Get all of the different things from the database which will be in
         # the list of new stuff on the home page.
         video_list = Video.objects.order_by('-published')[:10]

@@ -1,17 +1,25 @@
 {% extends "badmin/events/events_base.html" %}
 
 {% block content %}
-    <h2>Create a New Event</h2>
-    
-    <form action="" method="post" accept-charset="utf-8">
-        {% csrf_token %}
-        {{ form.as_p }}
+    <div class="inner">
+        <h2><a href="{% url badmin:events:event_list %}">Events</a> / Create a New Event / {{ step }} of {{ step_count }}</h2>
         
-        <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
-        {{ previous_fields|safe }}
+        <p class="description">
+            Write a message visitors will see before the event has started
+        </p>
+    
+        <form action="" method="post" accept-charset="utf-8">
+            {% csrf_token %}
+            
+            {% with form.pre_event_message_markdown as field %}{% include "core/field_errors.html" %}{% endwith %}
+            {{ form.pre_event_message_markdown }}
+        
+            <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+            {{ previous_fields|safe }}
 
-        <p><input type="submit" value="Continue &rarr;"> Step {{ step }} of {{ step_count }}</p>
-    </form>
+            <p><input type="submit" value="Continue &rarr;"> Step {{ step }} of {{ step_count }}</p>
+        </form>
+    </div>
 {% endblock %}
 
 {% block links %}

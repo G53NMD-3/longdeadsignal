@@ -1,5 +1,7 @@
 {% extends "core/core_base.html" %}
 
+{% block body_class %}index{% endblock %}
+
 {% block meta %}
     {{ block.super }}
     <link rel="alternate" type="application/rss+xml" title="What's New" href="{% url core:feed %}" />
@@ -7,21 +9,23 @@
 
 {% block header_extra %}
     <style type="text/css">
-        #poster,
+        body,
         #p-logo,
         #global-nav,
         #global-footer,
         #upcomming-events,
-        #whats-new { opacity: 0 }
+        #whats-new,
+        #latest-tweet { opacity: 0 }
     </style>
     <noscript>
         <style type="text/css">
-            #poster,
+            body,
             #p-logo,
             #global-nav,
             #global-footer,
             #upcomming-events,
-            #whats-new { opacity: 1 }
+            #whats-new,
+            #latest-tweet { opacity: 1 }
         </style>
     </noscript>
 {% endblock %}
@@ -29,74 +33,84 @@
 {% block content %}
     
     <section id="poster">
-        <div id="p-logo"></div>
+        <div id="latest-tweet">
+            <a href="{{ latest_tweet.url }}">
+                {{ latest_tweet.text }}
+            </a>
+        </div>
+        <div id="p-logo">
+            <a href="{% url core:biography %}">Long Dead Signal</a>
+        </div>
     </section>
     
-    <section id="upcomming-events">
-        <h3>Upcoming Events</h3>
-        <ul id="ue-events">
-            {% for event in upcomming_events %}
-                {% if not event.is_in_past %}
-                    <li class="clearfix{% if event.is_in_past %} in-past{% endif %}">
-                        <div class="ue-event-date" title="{{ event.date }}">
-                            <span class="month">{{ event.date|date:"M" }}</span>
-                            <span class="day">{{ event.date|date:"d" }}</span>
-                        </div><!-- .ue-event-date -->
-                        <div class="ue-event-details">
-                            <h4 class="ue-event-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h4>
-                            <p class="ue-event-address{% if not event.address %} no-address{% endif %}" title="{{ event.address }}">
-                                <span class="ue-event-address-fadeout" title="{{ event.address }}"></span>
-                                {% if event.address %}{{ event.address }}{% else %}No address yet!{% endif %}
-                            </p>
-                            <p class="ue-event-time">{{ event.date|date:"G:i"}}</p>
-                        </div>
-                    </li>
-                {% endif %}
-            {% endfor %}
-        </ul><!-- #ue-events -->
-        <p id="ue-more"><a href="{% url events:event_list %}">All Events</a></p>
-    </section><!-- #upcomming-events -->
+    <div class="inner">
     
-    <section id="whats-new">
-        <h3>What's New</h3>
-        <ul id="wn-list">
-            {% for thing in latest_things %}
-                <li class="{{ thing.type }} clearfix">
-                    {% if thing.type == 'video' %}
-                        {% with video=thing.object %}
-                            <a class="wn-image" href="{% url core:video_detail slug=video.video_id %}">
-                                <img width="100px" src="{{ video.thumbnail_url }}" />
-                            </a>
-                            <h4 class="wn-title">
-                                <a href="{% url core:video_detail slug=video.video_id %}">{{ video.title }}</a>
-                            </h4>
-                            <p class="wn-desc">{{ video.description }}</p>
-                        {% endwith %}
-                    {% else %}
-                        {% if thing.type == 'photo' %}
-                            {% with photo=thing.object %}
-                                <a class="wn-image" href="{{ photo.photopage_url }}">
-                                    <img width="100px" height="{% widthratio photo.small_height photo.small_width 100 %}" src="{{ photo.get_small_url }}" />
+        <section id="upcomming-events">
+            <h3>Upcoming Events</h3>
+            <ul id="ue-events">
+                {% for event in upcomming_events %}
+                    {% if not event.is_in_past %}
+                        <li class="clearfix{% if event.is_in_past %} in-past{% endif %}">
+                            <div class="ue-event-date" title="{{ event.date }}">
+                                <span class="month">{{ event.date|date:"M" }}</span>
+                                <span class="day">{{ event.date|date:"d" }}</span>
+                            </div><!-- .ue-event-date -->
+                            <div class="ue-event-details">
+                                <h4 class="ue-event-title"><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h4>
+                                <p class="ue-event-address{% if not event.address %} no-address{% endif %}" title="{{ event.address }}">
+                                    <span class="ue-event-address-fadeout" title="{{ event.address }}"></span>
+                                    {% if event.address %}{{ event.address }}{% else %}No address yet!{% endif %}
+                                </p>
+                                <p class="ue-event-time">{{ event.date|date:"G:i"}}</p>
+                            </div>
+                        </li>
+                    {% endif %}
+                {% endfor %}
+            </ul><!-- #ue-events -->
+            <p id="ue-more"><a href="{% url events:event_list %}">All Events</a></p>
+        </section><!-- #upcomming-events -->
+    
+        <section id="whats-new">
+            <h3>What's New</h3>
+            <ul id="wn-list">
+                {% for thing in latest_things %}
+                    <li class="{{ thing.type }} clearfix">
+                        {% if thing.type == 'video' %}
+                            {% with video=thing.object %}
+                                <a class="wn-image" href="{% url core:video_detail slug=video.video_id %}">
+                                    <img width="100px" src="{{ video.thumbnail_url }}" />
                                 </a>
-                                <h4 class="wn-title"><a href="{{ photo.photopage_url }}">{{ photo.title }}</a></h4>
-                                <p class="wn-desc">{{ photo.description }}</p>
+                                <h4 class="wn-title">
+                                    <a href="{% url core:video_detail slug=video.video_id %}">{{ video.title }}</a>
+                                </h4>
+                                <p class="wn-desc">{{ video.description }}</p>
                             {% endwith %}
                         {% else %}
-                            {% if thing.type == 'post' %}
-                                {% with post=thing.object %}
-                                    <h4 class="wn-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
-                                    <div class="wn-desc">
-                                        {{ post.body_html|truncatewords_html:30|safe }}
-                                    </div>
+                            {% if thing.type == 'photo' %}
+                                {% with photo=thing.object %}
+                                    <a class="wn-image" href="{{ photo.photopage_url }}">
+                                        <img width="100px" height="{% widthratio photo.small_height photo.small_width 100 %}" src="{{ photo.get_small_url }}" />
+                                    </a>
+                                    <h4 class="wn-title"><a href="{{ photo.photopage_url }}">{{ photo.title }}</a></h4>
+                                    <p class="wn-desc">{{ photo.description }}</p>
                                 {% endwith %}
+                            {% else %}
+                                {% if thing.type == 'post' %}
+                                    {% with post=thing.object %}
+                                        <h4 class="wn-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
+                                        <div class="wn-desc">
+                                            {{ post.body_html|truncatewords_html:30|safe }}
+                                        </div>
+                                    {% endwith %}
+                                {% endif %}
                             {% endif %}
                         {% endif %}
-                    {% endif %}
-                </li>
-            {% endfor %}
-        </ul>
-        <p id="wn-more"><a href="{% url news:post_list %}">More News</a></p>
-    </section><!-- #whats-new -->
+                    </li>
+                {% endfor %}
+            </ul>
+            <p id="wn-more"><a href="{% url news:post_list %}">More News</a></p>
+        </section><!-- #whats-new -->
+    </div>
 {% endblock %}
 
 {% block scripts %}
@@ -104,16 +118,17 @@
     <script type="text/javascript" charset="utf-8">
         $(function() {
             var siteDomain = '{{ SITE_DOMAIN }}',
+                $body = $('body'),
                 $poster = $('#poster'),
                 $logo = $('#p-logo'),
-                $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new');
+                $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new, #latest-tweet');
                 
             if (siteDomain === '' || document.referrer.indexOf('http://' + siteDomain) !== 0) {
                 var handler = function(e) { return false };
                 $(window).bind('click', handler);
                 $('body').addClass('no-clicking');
             
-                $poster.animate({'opacity': '1'}, 800, function() {
+                $body.animate({'opacity': '1'}, 800, function() {
                     $logo.animate({'opacity': '1'}, 800, function() {
                         var delayed = function() {
                             $('body').removeClass('no-clicking');
@@ -125,7 +140,7 @@
                     });
                 });
             } else {
-                $poster.css('opacity', '1');
+                $body.css('opacity', '1');
                 $logo.css('opacity', '1');
                 $restOfPage.css('opacity', '1');
             }

@@ -1,29 +1,36 @@
 {% extends "badmin/events/events_base.html" %}
 
 {% block content %}
-    <h2>Create a New Event</h2>
-    
-    <style type="text/css" media="screen">
-        form input {
-            width: 300px;
-        }
-    </style>
-    
-    <form action="" method="post" accept-charset="utf-8">
-        {% csrf_token %}
-        <label for="id_search_address">Search Address</label>
-        <input type="text" name="search_address" id="id_search_address">
-        <button id="refresh" type="button">Search</button>
-        <ul id="results"></ul>
-        {{ form.as_p }}
+    <div class="inner">
+        <h2><a href="{% url badmin:events:event_list %}">Events</a> / Create a New Event / {{ step }} of {{ step_count }}</h2>
         
-        <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+        <p class="description">
+            Set the location for this event on the map.
+        </p>
+    
+        <form action="" method="post" accept-charset="utf-8">
+            {% csrf_token %}
+            <label for="id_search_address">Search Address</label>
+            <div class="clearfix">
+                <input type="text" name="search_address" id="id_search_address" placeholder="Map Location">
+            </div>
+            <button id="refresh" type="button">Search</button>
+            <ul id="results"></ul>
+            
+            <div class="clearfix">
+                <input id="id_{{ step0 }}-{{ form.location_google_maps.name }}" type="text" name="{{ step0 }}-{{ form.location_google_maps.name }}" value="" disabled="disabled">
+                {# {{ form.as_p }} #}
+            </div>
+            
+            <button id="center" type="button">Centre on Location</button>
+            <div id="address-map" style="width:100%; height:500px;" ></div>
         
-        <button id="center" type="button">Centre on Location</button>
-        {{ previous_fields|safe }}
+            <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
+            {{ previous_fields|safe }}
 
-        <p><input type="submit" value="Continue &rarr;"> Step {{ step }} of {{ step_count }}</p>
-    </form>
+            <p><input type="submit" value="Continue &rarr;"> Step {{ step }} of {{ step_count }}</p>
+        </form>
+    </div>
 {% endblock %}
 
 {% block scripts %}
@@ -48,11 +55,9 @@
                 $address2.val() + " " + $address3.val() + " " + $city.val() 
                 + " " + $postCode.val() + " " + $country.val();
 
-            $location.parent().append('<div id="map_canvas" style="width:100%; height:500px;" ></div>');
-
             var position = new google.maps.LatLng(17.549883, 49.130859);
 
-            var map = new google.maps.Map(document.getElementById("map_canvas"), {
+            var map = new google.maps.Map(document.getElementById('address-map'), {
                 zoom: 15,
                 // center: position,
                 mapTypeId: google.maps.MapTypeId.HYBRID
@@ -118,7 +123,7 @@
                 } else {
                     // Google did not find that location
                     console.log('STATUS ' + status);
-                    console.log('RESULTS ' + Results);
+                    console.log('RESULTS ' + results);
                 }
             });
         }

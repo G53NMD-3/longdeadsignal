@@ -54,14 +54,15 @@
         <div id="wrapper">
             <header id="global-nav" class="clearfix">
                 {% block header %}
-                    <h1 id="gn-title">Long Dead Signal</h1>
+                    <h1 id="gn-title"><a href="{% url core:index %}">Long Dead Signal</a></h1>
                     <ul id="gn-menu" class="clearfix">
-                        <li><a href="{% url core:index %}">Home</a></li>
-                        <li><a href="{% url news:post_list %}">News</a></li>
-                        <li><a href="{% url core:photo_list %}">Photos</a></li>
-                        <li><a href="{% url core:video_list %}">Videos</a></li>
-                        <li><a href="{% url events:event_list %}">Events</a></li>
-                        <li><a href="{% url music:album_list %}">Music</a></li>
+                        <li class="news"><a href="{% url news:post_list %}">News</a></li>
+                        <li class="photos"><a href="{% url core:photo_list %}">Photos</a></li>
+                        <li class="videos"><a href="{% url core:video_list %}">Videos</a></li>
+                        <li class="events"><a href="{% url events:event_list %}">Events</a></li>
+                        <li class="music"><a href="{% url music:album_list %}">Music</a></li>
+                        <li class="biography"><a href="{% url core:biography %}">About</a></li>
+                        <li class="shop"><a href="{% url merch:merch_list %}">Shop</a></li>
                     </ul>
                 {% endblock %}
             </header><!-- #global-nav -->
