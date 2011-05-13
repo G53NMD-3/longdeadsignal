@@ -1299,6 +1299,41 @@ button#refresh {
     box-shadow: 0 0 3px #ddd;
 }
 
+/* Videos ----------------------------------------------------------------- */
+
+.video {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.video:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.video .image {
+    float: left;
+}
+
+.video .video-right {
+    margin-left: 360px;
+}
+
+.video h3 a {
+    text-decoration: none;
+    color: #000;
+}
+
+.video h3 a:hover {
+    text-decoration: underline;
+}
+
+.video .body {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
 
 
 

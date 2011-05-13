@@ -11,17 +11,29 @@
         <h2>Videos</h2>
         
         <p class="description">
-            These videos come straight from <a href="">YouTube</a> so subscribe to <a href="">our channel</a> for more.
+            These videos come straight from <a href="http://youtube.com/">YouTube</a> so subscribe to <a href="http://youtube.com/longdeadsignal/">our channel</a> for more.
         </p>
     
         {% for video in video_list %}
-            <div class="video">
-                <p class="video-time">{{ video.published }}</p>
-                <h3>{{ video.title }}</h3>
-                <a href="{% url core:video_detail slug=video.video_id %}">
+            <div class="video clearfix">
+                <div class="date-box post-date">
+                    <span class="day-month">{{ video.published|date:"dS M" }}</span>
+                    <span class="year">{{ video.published|date:"Y" }}</span>
+                </div>
+                <a class="image" href="{% url core:video_detail slug=video.video_id %}">
                     <img src="{{ video.thumbnail_url }}" alt="{{ video.title }}" title="{{ video.title}}" width="200px" />
                 </a>
+                <div class="video-right">
+                    <h3><a href="{% url core:video_detail slug=video.video_id %}">{{ video.title }}</a></h3>
+                    <p class="body">
+                        {{ video.description }}
+                    </p>
+                </div>
             </div>
         {% endfor %}
+        
+        {% with name="core:video_list" %}
+            {% include "core/pagination_browser.html" %}
+        {% endwith %}
     </div>
 {% endblock %}
