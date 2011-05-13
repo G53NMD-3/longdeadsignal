@@ -368,12 +368,11 @@ body.index #content .inner {
 /* Upcoming Events -------------------------------------------------------- */
 
 #content #upcomming-events {
-    background: #eee;
     width: 300px;
     height: 200px;
     
     position: absolute;
-    right: 0;
+    right: 20px;
     
     padding: 0 0 10px 0;
 }
@@ -394,10 +393,10 @@ body.index #content .inner {
 }
 
 #content #upcomming-events ul li {
-    margin: 0 20px 10px 20px;
+    margin: 0 0px 10px 0px;
 }
 
-#content #upcomming-events ul li .ue-event-date {
+.event-date-small-wrapper .event-date-small {
     background: #ddd;
     float: left;
     
@@ -410,14 +409,14 @@ body.index #content .inner {
     transition: all 0.1s ease-in-out;
 }
 
-#content #upcomming-events ul li:hover .ue-event-date {
+/*.event-date-small-wrapper:hover .event-date-small {
     -webkit-transform: scale(1.5) rotate(2deg);
     -moz-transform: scale(1.5) rotate(2deg);
     -o-transform: scale(1.5) rotate(2deg);
     transform: scale(1.5) rotate(2deg);
-}
+}*/
 
-#content #upcomming-events ul li .ue-event-date .month {
+.event-date-small-wrapper .event-date-small .month {
     display: block;
     background: #ccc;
     
@@ -432,7 +431,7 @@ body.index #content .inner {
     border-bottom: 1px solid #bbb;
 }
 
-#content #upcomming-events ul li .ue-event-date .day {
+.event-date-small-wrapper .event-date-small .day {
     display: block;
     
     font-size: 20px;
@@ -450,6 +449,15 @@ body.index #content .inner {
 
 #content #upcomming-events ul li .ue-event-details .ue-event-title {
     margin: 2px 0 0 10px;
+}
+
+#content #upcomming-events ul li .ue-event-details .ue-event-title a {
+    color: #000;
+    text-decoration: none;
+}
+
+#content #upcomming-events ul li .ue-event-details .ue-event-title a:hover {
+    text-decoration: underline;
 }
 
 #content #upcomming-events ul li .ue-event-details .ue-event-address {
@@ -495,10 +503,19 @@ body.index #content .inner {
 /* What's New ------------------------------------------------------------- */
 
 #content #whats-new {
-    background: #eaeaea;
     margin: 0 320px 0 0;
     
     padding: 0 0 20px 0;
+}
+
+#content #whats-new a {
+    text-decoration: none;
+    color: #000;
+    font-size: 18px;
+}
+
+#content #whats-new a:hover {
+    text-decoration: underline;
 }
 
 #content #whats-new h3 {
@@ -517,7 +534,9 @@ body.index #content .inner {
 }
 
 #content #whats-new ul li {
-    margin-bottom: 10px;
+    margin-bottom: 20px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #ddd;
 }
 
 #content #whats-new ul li .wn-image {
@@ -535,7 +554,7 @@ body.index #content .inner {
 }
 
 #content #whats-new ul li .wn-title {
-    margin: 3px 0 0 110px;
+    margin: 3px 0 10px 110px;
 }
 
 #content #whats-new ul li .wn-desc {
@@ -632,10 +651,13 @@ body.index #content .inner {
 
 h2 {
     font-size: 24px;
+    font-weight: normal;
 }
 
 h2 a {
     text-decoration: none;
+    color: #000 !important;
+    font-weight: bold;
 }
 
 h2 a:hover {
@@ -784,10 +806,33 @@ a.watch-youtube:hover {
 .event-map-wrapper {
     width: 200px;
     height: 100px;
-    background-color: #ddd;
     float: left;
     margin: 0 0 0 20px;
     position: relative;
+    
+    box-shadow: 0 0 5px #ddd;
+    border: 1px solid #333;
+}
+
+.event-map-wrapper.empty {
+    border: 1px solid #aaa;
+}
+
+.event-map-wrapper.empty a {
+    color: #333;
+    text-transform: uppercase;
+    font-weight: bold;
+    text-decoration: none;
+    font-size: 16px;
+}
+
+.event-map-wrapper.empty a div.event-map {
+    padding: 40px 0 0 0;
+    height: 60px;
+    background-color: #ddd;
+    background-image: url('/static/assets/img/map-unavailable.jpg');
+    
+    text-align: center;
 }
 
 .event-map-wrapper h3 {

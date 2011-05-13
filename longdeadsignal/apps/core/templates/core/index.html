@@ -48,12 +48,12 @@
     <div class="inner">
     
         <section id="upcomming-events">
-            <h3>Upcoming Events</h3>
+            <p class="description">Upcoming Events</p>
             <ul id="ue-events">
                 {% for event in upcomming_events %}
                     {% if not event.is_in_past %}
-                        <li class="clearfix{% if event.is_in_past %} in-past{% endif %}">
-                            <div class="ue-event-date" title="{{ event.date }}">
+                        <li class="event-date-small-wrapper clearfix{% if event.is_in_past %} in-past{% endif %}">
+                            <div class="event-date-small" title="{{ event.date }}">
                                 <span class="month">{{ event.date|date:"M" }}</span>
                                 <span class="day">{{ event.date|date:"d" }}</span>
                             </div><!-- .ue-event-date -->
@@ -73,10 +73,10 @@
         </section><!-- #upcomming-events -->
     
         <section id="whats-new">
-            <h3>What's New</h3>
+            <p class="description">What's New</p>
             <ul id="wn-list">
                 {% for thing in latest_things %}
-                    <li class="{{ thing.type }} clearfix">
+                    <li class="type-{{ thing.type }} clearfix">
                         {% if thing.type == 'video' %}
                             {% with video=thing.object %}
                                 <a class="wn-image" href="{% url core:video_detail slug=video.video_id %}">

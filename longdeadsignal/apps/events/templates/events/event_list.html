@@ -20,9 +20,11 @@
                     <span class="year">{{ event.date|date:"Y" }}</span>
                 </div>
                 
-                <div class="event-map-wrapper">
+                <div class="event-map-wrapper{% if not event.location_google_maps %} empty{% endif %}">
                     <a href="{{ event.get_absolute_url }}">
-                        <div id="event-map-{{ event.pk }}" class="event-map{% if not event.location_google_maps %} empty{% endif %}"></div>
+                        <div id="event-map-{{ event.pk }}" class="event-map{% if not event.location_google_maps %} empty{% endif %}">
+                            {% if not event.location_google_maps %}map unavailable{% endif %}
+                        </div>
                     </a>
                 </div>
                 
