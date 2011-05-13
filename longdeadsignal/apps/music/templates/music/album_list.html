@@ -9,38 +9,50 @@
         </p>
     
         {% for album in album_list %}
-            <h3>{{ album.title }}</h3>
+            <div class="album">
+                <div class="img">
+                    {% if album.artwork %}
+                        <img src="{{ MEDIA_URL }}{{ album.artwork }}" alt="" width="300px">
+                    {% endif %}
+                </div>
             
-            <div id="player-{{ album.pk }}" class="player">
-                <div class="jp-jplayer"></div>
+                <div class="album-right clearfix">
+                    <h3>{{ album.title }}</h3>
+            
+                    <div id="player-{{ album.pk }}" class="player">
+                        <div class="jp-jplayer"></div>
 
-                <div class="jp-audio">
-                    <div class="jp-type-single">
-                        <div id="jp_interface_1" class="jp-interface">
-                            <ul class="jp-controls">
-                                <li><a href="#" class="jp-play" tabindex="1">play</a></li>
-                                <li><a href="#" class="jp-pause" tabindex="1">pause</a></li>
-                                <li><a href="#" class="jp-stop" tabindex="1">stop</a></li>
-                                <li><a href="#" class="jp-mute" tabindex="1">mute</a></li>
-                                <li><a href="#" class="jp-unmute" tabindex="1">unmute</a></li>
-                            </ul>
-                            <div class="jp-progress">
-                                <div class="jp-seek-bar">
-                                    <div class="jp-play-bar"></div>
+                        <div class="jp-audio">
+                            <div class="jp-type-playlist">
+                                <div id="jp_interface_1" class="jp-interface">
+                                    <ul class="jp-controls">
+                                        <li><a href="#" class="jp-previous">prev</a></li>
+                                        <li><a href="#" class="jp-play">play</a></li>
+                                        <li><a href="#" class="jp-pause">pause</a></li>
+                                        <li><a href="#" class="jp-next">next</a></li>
+                                        <li><a href="#" class="jp-stop">stop</a></li>
+                                        <li><a href="#" class="jp-mute">mute</a></li>
+                                        <li><a href="#" class="jp-unmute">unmute</a></li>
+                                    </ul>
+                                    <div class="jp-progress">
+                                        <div class="jp-seek-bar">
+                                            <div class="jp-play-bar"></div>
+                                        </div>
+                                    </div>
+                                    <div class="jp-volume-bar">
+                                        <div class="jp-volume-bar-value"></div>
+                                    </div>
+                                    <div class="jp-current-time"></div>
+                                    <div class="jp-duration"></div>
+                                </div>
+                                <div id="jp_playlist_1" class="jp-playlist">
+                                    <ul>
+                                        {% for song in album.song_set.all %}
+                                            <li class="song" pk="{{ song.pk }}" -data-path="{{ MEDIA_URL }}{{ song.song_mp3}}" -data-title="{{ song.title }}">{{ song.track_number }} - {{ song.title }}</li>
+                                        {% endfor %}
+                                    </ul>
                                 </div>
                             </div>
-                            <div class="jp-volume-bar">
-                                <div class="jp-volume-bar-value"></div>
-                            </div>
-                            <div class="jp-current-time"></div>
-                            <div class="jp-duration"></div>
-                        </div>
-                        <div id="jp_playlist_1" class="jp-playlist">
-                            <ul>
-                                {% for song in album.song_set.all %}
-                                    <li class="song" pk="{{ song.pk }}" -data-path="{{ MEDIA_URL }}{{ song.song_mp3}}" -data-title="{{ song.title }}">{{ song.track_number }} - {{ song.title }}</li>
-                                {% endfor %}
-                            </ul>
                         </div>
                     </div>
                 </div>
@@ -68,6 +80,9 @@
                             mp3: $song.attr('-data-path')
                         });
                         $song.addClass('playing');
+                    },
+                    ended: function() {
+                        $(selector + ' .song.playing').next().click();
                     }
                 };
                 
@@ -92,6 +107,17 @@
                     return false;
                 });
                 
+                $(selector + ' .jp-previous').click(function() {
+                    $(selector + ' .song.playing').prev().click();
+                    return false;
+                });
+                
+                $(selector + ' .jp-next').click(function() {
+                    $(selector + ' .song.playing').next().click();
+                    return false;
+                });
+                
+                
                 this.instance.jPlayer(this.options);
             };
             
@@ -104,4 +130,27 @@
 
 {% block links %}
     <link rel="stylesheet" href="{{ STATIC_URL}}assets/css/jplayer/jplayer.blue.monday.css" type="text/css" media="screen" title="no title" charset="utf-8">
+    <style type="text/css" media="screen">
+        div.jp-audio div.jp-type-single a.jp-pause {
+            top: 0;
+            left: 0;
+        }
+        
+        div.jp-playlist ul {
+            margin: 0;
+            padding: 0;
+        }
+        
+        div.jp-type-playlist div.jp-playlist li {
+            padding: 10px 15px;
+            font-size: 16px;
+            background-color: #fff;
+            border: none;
+            cursor: pointer;
+        }
+        
+        .player .song.playing {
+            color: black;
+        }
+    </style>
 {% endblock %}

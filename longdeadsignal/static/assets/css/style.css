@@ -778,6 +778,7 @@ a.watch-youtube:hover {
 
 .event-right .event-mini-description {
     margin-top: 10px;
+    margin-bottom: 10px;
 }
 
 .event-map-wrapper {
@@ -1355,6 +1356,86 @@ button#refresh {
 .video .body {
     margin-top: 10px;
     font-size: 14px;
+}
+
+
+/* Music ------------------------------------------------------------------ */
+
+.album {
+    border-bottom: 1px solid #ddd;
+    padding-bottom: 20px;
+    margin-bottom: 20px;
+}
+
+.album:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.album .img {
+    float: left;
+    width: 300px;
+    min-height: 100px;
+    box-shadow: 0 0 3px #ddd;
+    
+    border: 1px solid #ddd;
+    padding: 10px;
+}
+
+.album .img img {
+    display: block;
+}
+
+.album .album-right {
+    margin-left: 340px;
+}
+
+.album .player {
+    margin-top: 10px;
+}
+
+/* Tickets */
+
+a.ticket-small {
+    text-decoration: none;
+    background-color: #333;
+    color: #fff;
+    padding: 5px 10px;
+    -webkit-border-radius: 6px;
+}
+
+a.ticket-small:hover {
+    background-color: black;
+}
+
+a.ticket-small.disabled {
+    background-color: #ddd;
+    cursor: default;
+}
+
+a.ticket-large {
+    float: right;
+    padding: 20px;
+    
+    float: right;
+    background-color: #333;
+    color: #fff;
+    padding: 20px 20px 15px 20px;
+    
+    font-size: 20px;
+    -webkit-border-radius: 6px;
+    
+    margin-left: 20px;
+    text-decoration: none;
+}
+
+a.ticket-large:hover {
+    background-color: #000;
+}
+
+a.ticket-large.disabled {
+    background-color: #ddd;
+    cursor: default;
 }
 
 

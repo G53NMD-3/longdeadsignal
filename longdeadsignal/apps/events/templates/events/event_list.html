@@ -7,7 +7,7 @@
 
 {% block content %}
     <div class="inner">
-        <h2>Event List</h2>
+        <h2>Events</h2>
         
         <p class="description">
             These are Long Dead Signal's upcoming events:
@@ -31,6 +31,7 @@
                     <p class="event-mini-description">
                         {{ event.pre_event_message_html|striptags }}
                     </p>
+                    <a class="ticket-small {% if event.is_in_past %}disabled{% endif %}" href="">Book Ticket</a>
                 </div>
             </section>
         {% endfor %}
