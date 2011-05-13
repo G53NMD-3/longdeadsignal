@@ -772,8 +772,16 @@ a.watch-youtube:hover {
     margin: 0 0 20px 0;
 }
 
+.event-right {
+    margin-left: 380px;
+}
+
+.event-right .event-mini-description {
+    margin-top: 10px;
+}
+
 .event-map-wrapper {
-    width: 500px;
+    width: 200px;
     height: 100px;
     background-color: #ddd;
     float: left;
@@ -799,7 +807,7 @@ a.watch-youtube:hover {
 }
 
 .event-map {
-    width: 500px;
+    width: 200px;
     height: 100px;
     z-index: 100;
 }
@@ -818,6 +826,7 @@ a.watch-youtube:hover {
 
 .event-detail .event-date {
     padding-top: 0;
+    padding-bottom: 0;
 }
 
 .date-box.event-date.past {
@@ -883,12 +892,26 @@ a.watch-youtube:hover {
     background-color: #533;
 }
 
-.event-details dl {
+.event-details {
+    margin-bottom: 20px;
+}
+
+.event-details .address-box-1, .address-box-2 {
     float: left;
+    margin-right: 20px;
+    line-height: 18px;
+}
+
+.event-details dt {
+    font-weight: bold;
 }
 
 .event-description {
     margin-top: 20px;
+}
+
+.event-description.past {
+    margin-bottom: 20px;
 }
 
 .event-description h3 {

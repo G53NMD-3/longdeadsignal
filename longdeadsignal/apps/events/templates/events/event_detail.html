@@ -10,16 +10,18 @@
         </p>
         
         <div class="event-details clearfix">
-            <div class="event-date{% if event.is_in_past %} past{% endif %}">
+            <div class="event-date date-box{% if event.is_in_past %} past{% endif %}">
                 <span class="day-month">{{ event.date|date:"dS M" }}</span>
                 <span class="year">{{ event.date|date:"Y" }}</span>
             </div>
     
-            <dl>
+            <dl class="address-box-1">
                 <dt>{{ event.location_title }}</dt>
                 {% if event.location_address_1 %}<dd>{{ event.location_address_1 }}</dd>{% endif %}
                 {% if event.location_address_2 %}<dd>{{ event.location_address_2 }}</dd>{% endif %}
                 {% if event.location_address_3 %}<dd>{{ event.location_address_3 }}</dd>{% endif %}
+            </dl>
+            <dl class="address-box-2">
                 {% if event.location_city %}<dd>{{ event.location_city }}</dd>{% endif %}
                 {% if event.location_post_code %}<dd>{{ event.location_post_code }}</dd>{% endif %}
                 {% if event.location_country %}<dd>{{ event.location_country }}</dd>{% endif %}
@@ -34,6 +36,13 @@
             </div>
         </div>
         
+        {% if event.post_event_message_html %}
+            <div class="event-description past">
+                <h3>What you missed:</h3>
+                {{ event.post_event_message_html|safe }}
+            </div>
+        {% endif %}
+        
         <div id="map_canvas" class="map{% if not event.location_google_maps %} empty{% endif %}">
             <strong>Map:</strong> Long Dead Signal don't know where this event is yet!
         </div>
@@ -41,7 +50,7 @@
         <div class="event-description">
             <h3>Why you should come!</h3>
             {% if event.pre_event_message_html %}
-                <p>{{ event.pre_event_message_html|safe }}</p>
+                {{ event.pre_event_message_html|safe }}
             {% endif %}
         </div>
     </div>

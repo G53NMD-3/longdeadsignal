@@ -21,9 +21,16 @@
                 </div>
                 
                 <div class="event-map-wrapper">
+                    <a href="{{ event.get_absolute_url }}">
+                        <div id="event-map-{{ event.pk }}" class="event-map{% if not event.location_google_maps %} empty{% endif %}"></div>
+                    </a>
+                </div>
+                
+                <div class="event-right">
                     <h3><a href="{{ event.get_absolute_url }}">{{ event.title }}</a></h3>
-                    <div id="event-map-{{ event.pk }}" class="event-map{% if not event.location_google_maps %} empty{% endif %}">
-                    </div>
+                    <p class="event-mini-description">
+                        {{ event.pre_event_message_html|striptags }}
+                    </p>
                 </div>
             </section>
         {% endfor %}
