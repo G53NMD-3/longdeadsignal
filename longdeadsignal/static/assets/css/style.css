@@ -1289,6 +1289,17 @@ button#refresh {
 }
 
 
+/* Photos ----------------------------------------------------------------- */
+
+.images img {
+    display: inline-block;
+    margin: 0 10px 10px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    box-shadow: 0 0 3px #ddd;
+}
+
+
 
 
 /**
