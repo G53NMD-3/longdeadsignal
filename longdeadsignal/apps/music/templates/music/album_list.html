@@ -49,7 +49,7 @@
                                     <ul>
                                         {% for song in album.song_set.all %}
                                             <li class="song" pk="{{ song.pk }}" -data-path="{{ MEDIA_URL }}{{ song.song_mp3}}" -data-title="{{ song.title }}">
-                                                {{ song.track_number }} &nbsp;&nbsp; {{ song.title }}
+                                                <span class="icon">&#9654;</span>{{ song.track_number }} &nbsp;&nbsp; {{ song.title }}
                                             </li>
                                         {% endfor %}
                                     </ul>
@@ -149,8 +149,16 @@
             background-color: #fff;
             border: none;
             cursor: pointer;
-            padding-left: 32px;
             border-bottom: 1px solid #ddd;
+        }
+        
+        div.jp-type-playlist div.jp-playlist li .icon {
+            opacity: 0;
+            margin-right: 10px;
+        }
+        
+        div.jp-type-playlist div.jp-playlist li.playing .icon {
+            opacity: 1;
         }
         
         div.jp-type-playlist div.jp-playlist li.playing {
@@ -194,11 +202,6 @@
         
         .player .song.playing {
             color: #000;
-        }
-
-        .player .song.playing:before {
-            content: '▶';
-            padding-left: 0;
         }
     </style>
 {% endblock %}
