@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="inner">
-        <h2>Editing {{ event.title }}</h2>
+        <h2><a href="{% url badmin:events:event_list %}">Events</a> / Editing {{ event.title }}</h2>
     
         <form action="" method="post" accept-charset="utf-8">
             {% csrf_token %}
@@ -12,7 +12,6 @@
     </div>
 {% endblock %}
 
-{% block links %}
-    {{ block.super }}
-    {{ form.media }}
+{% block meta_link %}
+    <a href="{% url events:event_detail slug=event.slug %}">view <span class="highlight">{{ event.title }}</span> on site &#x2192;</a>
 {% endblock %}

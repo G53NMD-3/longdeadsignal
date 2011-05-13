@@ -40,6 +40,11 @@ events_patterns = patterns('',
         template_name='badmin/events/event_list.html',
         paginate_by=app_settings.PAGINATE_BY,
     )), name='event_list'),
+    
+    url(r'^(?P<slug>[^/]+)/$', login_required(UpdateView.as_view(
+        model=Event,
+        template_name='badmin/events/event_update.html'
+    )), name='event_update'),
 )
 
 urlpatterns = patterns('',

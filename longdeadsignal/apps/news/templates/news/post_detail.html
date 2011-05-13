@@ -14,3 +14,7 @@
         </div>
     </div>
 {% endblock %}
+
+{% block meta_link %}
+    <a href="{% url badmin:news:post_update slug=post.slug %}">edit <span class="highlight">{{ post.title }}</span> &#x2192;</a>
+{% endblock %}

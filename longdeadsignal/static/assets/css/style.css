@@ -194,12 +194,14 @@ body.no-clicking a {
     width: 900px;
     margin: 0 auto;
     
-/*    background: #101410;*/
     background-color: rgba(255,255,255,0.1);
-/*    border-bottom: 1px solid #000;*/
     margin-bottom: 20px;
     
     padding: 10px 0 10px;
+}
+
+body.admin #global-nav {
+    background-color: rgba(220,210,200,0.3);
 }
 
 #global-nav #gn-title {
@@ -271,6 +273,104 @@ body.admin-news #global-nav #gn-menu li.admin-news a,
 body.admin-events #global-nav #gn-menu li.admin-events a {
     background-color: rgba(0,0,0,0.3);
     border: 1px solid rgba(0,0,0,0.1);
+}
+
+/* Meta Bar --------------------------------------------------------------- */
+
+#meta-bar {
+    width: 880px;
+    margin: 0 auto;
+    background-color: #fcc;
+    background-image: -webkit-gradient(
+        linear,
+        left top,
+        left bottom,
+        color-stop(0.5, #fff  ),
+        color-stop(1, #fdd)
+    );
+    
+    box-shadow: 0 0 3px #000;
+    
+    margin-bottom: 20px;
+    padding: 10px 20px;
+    
+    position: relative;
+    
+    height: 23px;
+    
+    -webkit-border-radius: 3px;
+}
+
+#meta-bar a#logout-link {
+    float: right;
+}
+
+body.admin #meta-bar #admin-link {
+    display: none;
+}
+
+body #meta-bar #site-link {
+    display: none;
+}
+body.admin #meta-bar #site-link {
+    display: inline;
+}
+
+#meta-bar a#admin-link,
+#meta-bar a#site-link,
+#meta-bar a#logout-link {
+    color: #000;
+    color: rgba(0,0,0,0.8);
+    text-decoration: none;
+    font-weight: bold;
+    font-size: 20px;
+    
+    position: absolute;
+    top: 10px;
+    
+    z-index: 200;
+}
+
+#meta-bar a#admin-link,
+#meta-bar a#site-link {
+    left: 20px;
+}
+
+#meta-bar a#logout-link {
+    right: 20px;
+}
+
+#meta-bar a#admin-link:hover,
+#meta-bar a#site-link:hover,
+#meta-bar a#logout-link:hover {
+    text-decoration: underline;
+}
+
+#meta-bar #central-link {
+    position: absolute;
+    top: 0;
+    right: 0;
+    left: 0;
+    bottom: 0;
+    text-align: center;
+    font-size: 20px;
+    padding-top: 12px;
+    
+    z-index: 100;
+}
+
+#meta-bar #central-link a {
+    text-decoration: none;
+    color: #000;
+    text-transform: lowercase;
+}
+
+#meta-bar #central-link a:hover {
+    text-decoration: underline;
+}
+
+#meta-bar #central-link a .highlight {
+    font-weight: bold;
 }
 
 

@@ -11,7 +11,7 @@ urlpatterns = patterns('',
     # url(r'^longdeadsignal/', include('longdeadsignal.foo.urls')),
 
     # Uncomment the admin/doc line below to enable admin documentation:
-    url(r'^django-admin/doc/', include('django.contrib.admindocs.urls')),
+    url(r'^django-admin/doc/', include('django.contrib.admindocs.urls', namespace='docs')),
 
     # Uncomment the next line to enable the admin:
     url(r'^django-admin/', include(admin.site.urls)),

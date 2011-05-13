@@ -72,3 +72,7 @@
         });
     </script>
 {% endblock %}
+
+{% block meta_link %}
+    <a href="{% url badmin:events:event_create %}">add new <span class="highlight">event</span> &#x2192;</a>
+{% endblock %}

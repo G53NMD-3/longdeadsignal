@@ -66,6 +66,20 @@
                     </ul>
                 {% endblock %}
             </header><!-- #global-nav -->
+            
+            {% block meta_bar %}
+                {% if user.is_authenticated %}
+                    <div id="meta-bar">
+                        <div id="central-link">
+                            {% block meta_link %}{% endblock %}
+                        </div>
+                        <a id="admin-link" href="{% url badmin:index %}">Go To Admin</a>
+                        <a id="site-link" href="{% url core:index %}">Go To Site</a>
+                        <a id="logout-link" href="{% url admin:logout %}">logout</a>
+                    </div>
+                {% endif %}
+            {% endblock %}
+            
             <div id="content">
                 {% block content %}
             

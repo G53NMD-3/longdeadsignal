@@ -1,7 +1,9 @@
 {% extends "registration/registration_base.html" %}
 
 {% block content %}
-    <h2>Logged out</h2>
+    <div class="inner">
+        <h2>Logged out</h2>
     
-    <p><a href="{% url badmin:login %}">Log back in again</a></p>
+        <p><a href="{% url badmin:login %}">Log back in again</a></p>
+    </div>
 {% endblock %}

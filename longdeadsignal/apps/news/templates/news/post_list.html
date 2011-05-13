@@ -33,3 +33,7 @@
         {% endwith %}
     </div>
 {% endblock %}
+
+{% block meta_link %}
+    <a href="{% url badmin:news:post_create %}">add a new <span class="highlight">news update</span> &#x2192;</a>
+{% endblock %}

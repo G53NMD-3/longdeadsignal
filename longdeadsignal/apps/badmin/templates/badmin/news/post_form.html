@@ -36,3 +36,9 @@
     {{ block.super }}
     {{ form.media }}
 {% endblock %}
+
+{% block meta_link %}
+    {% if post %}
+        <a href="{% url news:post_detail slug=post.slug %}">view <span class="highlight">{{ post.title }}</span> on site &#x2192;</a>
+    {% endif %}
+{% endblock %}

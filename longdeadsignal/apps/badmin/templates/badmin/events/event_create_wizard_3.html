@@ -18,8 +18,9 @@
             <ul id="results"></ul>
             
             <div class="clearfix">
-                <input id="id_{{ step0 }}-{{ form.location_google_maps.name }}" type="text" name="{{ step0 }}-{{ form.location_google_maps.name }}" value="" disabled="disabled">
-                {# {{ form.as_p }} #}
+                {% with form.location_google_maps as field %}{% include "core/field_errors.html" %}{% endwith %}
+                <input id="id_{{ step0 }}-{{ form.location_google_maps.name }}-visual" type="text" disabled="disabled">
+                <input id="id_{{ step0 }}-{{ form.location_google_maps.name }}" type="hidden" name="{{ step0 }}-{{ form.location_google_maps.name }}">
             </div>
             
             <button id="center" type="button">Centre on Location</button>
@@ -49,7 +50,8 @@
                 $country = $('#id_0-location_country');
             
             var $searchAddress = $('#id_search_address');
-            var $location = $('#id_2-location_google_maps');
+            var $location = $('#id_2-location_google_maps'),
+                $locationVisual = $('#id_2-location_google_maps-visual');
 
             var address = $title.val() + " " + $address1.val() + " " + 
                 $address2.val() + " " + $address3.val() + " " + $city.val() 
@@ -107,6 +109,7 @@
             google.maps.event.addListener(marker, 'position_changed', function() {
                 position = marker.getPosition();
                 $location.val(position.lat() + "," + position.lng());
+                $locationVisual.val(position.lat() + "," + position.lng());
             });
         });
         

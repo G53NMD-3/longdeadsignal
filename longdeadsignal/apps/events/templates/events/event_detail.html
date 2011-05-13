@@ -82,3 +82,7 @@
         </script>
     {% endif %}
 {% endblock %}
+
+{% block meta_link %}
+    <a href="{% url badmin:events:event_update slug=event.slug %}">edit <span class="highlight">{{ event.title }}</span> &#x2192;</a>
+{% endblock %}

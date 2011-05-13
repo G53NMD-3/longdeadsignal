@@ -172,3 +172,6 @@ ALBUM_UPLOAD_PATH = 'albums/'
 # Relative to an arbitrary album
 # (must not start with a slash, but should end with one)
 ALBUM_ARTWORK_FILE_NAME = 'artwork'
+
+
+LOGIN_REDIRECT_URL = '/admin/'

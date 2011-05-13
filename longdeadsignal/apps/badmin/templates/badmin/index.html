@@ -4,5 +4,13 @@
     <div class="inner">
         <h2>Admin</h2>
         <p class="description">This administration interface allows you to update your website.</p>
+        
+        <p>
+            <strong>If you know what you're doing</strong>, you can use the <a href="{% url admin:index %}">advanced admin</a> interface to really alter the database.
+        </p>
+        
+        <p>
+            For developer documentation see the <a href="{% url docs:django-admindocs-docroot %}">generated docs</a> for a good starting point.
+        </p>
     </div>
 {% endblock %}
