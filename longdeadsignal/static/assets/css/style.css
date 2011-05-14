@@ -178,7 +178,8 @@ a:hover { color: #036; }
 
 
 html {
-    background-color: #101410;
+/*    background-color: #101410;*/
+    background-color: #111310;
 }
 
 body {
@@ -186,7 +187,7 @@ body {
 }
 
 #wrapper {
-    background: top center url('/static/assets/img/background/bg.jpg') no-repeat #101410;
+    background: top center url('/static/assets/img/background/bg.jpg') no-repeat #111310;
 }
 
 body.no-clicking a {
