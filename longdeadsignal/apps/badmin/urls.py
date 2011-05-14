@@ -3,7 +3,7 @@ from django.views.generic import TemplateView, ListView, UpdateView, \
     CreateView, DeleteView
 from longdeadsignal.apps.news.models import Post
 from longdeadsignal.apps.badmin.views import PostBadminUpdateView, \
-    PostBadminCreateView
+    PostBadminCreateView, MerchBadminUpdateView, MerchBadminCreateView
 from django.contrib.auth.decorators import login_required
 from longdeadsignal.apps.badmin.forms import CreateEventWizard, \
     CreateEventForm1, CreateEventForm2, CreateEventForm3
@@ -63,15 +63,9 @@ merch_patterns = patterns('',
         paginate_by=app_settings.PAGINATE_BY
     )), name='merch_list'),
     
-    url(r'^new-item/$', login_required(CreateView.as_view(
-        model=Merch,
-        template_name='badmin/merch/merch_update.html'
-    )), name='merch_create'),
+    url(r'^new-item/$', login_required(MerchBadminCreateView.as_view()), name='merch_create'),
     
-    url(r'^(?P<slug>[^/]+)/$', login_required(UpdateView.as_view(
-        model=Merch,
-        template_name='badmin/merch/merch_update.html'
-    )), name='merch_update'),
+    url(r'^(?P<slug>[^/]+)/$', login_required(MerchBadminUpdateView.as_view()), name='merch_update'),
 )
 
 urlpatterns = patterns('',

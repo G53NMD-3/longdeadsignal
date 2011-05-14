@@ -2,9 +2,9 @@
 
 {% block content %}
     <div class="inner">
-        <h2><a class="admin-title" href="{% url badmin:merch:merch_list %}">Merch Admin</a> / {% if merch %}{{ merch.title }} / Edit{% else %}New Shop Item{% endif %}</h2>
+        <h2><a class="admin-title" href="{% url badmin:merch:merch_list %}">Shop Admin</a> / {% if merch %}{{ merch.title }} / Edit{% else %}New Shop Item{% endif %}</h2>
     
-        <form action="" method="post" accept-charset="utf-8">
+        <form action="" method="post" accept-charset="utf-8" enctype="multipart/form-data">
             {% csrf_token %}
             {% for field in form %}
                 <div class="clearfix">
