@@ -1,23 +1,17 @@
 {% extends "badmin/news/news_base.html" %}
 
-{% block body_class %}{{ block.super }} post{% endblock %}
-
 {% block content %}
     <div class="inner">
-        <h2><a href="{% url badmin:news:post_list %}">News</a> / {% if post %}{{ post.title }} / Edit{% else %}New Post{% endif %}</h2>
+        <h2><a class="admin-title" href="{% url badmin:news:post_list %}">News Admin</a> / {% if post %}{{ post.title }} / Edit{% else %}New Post{% endif %}</h2>
         
         <p class="description">
             Edit page for the a particular news update.
         </p>
-        
-        <ul class="actions">
-            {% if post.get_absolute_url %}<li><a href="{{ post.get_absolute_url }}">View on Site &#x2192;</a></li>{% endif %}
-            <li><a href="">Delete</a></li>
-        </ul>
     
         <form action="" method="post" accept-charset="utf-8">
             {% csrf_token %}
             
+            <h3>Title:</h3>
             <div class="clearfix">
                 {% with form.title as field %}{% include "core/field_errors.html" %}{% endwith %}
                 <input class="full-width{% if form.title.errors %} errors{% endif %}" type="text" name="{{ form.title.name }}" value="{% if form.title.value %}{{ form.title.value }}{% endif %}" placeholder="{{ form.title.label }}">
@@ -25,9 +19,25 @@
             
             <h3>Post Message:</h3>
             
-            {% with body_markdown.title as field %}{% include "core/field_errors.html" %}{% endwith %}
-            {{ form.body_markdown }}
-            <p><input type="submit" value="Save"> or <a href="{% url badmin:news:post_list %}">cancel</a></p>
+            <div class="post">
+                {% with body_markdown.title as field %}{% include "core/field_errors.html" %}{% endwith %}
+                {{ form.body_markdown }}
+                <div id="preview-header-wrapper">
+                    <div id="preview-header" style="display: none">
+                        <h3>On Site Preview:</h3>
+                        <h2><a>News</a> / {{ post.title }}</h2>
+                        <div class="date-box post-detail-date">
+                            <span class="day-month">{{ post.pub_date|date:"dS M" }}</span>
+                            <span class="year">{{ post.pub_date|date:"Y" }}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="action-button-bar clearfix">
+                <input class="left" type="submit" value="Save">
+                <a class="mini-button left" href="{% url badmin:news:post_list %}">Cancel</a>
+                {% if post %}<a class="mini-button warning right" href="">Delete</a>{% endif %}
+            </div>
         </form>
     </div>
 {% endblock %}
@@ -41,4 +51,15 @@
     {% if post %}
         <a href="{% url news:post_detail slug=post.slug %}">view <span class="highlight">{{ post.title }}</span> on site &#x2192;</a>
     {% endif %}
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            var $header = $('#preview-header-wrapper');
+            $('#wmd-preview').before($header.html());
+            $header.remove();
+            $('#preview-header').slideDown();
+        });
+    </script>
 {% endblock %}

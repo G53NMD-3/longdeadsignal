@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="inner">
-        <h2><a href="{% url badmin:events:event_list %}">Events</a> / Create a New Event / {{ step }} of {{ step_count }}</h2>
+        <h2><a class="admin-title" href="{% url badmin:events:event_list %}">Events Admin</a> / Create a New Event / {{ step }} of {{ step_count }}</h2>
         
         <p class="description">
             Enter the address and date of the event.
@@ -39,8 +39,11 @@
         
             <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
             {{ previous_fields|safe }}
-
-            <p><input type="submit" value="Continue &rarr;"> Step {{ step }} of {{ step_count }}</p>
+            
+            <div class="action-button-bar clearfix">
+                <input class="left" type="submit" value="Continue to 2 of {{ step_count }} &#x2192;">
+                <a class="mini-button right" href="{% url badmin:events:event_list %}">Cancel</a>
+            </div>
         </form>
     </div>
 {% endblock %}

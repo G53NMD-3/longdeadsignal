@@ -15,5 +15,5 @@
 {% endblock %}
 
 {% block meta_link %}
-    <a href="">edit <span class="highlight">{{ merch.title }}</span> &#x2192;</a>
+    <a href="{% url badmin:merch:merch_update slug=merch.slug %}">edit <span class="highlight">{{ merch.title }}</span> &#x2192;</a>
 {% endblock %}

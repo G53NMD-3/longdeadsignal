@@ -1,0 +1,13 @@
+{% extends "badmin/events/events_base.html" %}
+
+{% block content %}
+    <div class="inner">
+        <h2><a class="admin-title" href="{% url badmin:events:event_list %}">Events Admin</a> / Failed to create the event</h2>
+    
+        <p class="description">The event could not be saved.</p>
+        
+        <p>
+            Sorry about that <a href="{% url badmin:events:event_list %}">click here to go back</a>.
+        </p>
+    </div>
+{% endblock %}

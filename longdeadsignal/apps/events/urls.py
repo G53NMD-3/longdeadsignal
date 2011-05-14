@@ -18,7 +18,7 @@ urlpatterns = patterns('',
     
     url(r'^feed/$', EventFeed(), name='feed'),
     
+    url(r'^page/(?P<page>[0-9]+)/$', ListView.as_view(model=Event, paginate_by=10), name='event_list'),
     url(r'^(?P<slug>[^/]+)/$', DetailView.as_view(model=Event), name='event_detail'),
-    url(r'^page/(?P<page>[0-9]+)/$', ListView.as_view(model=Event), name='event_list'),
-    url(r'^$', ListView.as_view(model=Event), name='event_list'),
+    url(r'^$', ListView.as_view(model=Event,paginate_by=10), name='event_list'),
 )

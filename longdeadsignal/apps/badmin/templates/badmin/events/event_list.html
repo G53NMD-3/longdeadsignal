@@ -2,16 +2,16 @@
 
 {% block content %}
     <div class="inner">
-        <h2>Events</h2>
+        <a class="new-item" href="{% url badmin:events:event_create %}">New Event</a>
+        
+        <h2><a class="admin-title" href="">Events Admin</a></h2>
         
         <p class="description">
             These are the events visible on the site.
         </p>
     
-        <a class="new-item" href="{% url badmin:events:event_create %}">New Event</a>
-    
         {% for event in event_list %}
-            <h3><a href="">{{ event.title }}</a></h3>
+            <h3><a href="{% url badmin:events:event_update slug=event.slug %}">{{ event.title }}</a></h3>
         {% endfor %}
     
         {% with name="badmin:events:event_list" %}

@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="inner">
-        <h2><a href="{% url badmin:events:event_list %}">Events</a> / Create a New Event / {{ step }} of {{ step_count }}</h2>
+        <h2><a class="admin-title" href="{% url badmin:events:event_list %}">Events Admin</a> / Create a New Event / {{ step }} of {{ step_count }}</h2>
         
         <p class="description">
             Write a message visitors will see before the event has started
@@ -12,12 +12,23 @@
             {% csrf_token %}
             
             {% with form.pre_event_message_markdown as field %}{% include "core/field_errors.html" %}{% endwith %}
-            {{ form.pre_event_message_markdown }}
+            <div class="post">
+                {{ form.pre_event_message_markdown }}
+            </div>
         
             <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
             {{ previous_fields|safe }}
 
-            <p><input type="submit" value="Continue &rarr;"> Step {{ step }} of {{ step_count }}</p>
+            <div class="action-button-bar clearfix">
+                <input class="left" type="submit" value="Continue to 3 of {{ step_count }} &#x2192;">
+                <a class="mini-button right" href="{% url badmin:events:event_list %}">Cancel</a>
+            </div>
+            
+            <div id="preview-header-wrapper">
+                <div id="preview-header" style="display: none">
+                    <h3>On Site Preview:</h3>
+                </div>
+            </div>
         </form>
     </div>
 {% endblock %}
@@ -25,4 +36,15 @@
 {% block links %}
     {{ block.super }}
     {{ form.media }}
+{% endblock %}
+
+{% block scripts %}
+    <script type="text/javascript" charset="utf-8">
+        $(function() {
+            var $header = $('#preview-header-wrapper');
+            $('#wmd-preview').before($header.html());
+            $header.remove();
+            $('#preview-header').slideDown();
+        });
+    </script>
 {% endblock %}

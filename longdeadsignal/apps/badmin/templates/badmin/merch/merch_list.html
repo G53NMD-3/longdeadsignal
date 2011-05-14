@@ -1,0 +1,32 @@
+{% extends "badmin/merch/merch_base.html" %}
+{% load currency %}
+
+{% block content %}
+    <div class="inner">
+        <a class="new-item" href="">New Shop Item</a>
+        
+        <h2><a class="admin-title" href="">Shop Admin</a></h2>
+        
+        <p class="description">
+            A list of all items purchasable within the shop.
+        </p>
+        
+        {% if merch_list %}
+            <div id="merch-items" class="clearfix">
+                {% for merch in merch_list %}
+                    <div class="merch-item">
+                        <h3><a href="{% url badmin:merch:merch_update slug=merch.slug %}">{{ merch.title }}</a></h3>
+                        <a href="{% url badmin:merch:merch_update slug=merch.slug %}">
+                            <img src="{{ MEDIA_URL }}{{ merch.image }}" alt="" width="200px">
+                        </a>
+                        <span class="price">{{ merch.price|currency }}</span>
+                    </div>
+                {% endfor %}
+            </div>
+        {% else %}
+            <p>
+                There are no items in the shop.
+            </p>
+        {% endif %}
+    </div>
+{% endblock %}

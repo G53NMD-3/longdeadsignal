@@ -8,7 +8,10 @@ from django.contrib.auth.decorators import login_required
 from longdeadsignal.apps.badmin.forms import CreateEventWizard, \
     CreateEventForm1, CreateEventForm2, CreateEventForm3
 from longdeadsignal.apps.events.models import Event
+from longdeadsignal.apps.merch.models import Merch
 import settings as app_settings
+
+
 
 news_patterns = patterns('', 
     url(r'^$', login_required(ListView.as_view(
@@ -35,6 +38,12 @@ events_patterns = patterns('',
         CreateEventForm3,
     ])), name='event_create'),
     
+    url(r'^page/(?P<page>[0-9]+)/$', login_required(ListView.as_view(
+        model=Event,
+        template_name='badmin/events/event_list.html',
+        paginate_by=app_settings.PAGINATE_BY,
+    )), name='event_list'),
+    
     url(r'^$', login_required(ListView.as_view(
         model=Event,
         template_name='badmin/events/event_list.html',
@@ -47,9 +56,28 @@ events_patterns = patterns('',
     )), name='event_update'),
 )
 
+merch_patterns = patterns('',
+    url(r'^$', login_required(ListView.as_view(
+        model=Merch,
+        template_name='badmin/merch/merch_list.html',
+        paginate_by=app_settings.PAGINATE_BY
+    )), name='merch_list'),
+    
+    url(r'^new-item/$', login_required(CreateView.as_view(
+        model=Merch,
+        template_name='badmin/merch/merch_update.html'
+    )), name='merch_create'),
+    
+    url(r'^(?P<slug>[^/]+)/$', login_required(UpdateView.as_view(
+        model=Merch,
+        template_name='badmin/merch/merch_update.html'
+    )), name='merch_update'),
+)
+
 urlpatterns = patterns('',
     url(r'^news/', include(news_patterns, namespace='news'), name='news'),
     url(r'^events/', include(events_patterns, namespace='events'), name='events'),
+    url(r'^shop/', include(merch_patterns, namespace='merch'), name='merch'),
     url(r'^login/$', 'django.contrib.auth.views.login', name='login'),
     url(r'^logout/$', 'django.contrib.auth.views.logout', name='logout'),
     

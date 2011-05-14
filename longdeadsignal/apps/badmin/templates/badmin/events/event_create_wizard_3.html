@@ -2,7 +2,7 @@
 
 {% block content %}
     <div class="inner">
-        <h2><a href="{% url badmin:events:event_list %}">Events</a> / Create a New Event / {{ step }} of {{ step_count }}</h2>
+        <h2><a class="admin-title" href="{% url badmin:events:event_list %}">Events Admin</a> / Create a New Event / {{ step }} of {{ step_count }}</h2>
         
         <p class="description">
             Set the location for this event on the map.
@@ -10,26 +10,39 @@
     
         <form action="" method="post" accept-charset="utf-8">
             {% csrf_token %}
+            
             <label for="id_search_address">Search Address</label>
             <div class="clearfix">
                 <input type="text" name="search_address" id="id_search_address" placeholder="Map Location">
+                <button id="refresh" type="button">Search</button>
             </div>
-            <button id="refresh" type="button">Search</button>
+            
+            <div class="clearfix">
+                <label>Google Maps Search Results:</label>
+            </div>
             <ul id="results"></ul>
             
             <div class="clearfix">
+                <div class="clearfix">
+                    <label>Longitude &amp; Latitude</label>
+                </div>
                 {% with form.location_google_maps as field %}{% include "core/field_errors.html" %}{% endwith %}
                 <input id="id_{{ step0 }}-{{ form.location_google_maps.name }}-visual" type="text" disabled="disabled">
+                
+                <button id="center" type="button">Centre on Location</button>
+                
                 <input id="id_{{ step0 }}-{{ form.location_google_maps.name }}" type="hidden" name="{{ step0 }}-{{ form.location_google_maps.name }}">
             </div>
             
-            <button id="center" type="button">Centre on Location</button>
             <div id="address-map" style="width:100%; height:500px;" ></div>
         
             <input type="hidden" name="{{ step_field }}" value="{{ step0 }}" />
             {{ previous_fields|safe }}
-
-            <p><input type="submit" value="Continue &rarr;"> Step {{ step }} of {{ step_count }}</p>
+            
+            <div class="action-button-bar clearfix">
+                <input class="left" type="submit" value="Finish &amp; Save">
+                <a class="mini-button right" href="{% url badmin:events:event_list %}">Cancel</a>
+            </div>
         </form>
     </div>
 {% endblock %}
@@ -40,6 +53,17 @@
     </script>
     <script type="text/javascript" charset="utf-8">
         $(document).ready(function() {
+            
+            jQuery.expr[':'].focus = function(elem) {
+                return elem === document.activeElement && ( elem.type || elem.href );
+            };
+            
+            $('form').submit(function() {
+                if($('#id_search_address').is(':focus')) {
+                    $('#refresh').click();
+                    return false;
+                }
+            });
 
             var $title = $('#id_0-location_title'),
                 $address1 = $('#id_0-location_address_1'),

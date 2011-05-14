@@ -2,17 +2,17 @@
 
 {% block content %}
     <div class="inner">
-        <h2>News</h2>
+        <a class="new-item" href="{% url badmin:news:post_create %}">New Post</a>
+        
+        <h2><a class="admin-title" href="">News Admin</a></h2>
         
         <p class="description">
             These are the news updates visible on the site.
         </p>
     
-        <a class="new-item" href="{% url badmin:news:post_create %}">New Post</a>
-    
-            {% for post in post_list %}
-                <h3><a href="{% url badmin:news:post_update post.slug %}">{{ post.title }}</a></h3>
-            {% endfor %}
+        {% for post in post_list %}
+            <h3><a href="{% url badmin:news:post_update post.slug %}">{{ post.title }}</a></h3>
+        {% endfor %}
     
         {% with name="badmin:news:post_list" %}
             {% include "core/pagination_browser.html" %}

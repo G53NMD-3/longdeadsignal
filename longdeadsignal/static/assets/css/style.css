@@ -168,6 +168,15 @@ a:hover { color: #036; }
  * Author: 
  */
 
+.left {
+    float: left;
+}
+
+.right {
+    float: right;
+}
+
+
 html {
     background-color: #101410;
 }
@@ -299,6 +308,13 @@ body.admin-events #global-nav #gn-menu li.admin-events a {
     height: 23px;
     
     -webkit-border-radius: 3px;
+    
+    opacity: 0.1;
+    -webkit-transition: opacity .2s ease-in-out;
+}
+
+#meta-bar:hover {
+    opacity: 1;
 }
 
 #meta-bar a#logout-link {
@@ -1154,6 +1170,10 @@ a.new-item {
     text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
 }
 
+a.new-item:hover {
+    background-color: #000;
+}
+
 form h3 {
     margin-top: 20px;
 }
@@ -1167,6 +1187,22 @@ input {
     float: left;
     clear: left;
     margin: 10px 0 0 0;
+}
+
+label {
+    margin-top: 20px;
+    float: left;
+    clear: both;
+    font-size: 18px;
+}
+
+.field-wrapper {
+    float: left;
+    clear: both;
+}
+
+label:after {
+    content: ':';
 }
 
 input.errors {
@@ -1189,6 +1225,65 @@ input[type="text"] {
 }
 
 
+a.mini-button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 20px 7px;
+    border: none;
+    
+    -webkit-border-radius: 6px;
+    
+    font-size: 20px;
+    text-decoration: none;
+    
+    margin-left: 20px;
+    
+    text-shadow: 1px 1px 0 #000;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
+}
+
+a.mini-button.warning {
+    background-color: #600;
+}
+
+a.mini-button:hover {
+    background-color: #000;
+    -webkit-box-shadow: none;
+}
+
+a.mini-button.warning:hover {
+    background-color: #300;
+}
+
+input[type="submit"] {
+    margin-top: 0;
+    background-color: #363;
+    color: #fff;
+    padding: 10px 20px 7px;
+    border: none;
+    
+    -webkit-border-radius: 6px;
+    
+    font-size: 20px;
+    
+    text-shadow: 1px 1px 0 #000;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
+}
+
+input[type="submit"]:hover {
+    background-color: #030;
+}
+
+.action-button-bar {
+    margin-top: 20px;
+    position: absolute;
+    bottom: 20px;
+    width: 860px;
+}
+
+form {
+    margin-bottom: 60px;
+}
 
 #wmd-input {
     background-color: #fff !important;
@@ -1200,15 +1295,28 @@ input[type="text"] {
     resize: none;
 }
 
+#preview-header {
+    margin-top: 20px;
+}
+
+#preview-header h3 {
+    padding-bottom: 10px;
+    border-bottom: 3px dashed #ddd;
+}
+
 #wmd-preview {
     border: none !important;
     min-height: 100px;
-    padding: 20px;
+    
+    border-bottom: 3px dashed #ddd !important;
+    margin-bottom: 20px;
 }
 
 .wmd-panel {
     margin-left: 0 !important;
     margin-right: 0 !important;
+    
+    width: 100% !important;
 }
 
 
@@ -1219,6 +1327,67 @@ input[type="text"] {
 button#refresh {
     float: left;
     clear: none;
+}
+
+#results {
+    list-style: none;
+    min-height: 20px;
+    
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 20px 0;
+}
+
+#refresh {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 13px;
+    margin-left: 20px;
+    margin-top: 10px;
+    
+    -webkit-border-radius: 6px;
+}
+
+#refresh:hover {
+    background-color: #000;
+}
+
+#results li {
+    
+}
+
+#center {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px;
+    font-size: 13px;
+    margin-left: 20px;
+    margin-top: 10px;
+    
+    -webkit-border-radius: 6px;
+}
+
+#results li a {
+    text-decoration: none;
+    display: block;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
+    
+    color: #000;
+}
+
+#results li:last-child a {
+    border-bottom: 0;
+    margin-bottom: 0;
+}
+
+#results li:hover a {
+    background-color: #666;
+    color: #fff;
+    text-shadow: 1px 1px 0 #000;
 }
 
 /* Posts ------------------------------------------------------------------ */
@@ -1232,6 +1401,77 @@ button#refresh {
     font-size: 16px;
     margin-bottom: 20px;
     line-height: 1.3em;
+}
+
+.post ol,
+.post ul {
+    font-size: 16px;
+    margin-bottom: 20px;
+}
+
+.post blockquote {
+    background-color: #ddd;
+    padding: 20px;
+    margin-bottom: 20px;
+    font-style: italic;
+    font-family: georgia;
+    text-align: center;
+    
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+}
+
+.post blockquote p:last-child {
+    margin-bottom: 0;
+}
+
+.post pre {
+    margin-bottom: 20px;
+    
+    font-size: 12px;
+    background-color: #eee;
+    border: 1px solid #ddd;
+    padding: 20px;
+    line-height: 1.5em;
+    color: #444;
+    overflow: auto;
+    -webkit-box-shadow: rgba(0, 0, 0, 0.07) 0 1px 2px inset;
+    -webkit-border-radius: 5px;
+    -moz-border-radius: 5px;
+    border-radius: 5px;
+    
+    word-wrap: normal;
+}
+
+.post pre,
+.post code {
+    font: 12px Monaco,"Courier New","DejaVu Sans Mono","Bitstream Vera Sans Mono",monospace;
+    white-space: pre;
+}
+
+.post pre::-webkit-scrollbar {
+    height:8px;
+    width:8px;
+}
+.post pre::-webkit-scrollbar-track-piece{
+    margin-bottom:10px;
+    background-color:#e5e5e5;
+    border-bottom-left-radius:4px 4px;
+    border-bottom-right-radius:4px 4px;
+    border-top-left-radius:4px 4px;
+    border-top-right-radius:4px 4px;
+}
+.post pre::-webkit-scrollbar-thumb:vertical{
+    height:25px;
+    background-color:#ccc;
+    -webkit-border-radius:4px;
+    -webkit-box-shadow:0 1px 1px rgba(255,255,255,1);
+}
+.post pre::-webkit-scrollbar-thumb:horizontal{
+    width:25px;
+    background-color:#ccc;
+    -webkit-border-radius:4px;
 }
 
 
@@ -1572,6 +1812,19 @@ a.ticket-large:hover {
 a.ticket-large.disabled {
     background-color: #ddd;
     cursor: default;
+}
+
+
+/* Admin ------------------------------------------------------------------ */
+
+.admin-title {
+    color: #f00 !important;
+    text-shadow: 1px 1px 0 #300;
+    font-weight: bold;
+}
+
+.admin #merch-items {
+    margin-top: 20px;
 }
 
 

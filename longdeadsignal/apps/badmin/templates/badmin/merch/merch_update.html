@@ -1,0 +1,38 @@
+{% extends "badmin/merch/merch_base.html" %}
+
+{% block content %}
+    <div class="inner">
+        <h2><a class="admin-title" href="{% url badmin:merch:merch_list %}">Merch Admin</a> / {% if merch %}{{ merch.title }} / Edit{% else %}New Shop Item{% endif %}</h2>
+    
+        <form action="" method="post" accept-charset="utf-8">
+            {% csrf_token %}
+            {% for field in form %}
+                <div class="clearfix">
+                    {% if field.errors %}
+                        <ul>
+                        {% for error in field.errors %}
+                            <li><strong>{{ error|escape }}</strong></li>
+                        {% endfor %}
+                        </ul>
+                    {% endif %}
+                    {{ field.label_tag }}
+                    <div class="field-wrapper">
+                        {{ field }}
+                    </div>
+                </div>
+            {% endfor %}
+            
+            <div class="action-button-bar clearfix">
+                <input class="left" type="submit" value="Save">
+                <a class="mini-button left" href="{% url badmin:news:post_list %}">Cancel</a>
+                <a class="mini-button warning right" href="">Delete</a>
+            </div>
+        </form>
+    </div>
+{% endblock %}
+
+{% block meta_link %}
+    {% if merch %}
+        <a href="{{ merch.get_absolute_url }}">view <span class="highlight">{{ event.title }}</span> on site &#x2192;</a>
+    {% endif %}
+{% endblock %}
