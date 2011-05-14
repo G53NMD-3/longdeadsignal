@@ -314,6 +314,10 @@ body.admin-events #global-nav #gn-menu li.admin-events a {
     -webkit-transition: opacity .2s ease-in-out;
 }
 
+#meta-bar.ready {
+    opacity: 0.1;
+}
+
 #meta-bar:hover {
     opacity: 1;
 }

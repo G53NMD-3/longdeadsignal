@@ -23,13 +23,14 @@
         <style type="text/css">
             #poster,
             div.inner,
-            #meta-bar,
             #p-logo,
             #global-nav,
             #global-footer,
             #upcomming-events,
             #whats-new,
             #latest-tweet { opacity: 1 }
+            
+            #meta-bar { opacity: 0.1; }
         </style>
     </noscript>
 {% endblock %}
@@ -124,7 +125,8 @@
             var siteDomain = '{{ SITE_DOMAIN }}',
                 $poster = $('#poster'),
                 $logo = $('#p-logo'),
-                $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new, #latest-tweet, div.inner, #meta-bar');
+                $restOfPage = $('#global-nav, #global-footer, #upcomming-events, #whats-new, #latest-tweet, div.inner'),
+                $metaBar = $('#meta-bar');
                 
             if (siteDomain === '' || document.referrer.indexOf('http://' + siteDomain) !== 0) {
                 var handler = function(e) { return false };
@@ -140,12 +142,14 @@
                         
                         setTimeout(delayed, 1400);
                         $restOfPage.delay(400).animate({'opacity': '1'}, 1500);
+                        $metaBar.delay(400).removeAttr('style').addClass('ready');
                     });
                 });
             } else {
                 $poster.css('opacity', '1');
                 $logo.css('opacity', '1');
                 $restOfPage.css('opacity', '1');
+                $metaBar.removeAttr('style').addClass('ready');
             }
             
             $(window).bind('keyup', function(e) {
@@ -153,6 +157,7 @@
                     $poster.css('opacity', '1');
                     $logo.css('opacity', '1');
                     $restOfPage.css('opacity', '1');
+                    $metaBar.removeAttr('style').addClass('ready');
                     $('body').removeClass('no-clicking');
                     $(window).unbind('click');
                 }
