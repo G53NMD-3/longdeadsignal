@@ -295,8 +295,28 @@ body.admin-events #global-nav #gn-menu li.admin-events a {
         linear,
         left top,
         left bottom,
-        color-stop(0.5, #fff  ),
+        color-stop(0.5, #fff),
         color-stop(1, #fdd)
+    );
+    background-image: -moz-linear-gradient(
+        top,
+        #fff 50%,
+        #fdd 100%
+    );
+    background-image: -ms-linear-gradient(
+        top,
+        #fff 50%,
+        #fdd 100%
+    );
+    background-image: -o-linear-gradient(
+        top,
+        #fff 50%,
+        #fdd 100%
+    );
+    background-image: linear-gradient(
+        top,
+        #fff 50%,
+        #fdd 100%
     );
     
     box-shadow: 0 0 3px #000;
@@ -309,9 +329,14 @@ body.admin-events #global-nav #gn-menu li.admin-events a {
     height: 23px;
     
     -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
     
     opacity: 0.1;
     -webkit-transition: opacity .2s ease-in-out;
+    -moz-transition: opacity .2s ease-in-out;
+    -o-transition: opacity .2s ease-in-out;
+    transition: opacity .2s ease-in-out;
 }
 
 #meta-bar.ready {
@@ -410,6 +435,8 @@ body.admin #meta-bar #site-link {
 #content .inner {
     background-color: #fff;
     -webkit-box-shadow: 0 0 10px #101410;
+    -moz-box-shadow: 0 0 10px #101410;
+    box-shadow: 0 0 10px #101410;
     
     min-height: 550px;
 }
@@ -433,8 +460,9 @@ body.index #content .inner {
     
     background: top left url('/static/assets/img/front-poster.jpg') no-repeat;
     
-/*    border: 1px solid #101410;*/
     -webkit-box-shadow: 0 0 10px #101410;
+    -moz-box-shadow: 0 0 10px #101410;
+    box-shadow: 0 0 10px #101410;
     
     margin-bottom: 20px;
 }
@@ -462,6 +490,8 @@ body.index #content .inner {
     background-color: rgba(255,255,255,0.2);
     padding: 10px 20px;
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 }
 
 
@@ -530,13 +560,6 @@ body.index #content .inner {
     transition: all 0.1s ease-in-out;
 }
 
-/*.event-date-small-wrapper:hover .event-date-small {
-    -webkit-transform: scale(1.5) rotate(2deg);
-    -moz-transform: scale(1.5) rotate(2deg);
-    -o-transform: scale(1.5) rotate(2deg);
-    transform: scale(1.5) rotate(2deg);
-}*/
-
 .event-date-small-wrapper .event-date-small .month {
     display: block;
     background: #ccc;
@@ -603,13 +626,23 @@ body.index #content .inner {
         linear,
         right top,
         left top,
-        color-stop(0, rgba(238,238,238,1.0)),
-        color-stop(0.2, rgba(238,238,238,0))
+        color-stop(0, rgba(255,255,255,1.0)),
+        color-stop(0.2, rgba(255,255,255,0))
     );
     background-image: -moz-linear-gradient(
         right center,
-        rgba(238,238,238,1.0) 0%,
-        rgba(238,238,238,0) 20%
+        rgba(255,255,255,1.0) 0%,
+        rgba(255,255,255,0) 20%
+    );
+    background-image: -o-linear-gradient(
+        top right,
+        rgba(255,255,255,1.0) 0%,
+        rgba(255,255,255,0) 20%
+    );
+    background-image: linear-gradient(
+        right center,
+        rgba(255,255,255,1.0) 0%,
+        rgba(255,255,255,0) 20%
     );
 }
 
@@ -799,6 +832,8 @@ p.description a {
     padding: 3px 5px 2px;
     background-color: #eaeaea;
     -webkit-border-radius: 3px;
+    -moz-border-radius: 3px;
+    border-radius: 3px;
 }
 
 p.description a:hover {
@@ -885,6 +920,9 @@ a.watch-youtube {
     float: right;
     
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    
     text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
 }
 
@@ -984,7 +1022,10 @@ a.watch-youtube:hover {
 /*    background-color: #333;*/
     float: left;
     padding: 20px 20px 15px;
+    
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
     
     width: 100px;
     
@@ -1052,7 +1093,10 @@ a.watch-youtube:hover {
     padding: 20px 20px 15px 20px;
     
     font-size: 20px;
+    
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 }
 
 .event-status.past {
@@ -1172,6 +1216,9 @@ a.new-item {
     float: right;
     
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    
     text-shadow: 2px 2px 0 rgba(0,0,0,0.3);
 }
 
@@ -1235,8 +1282,11 @@ a.mini-button {
     color: #fff;
     padding: 10px 20px 7px;
     border: none;
+    height: 24px;
     
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
     
     font-size: 20px;
     text-decoration: none;
@@ -1244,7 +1294,10 @@ a.mini-button {
     margin-left: 20px;
     
     text-shadow: 1px 1px 0 #000;
+    
     -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
+    -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
 }
 
 a.mini-button.warning {
@@ -1253,7 +1306,10 @@ a.mini-button.warning {
 
 a.mini-button:hover {
     background-color: #000;
+    
     -webkit-box-shadow: none;
+    -moz-box-shadow: none;
+    box-shadow: none;
 }
 
 a.mini-button.warning:hover {
@@ -1266,13 +1322,19 @@ input[type="submit"] {
     color: #fff;
     padding: 10px 20px 7px;
     border: none;
+    height: 41px;
     
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
     
     font-size: 20px;
     
     text-shadow: 1px 1px 0 #000;
+    
     -webkit-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
+    -moz-box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
+    box-shadow: rgba(0, 0, 0, 0.5) 0 0 5px inset;
 }
 
 input[type="submit"]:hover {
@@ -1353,6 +1415,8 @@ button#refresh {
     margin-top: 10px;
     
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 }
 
 #refresh:hover {
@@ -1373,6 +1437,8 @@ button#refresh {
     margin-top: 10px;
     
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 }
 
 #results li a {
@@ -1441,7 +1507,11 @@ button#refresh {
     line-height: 1.5em;
     color: #444;
     overflow: auto;
+    
     -webkit-box-shadow: rgba(0, 0, 0, 0.07) 0 1px 2px inset;
+    -moz-box-shadow: rgba(0, 0, 0, 0.07) 0 1px 2px inset;
+    box-shadow: rgba(0, 0, 0, 0.07) 0 1px 2px inset;
+    
     -webkit-border-radius: 5px;
     -moz-border-radius: 5px;
     border-radius: 5px;
@@ -1506,7 +1576,11 @@ button#refresh {
     cursor: pointer;
     
     background-color: #fff;
+    
+    -webkit-box-shadow: 0 0 3px #000;
+    -moz-box-shadow: 0 0 3px #000;
     box-shadow: 0 0 3px #000;
+    
     z-index: 400;
 }
 
@@ -1556,6 +1630,8 @@ button#refresh {
     cursor: pointer;
     
     -webkit-box-shadow: 0 0 2px #000;
+    -moz-box-shadow: 0 0 2px #000;
+    box-shadow: 0 0 2px #000;
     
     z-index: 500;
 }
@@ -1563,7 +1639,11 @@ button#refresh {
 #biography .person#bio-ben {
     top: 190px;
     left: 60px;
-    -webkit-transform:rotate(2deg);
+    -webkit-transform: rotate(2deg);
+    -moz-transform: rotate(2deg);
+    -o-transform: rotate(2deg);
+    -ms-transform: rotate(2deg);
+    transform: rotate(2deg);
 }
 #biography .person#bio-ben .img {
     background: url('/static/assets/img/bio/ben.jpg');
@@ -1572,7 +1652,11 @@ button#refresh {
 #biography .person#bio-gary {
     top: 195px;
     left: 255px;
-    -webkit-transform:rotate(1deg);
+    -webkit-transform: rotate(1deg);
+    -moz-transform: rotate(1deg);
+    -o-transform: rotate(1deg);
+    -ms-transform: rotate(1deg);
+    transform: rotate(1deg);
 }
 #biography .person#bio-gary .img {
     background: url('/static/assets/img/bio/gary.jpg');
@@ -1581,7 +1665,11 @@ button#refresh {
 #biography .person#bio-jaime {
     top: 185px;
     left: 450px;
-    -webkit-transform:rotate(-4deg);
+    -webkit-transform: rotate(-4deg);
+    -moz-transform: rotate(-4deg);
+    -o-transform: rotate(-4deg);
+    -ms-transform: rotate(-4deg);
+    transform: rotate(-4deg);
 }
 #biography .person#bio-jaime .img {
     background: url('/static/assets/img/bio/jaime.jpg');
@@ -1590,7 +1678,11 @@ button#refresh {
 #biography .person#bio-jamie {
     top: 200px;
     left: 645px;
-    -webkit-transform:rotate(3deg);
+    -webkit-transform: rotate(3deg);
+    -moz-transform: rotate(3deg);
+    -o-transform: rotate(3deg);
+    -ms-transform: rotate(3deg);
+    transform: rotate(3deg);
 }
 #biography .person#bio-jamie .img {
     background: url('/static/assets/img/bio/jamie.jpg');
@@ -1598,6 +1690,7 @@ button#refresh {
 
 #biography #bio-text {
     background-color: #ffa;
+    
     background-image: -webkit-gradient(
         linear,
         left top,
@@ -1605,6 +1698,27 @@ button#refresh {
         color-stop(0.6, #ffa),
         color-stop(1, #dd7)
     );
+    background-image: -moz-linear-gradient(
+        top,
+        color-stop(0.6, #ffa),
+        color-stop(1, #dd7)
+    );
+    background-image: -ms-linear-gradient(
+        top,
+        color-stop(0.6, #ffa),
+        color-stop(1, #dd7)
+    );
+    background-image: -o-linear-gradient(
+        top,
+        color-stop(0.6, #ffa),
+        color-stop(1, #dd7)
+    );
+    background-image: linear-gradient(
+        top,
+        color-stop(0.6, #ffa),
+        color-stop(1, #dd7)
+    );
+    
     height: 200px;
     text-align: center;
     
@@ -1682,7 +1796,11 @@ button#refresh {
     float: left;
     color: #fff;
     padding: 15px 20px 12px;
+    
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
+    
     font-weight: bold;
     font-size: 20px;
 }
@@ -1784,6 +1902,8 @@ a.ticket-small {
     color: #fff;
     padding: 5px 10px;
     -webkit-border-radius: 6px;
+    -moz-border-radius: 6px;
+    border-radius: 6px;
 }
 
 a.ticket-small:hover {
