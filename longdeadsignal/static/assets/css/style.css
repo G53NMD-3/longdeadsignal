@@ -884,6 +884,10 @@ section.post .post-right {
     padding-top: 0;
 }
 
+body.index .date-box.post-date {
+    padding: 0;
+}
+
 .date-box.post-detail-date {
     float: none;
     width: auto;

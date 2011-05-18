@@ -102,6 +102,10 @@
                             {% else %}
                                 {% if thing.type == 'post' %}
                                     {% with post=thing.object %}
+                                            <div class="date-box post-date">
+                                                <span class="day-month">{{ post.pub_date|date:"dS M" }}</span>
+                                                <span class="year">{{ post.pub_date|date:"Y" }}</span>
+                                            </div>
                                         <h4 class="wn-title"><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></h4>
                                         <div class="wn-desc">
                                             {{ post.body_html|truncatewords_html:30|safe }}
