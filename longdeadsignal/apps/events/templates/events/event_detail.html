@@ -1,5 +1,5 @@
 {% extends "events/events_base.html" %}
-{% load date_filters %}
+{% load date_filters text %}
 
 {% block content %}
     <div class="inner event-detail">
@@ -84,5 +84,5 @@
 {% endblock %}
 
 {% block meta_link %}
-    <a href="{% url badmin:events:event_update slug=event.slug %}">edit <span class="highlight">{{ event.title }}</span> &#x2192;</a>
+    <a href="{% url badmin:events:event_update slug=event.slug %}">edit <span class="highlight">{{ event.title|truncchar:40 }}</span> &#x2192;</a>
 {% endblock %}

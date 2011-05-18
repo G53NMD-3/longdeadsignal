@@ -280,7 +280,8 @@ body.biography #global-nav #gn-menu li.biography a,
 body.shop #global-nav #gn-menu li.shop a,
 
 body.admin-news #global-nav #gn-menu li.admin-news a,
-body.admin-events #global-nav #gn-menu li.admin-events a {
+body.admin-events #global-nav #gn-menu li.admin-events a,
+body.admin-merch #global-nav #gn-menu li.admin-merch a {
     background-color: rgba(0,0,0,0.3);
     border: 1px solid rgba(0,0,0,0.1);
 }

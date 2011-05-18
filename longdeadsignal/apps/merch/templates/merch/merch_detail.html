@@ -1,5 +1,5 @@
 {% extends "merch/merch_base.html" %}
-{% load currency %}
+{% load currency text %}
 
 {% block content %}
     <div class="inner">
@@ -15,5 +15,5 @@
 {% endblock %}
 
 {% block meta_link %}
-    <a href="{% url badmin:merch:merch_update slug=merch.slug %}">edit <span class="highlight">{{ merch.title }}</span> &#x2192;</a>
+    <a href="{% url badmin:merch:merch_update slug=merch.slug %}">edit <span class="highlight">{{ merch.title|truncchar:40 }}</span> &#x2192;</a>
 {% endblock %}

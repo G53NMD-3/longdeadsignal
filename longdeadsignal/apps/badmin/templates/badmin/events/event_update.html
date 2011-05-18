@@ -1,4 +1,5 @@
 {% extends "badmin/events/events_base.html" %}
+{% load text %}
 
 {% block content %}
     <div class="inner">
@@ -18,5 +19,5 @@
 {% endblock %}
 
 {% block meta_link %}
-    <a href="{% url events:event_detail slug=event.slug %}">view <span class="highlight">{{ event.title }}</span> on site &#x2192;</a>
+    <a href="{% url events:event_detail slug=event.slug %}">view <span class="highlight">{{ event.title|truncchar:40 }}</span> on site &#x2192;</a>
 {% endblock %}
