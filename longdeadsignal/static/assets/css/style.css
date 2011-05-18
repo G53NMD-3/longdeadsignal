@@ -652,7 +652,18 @@ body.index #content .inner {
 }
 
 #content #upcomming-events #ue-more {
-    margin: 0 20px 20px 80px;
+    margin: 0 20px 20px 60px;
+    padding-top: 10px;
+}
+
+#content #upcomming-events #ue-more a {
+    color: #000;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#content #upcomming-events #ue-more a:hover {
+    text-decoration: underline;
 }
 
 /* What's New ------------------------------------------------------------- */
@@ -709,11 +720,11 @@ body.index #content .inner {
 }
 
 #content #whats-new ul li .wn-title {
-    margin: 3px 0 10px 110px;
+    margin: 3px 0 10px 120px;
 }
 
 #content #whats-new ul li .wn-desc {
-    margin: 3px 0 0 110px;
+    margin: 3px 0 0 120px;
 }
 
 
@@ -722,7 +733,7 @@ body.index #content .inner {
 }
 
 #content #whats-new #wn-more {
-    margin: 10px 20px 0 130px;
+    margin: 10px 20px 0 140px;
 }
 
 /* Image curl effect ------------------------------------------------------ */
